@@ -109,11 +109,11 @@ export default function Nav() {
           aria-label={t('home')}
         >
           <Image
-            src="/NavigationBarLogo1.png"
+            src="/NavbarLogoTransparent.png"
             alt="AShine Logo"
             width={100}
             height={100}
-            style={{ borderRadius: "5px"}}
+            style={{ borderRadius: "5px" }}
             className="h-30 w-30 object-contain"
             priority
             sizes="(max-width: 768px) 96px, 100px"
@@ -145,28 +145,28 @@ export default function Nav() {
         {/* Mobile: language switcher + hamburger */}
         <div className="flex md:hidden items-center gap-2">
           <LanguageSwitcher />
-        <button
-          type="button"
-          className="md:hidden relative p-2 -mr-2 w-10 h-10 text-text-secondary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-premium-accent focus:ring-offset-2 focus:ring-offset-premium-black rounded"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-expanded={mobileOpen}
-          aria-controls="mobile-menu"
-          aria-label={mobileOpen ? t('closeMenu') : t('openMenu')}
-        >
-          <svg className="w-6 h-6 absolute inset-0 m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" aria-hidden>
-            {/* Hamburger: three lines */}
-            <g className={`transition-opacity duration-200 ease-out ${mobileOpen ? 'opacity-0' : 'opacity-100'}`}>
-              <line x1="4" y1="6" x2="20" y2="6" />
-              <line x1="4" y1="12" x2="20" y2="12" />
-              <line x1="4" y1="18" x2="20" y2="18" />
-            </g>
-            {/* X: two equal diagonals crossing at center */}
-            <g className={`transition-opacity duration-200 ease-out ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}>
-              <line x1="6" y1="6" x2="18" y2="18" />
-              <line x1="18" y1="6" x2="6" y2="18" />
-            </g>
-          </svg>
-        </button>
+          <button
+            type="button"
+            className="md:hidden relative p-2 -mr-2 w-10 h-10 text-text-secondary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-premium-accent focus:ring-offset-2 focus:ring-offset-premium-black rounded"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileOpen ? t('closeMenu') : t('openMenu')}
+          >
+            <svg className="w-6 h-6 absolute inset-0 m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" aria-hidden>
+              {/* Hamburger: three lines */}
+              <g className={`transition-opacity duration-200 ease-out ${mobileOpen ? 'opacity-0' : 'opacity-100'}`}>
+                <line x1="4" y1="6" x2="20" y2="6" />
+                <line x1="4" y1="12" x2="20" y2="12" />
+                <line x1="4" y1="18" x2="20" y2="18" />
+              </g>
+              {/* X: two equal diagonals crossing at center */}
+              <g className={`transition-opacity duration-200 ease-out ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}>
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="18" y1="6" x2="6" y2="18" />
+              </g>
+            </svg>
+          </button>
         </div>
       </nav>
 
