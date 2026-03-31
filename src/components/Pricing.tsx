@@ -30,6 +30,8 @@ const EXTERIOR_KEYS = [
   "detailingExterior4",
   "detailingExterior5",
   "detailingExterior6",
+  "detailingExterior7",
+  "detailingExterior8",
 ] as const;
 const INTERIOR_KEYS = [
   "detailingInterior1",
@@ -174,13 +176,7 @@ export default function Pricing() {
   const [activeTab, setActiveTab] = useState<"detailing" | "cleaning">(
     "detailing",
   );
-  const [showAlaCarte, setShowAlaCarte] = useState(false);
 
-  const translatedCleaning = useTranslatedPackages(
-    carCleaningPackages,
-    t,
-    packagesMessages,
-  );
   const translatedDetailing = useTranslatedPackages(
     carDetailingPackages,
     t,
@@ -289,90 +285,6 @@ export default function Pricing() {
                 ))}
               </div>
 
-              {/* A la carte accordion */}
-              <div className="rounded-card border border-border-default overflow-hidden">
-                <button
-                  type="button"
-                  onClick={() => setShowAlaCarte((v) => !v)}
-                  aria-expanded={showAlaCarte}
-                  className="w-full relative flex items-center justify-center px-5 py-3.5 text-body-sm text-text-secondary hover:text-text-primary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-premium-accent"
-                >
-                  <span className="font-medium">
-                    {t("detailingExteriorHeading")} &amp;{" "}
-                    {t("detailingInteriorHeading")}
-                  </span>
-                  <motion.span
-                    animate={{ rotate: showAlaCarte ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-5 text-xs leading-none"
-                    aria-hidden
-                  >
-                    ▾
-                  </motion.span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {showAlaCarte && (
-                    <motion.div
-                      initial={{ height: 0 }}
-                      animate={{ height: "auto" }}
-                      exit={{ height: 0 }}
-                      transition={{ duration: 0.25, ease }}
-                      className="overflow-hidden"
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border-default border-t border-border-default">
-                        <div className="p-5">
-                          <h4 className="text-body-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">
-                            {t("detailingExteriorHeading")}
-                          </h4>
-                          <ul className="space-y-2 text-body-sm" role="list">
-                            {EXTERIOR_KEYS.map((key) => {
-                              const [service, price] = t(key).split(" — ");
-                              return (
-                                <li
-                                  key={key}
-                                  className="flex items-baseline justify-between gap-4 border-b border-border-default/40 pb-2 last:border-0 last:pb-0"
-                                >
-                                  <span className="text-text-secondary">
-                                    {service}
-                                  </span>
-                                  <span className="text-premium-accent font-medium shrink-0">
-                                    {price}
-                                  </span>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                        <div className="p-5">
-                          <h4 className="text-body-sm font-semibold text-text-primary mb-3 uppercase tracking-wide">
-                            {t("detailingInteriorHeading")}
-                          </h4>
-                          <ul className="space-y-2 text-body-sm" role="list">
-                            {INTERIOR_KEYS.map((key) => {
-                              const [service, price] = t(key).split(" — ");
-                              return (
-                                <li
-                                  key={key}
-                                  className="flex items-baseline justify-between gap-4 border-b border-border-default/40 pb-2 last:border-0 last:pb-0"
-                                >
-                                  <span className="text-text-secondary">
-                                    {service}
-                                  </span>
-                                  <span className="text-premium-accent font-medium shrink-0">
-                                    {price}
-                                  </span>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
               {/* CTA */}
               <div className="text-center mt-8">
                 <motion.button
@@ -434,11 +346,61 @@ export default function Pricing() {
                 </div>
               </div>
 
-              {/* Packages */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                {translatedCleaning.map((pkg, i) => (
-                  <PackageCard key={pkg.id} pkg={pkg} index={i} />
-                ))}
+              {/* Exterior & Interior – always visible, styled like table */}
+              <div className="rounded-card border border-border-default overflow-hidden mb-8 bg-premium-charcoal">
+                <div className="border-b border-border-default/80 bg-gradient-to-r from-premium-black via-premium-charcoal to-premium-black px-4 py-2.5 text-center text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-text-secondary">
+                  {t("detailingExteriorHeading")} &amp; {t("detailingInteriorHeading")}
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border-default">
+                  <div className="p-4 sm:p-5">
+                    <h4 className="text-[0.75rem] font-semibold text-text-primary mb-3 uppercase tracking-[0.18em]">
+                      {t("detailingExteriorHeading")}
+                    </h4>
+                    <ul className="space-y-1.5 text-body-sm leading-relaxed text-text-secondary" role="list">
+                      {EXTERIOR_KEYS.map((key) => {
+                        const raw = t(key)
+                        const [service, price] = raw.split("–").map((part) => part.trim())
+                        return (
+                          <li
+                            key={key}
+                            className="flex items-baseline justify-between gap-4 border-b border-border-default/40 py-1.5 last:border-0 last:pb-0"
+                          >
+                            <span className="text-text-secondary">{service}</span>
+                            {price && (
+                              <span className="text-body-sm font-medium text-premium-accent text-right shrink-0">
+                                {price}
+                              </span>
+                            )}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                  <div className="p-4 sm:p-5">
+                    <h4 className="text-[0.75rem] font-semibold text-text-primary mb-3 uppercase tracking-[0.18em]">
+                      {t("detailingInteriorHeading")}
+                    </h4>
+                    <ul className="space-y-1.5 text-body-sm leading-relaxed text-text-secondary" role="list">
+                      {INTERIOR_KEYS.map((key) => {
+                        const raw = t(key)
+                        const [service, price] = raw.split("–").map((part) => part.trim())
+                        return (
+                          <li
+                            key={key}
+                            className="flex items-baseline justify-between gap-4 border-b border-border-default/40 py-1.5 last:border-0 last:pb-0"
+                          >
+                            <span className="text-text-secondary">{service}</span>
+                            {price && (
+                              <span className="text-body-sm font-medium text-premium-accent text-right shrink-0">
+                                {price}
+                              </span>
+                            )}
+                          </li>
+                        )
+                      })}
+                    </ul>
+                  </div>
+                </div>
               </div>
 
               {/* CTA */}

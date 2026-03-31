@@ -107,18 +107,20 @@
     "detailingExteriorHeading": "Exterior",
     "detailingInteriorHeading": "Interior",
     "detailingPackagesHeading": "Packages",
-    "detailingExterior1": "Basic exterior clean (pre-wash, hand wash, wheel clean, dry) — €30",
-    "detailingExterior2": "Paint decontamination — €30",
-    "detailingExterior3": "Machine polishing — €150",
-    "detailingExterior4": "Protective coatings (wax, ceramic) — on request",
-    "detailingExterior5": "Engine bay clean — €40",
-    "detailingExterior6": "Headlight restoration — €25 per light",
-    "detailingInterior1": "Basic interior (wipe-down and vacuum) — €45",
-    "detailingInterior2": "Deep interior (surfaces, brushing, blow-out and vacuum) — €60",
-    "detailingInterior3": "Chemical seat cleaning — €15 per seat",
-    "detailingInterior4": "Leather care and cleaning — €20",
-    "detailingInterior5": "Pet hair, sand removal — €20–40",
-    "detailingInterior6": "Steam disinfection / decontamination — €20",
+    "detailingExterior1": "Basic exterior clean (pre-wash, hand wash, wheel clean, dry) – from €30",
+    "detailingExterior2": "Paint decontamination – from €30",
+    "detailingExterior3": "Refresh machine polish (gloss enhancement) – from €150",
+    "detailingExterior4": "Paint correction (scratch and defect removal) – after vehicle inspection",
+    "detailingExterior5": "Protective coatings (wax, sealant) – from €10",
+    "detailingExterior6": "Ceramic coating – from €350",
+    "detailingExterior7": "Engine bay clean – from €40",
+    "detailingExterior8": "Headlight restoration – from €25 / light",
+    "detailingInterior1": "Basic interior (wipe-down, vacuum, glass) – from €40",
+    "detailingInterior2": "Deep interior (cleaners, brushing, blow-out, thorough vacuum) – from €60",
+    "detailingInterior3": "Chemical seat cleaning – from €15 / seat",
+    "detailingInterior4": "Leather cleaning and care – from €20",
+    "detailingInterior5": "Pet hair and sand removal – from €20",
+    "detailingInterior6": "Steam disinfection / decontamination – from €20",
     "cleaningHeading": "Car cleaning",
     "cleaningIntroShort": "We offer regular and deep car cleaning.",
     "cleaningIntroLine2": "The price is adjustable and flexible.",
@@ -160,22 +162,45 @@
         "features": ["Everything in Full Clean", "Pet hair and sand removal", "Odour and allergen treatment", "Finishing details for an as-new feel"]
       },
       "detail-standard": {
-        "name": "Standard / Quick Detail",
-        "price": "€70",
-        "description": "Pre-wash, wheels, vacuum, wipe-down.",
-        "features": ["Pre-wash", "Wheel cleaning", "Vacuum", "Surface wipe-down"]
+        "name": "Standard Detail – Quick detail",
+        "price": "from €70",
+        "description": "Basic maintenance detail to keep your car looking fresh.",
+        "features": [
+          "Pre-wash and hand wash",
+          "Wheel cleaning",
+          "Vehicle drying",
+          "Interior vacuum",
+          "Basic surface wipe-down",
+          "Glass cleaning"
+        ]
       },
       "detail-deepshine": {
-        "name": "DeepShine Premium",
-        "price": "€130",
-        "description": "Everything in package 1, deep vacuum, detailed surface cleaning, leather care and protection, steam disinfection, waxing.",
-        "features": ["Everything in Standard", "Deep vacuum", "Detailed surface cleaning", "Leather care and protection", "Steam disinfection", "Waxing"]
+        "name": "Premium Care",
+        "price": "from €140",
+        "description": "Thorough refresh with extra focus on interior and details.",
+        "features": [
+          "Everything in Standard Detail",
+          "Deep vacuum and blow-out",
+          "Detailed cleaning of all surfaces",
+          "Cleaning vents, switches and hard-to-reach areas",
+          "Plastic care and surface protection",
+          "Steam disinfection",
+          "Vehicle waxing"
+        ]
       },
       "detail-showroom": {
-        "name": "Showroom Elite",
-        "price": "€300",
-        "description": "Everything in package 2, clay decontamination, machine polish, glass protection, ceramic coating.",
-        "features": ["Everything in DeepShine Premium", "Clay decontamination", "Machine polishing", "Glass protection", "Ceramic coating"]
+        "name": "Showroom Detail",
+        "price": "from €320",
+        "description": "Complete care and appearance restoration for maximum gloss and protection.",
+        "features": [
+          "Everything in Premium Care",
+          "Paint decontamination (clay)",
+          "Machine polishing (gloss enhancement)",
+          "Deep seat cleaning (as needed)",
+          "Glass protection",
+          "Tyre and exterior plastic dressing",
+          "Long-lasting paint protection (sealant or ceramic)"
+        ]
       }
     }
   },

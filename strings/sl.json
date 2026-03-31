@@ -107,18 +107,20 @@
     "detailingExteriorHeading": "Zunanjost",
     "detailingInteriorHeading": "Notranjost",
     "detailingPackagesHeading": "Paketi",
-    "detailingExterior1": "Osnovno čiščenje zunanjosti (predpranje, ročno pranje, čiščenje felg, sušenje) — 30€",
-    "detailingExterior2": "Dekontaminacija barve — 30€",
-    "detailingExterior3": "Strojno poliranje — 150€",
-    "detailingExterior4": "Zaščitni premazi (vosek, keramični premaz) — po dogovoru",
-    "detailingExterior5": "Čiščenje motornega prostora — 40€",
-    "detailingExterior6": "Obnova luči — 25€ na luč",
-    "detailingInterior1": "Osnovni čiščenje (prebrisavanje površin in sesanje) — 45€",
-    "detailingInterior2": "Globinsko čiščenje (površine s čistilom, krtačenje, ispihavanje in sesanje) — 60€",
-    "detailingInterior3": "Kemično čiščenje sedežev — 15€ na sedež",
-    "detailingInterior4": "Čiščenje in nega usnja — 20€",
-    "detailingInterior5": "Odstranjevanje dlak, peska — 20–40€",
-    "detailingInterior6": "Parna dezinfekcija / dekontaminacija — 20€",
+    "detailingExterior1": "Osnovno čiščenje zunanjosti (predpranje, ročno pranje, čiščenje platišč, sušenje) – od 30 €",
+    "detailingExterior2": "Dekontaminacija laka – od 30 €",
+    "detailingExterior3": "Osvežitveno strojno poliranje (povečanje sijaja) – od 150 €",
+    "detailingExterior4": "Korekcija laka (odstranjevanje prask in nepravilnosti) – po ogledu vozila",
+    "detailingExterior5": "Zaščitni premazi (vosek, sealant) – od 10 €",
+    "detailingExterior6": "Keramični premaz – od 350 €",
+    "detailingExterior7": "Čiščenje motornega prostora – od 40 €",
+    "detailingExterior8": "Obnova žarometov – od 25 € / na luč",
+    "detailingInterior1": "Osnovno čiščenje (brisanje površin, sesanje, stekla) – od 40 €",
+    "detailingInterior2": "Globinsko čiščenje (čistila, krtačenje, izpihovanje, temeljito sesanje) – od 60 €",
+    "detailingInterior3": "Kemično čiščenje sedežev – od 15 € / sedež",
+    "detailingInterior4": "Čiščenje in nega usnja – od 20 €",
+    "detailingInterior5": "Odstranjevanje dlak in peska – od 20 €",
+    "detailingInterior6": "Parna dezinfekcija / dekontaminacija – od 20 €",
     "cleaningHeading": "Čiščenje avtomobilov",
     "cleaningIntroShort": "Ponujamo redno in globinsko čiščenje vozil.",
     "cleaningIntroLine2": "Cena se lahko prilagaja in je fleksibilna.",
@@ -160,22 +162,45 @@
         "features": ["Vse iz Full Clean", "Odstranjevanje dlak in peska", "Obdelava vonjav in alergenov", "Zaključni detajli za občutek novega vozila"]
       },
       "detail-standard": {
-        "name": "Standard / Quick Detail",
-        "price": "70€",
-        "description": "Predpranje, platišča, sesanje, prebrisavanje.",
-        "features": ["Predpranje", "Čiščenje platišč (felg)", "Sesanje", "Prebrisavanje površin"]
+        "name": "Standard Detail – Quick detail",
+        "price": "od 70 €",
+        "description": "Osnovna nega za redno vzdrževanje vozila.",
+        "features": [
+          "Predpranje in ročno pranje",
+          "Čiščenje platišč",
+          "Sušenje vozila",
+          "Sesanje notranjosti",
+          "Brisanje osnovnih površin",
+          "Čiščenje stekel"
+        ]
       },
       "detail-deepshine": {
-        "name": "DeepShine Premium",
-        "price": "130€",
-        "description": "Vse iz 1. paketa, globinsko sesanje, detaljno čiščenje površin, nega in zaščita usnja, parna dezinfekcija, voskanje.",
-        "features": ["Vse iz Standard paketa", "Globinsko sesanje", "Detaljno čiščenje površin", "Nega in zaščita usnja", "Parna dezinfekcija", "Voskanje"]
+        "name": "Premium Care",
+        "price": "od 140 €",
+        "description": "Temeljita osvežitev vozila z več poudarka na notranjosti in detajlih.",
+        "features": [
+          "Vse iz Standard paketa",
+          "Globinsko sesanje in izpihovanje",
+          "Detajlno čiščenje vseh površin",
+          "Čiščenje rež, stikal in težje dostopnih mest",
+          "Nega plastike in zaščita površin",
+          "Parna dezinfekcija",
+          "Voskanje vozila"
+        ]
       },
       "detail-showroom": {
-        "name": "Showroom Elite",
-        "price": "300€",
-        "description": "Vse iz 2. paketa, dekontaminacija z glino, strojno poliranje, zaščita stekel, keramična zaščita.",
-        "features": ["Vse iz DeepShine Premium", "Dekontaminacija z glino", "Strojno poliranje", "Zaščita stekel", "Keramična zaščita"]
+        "name": "Showroom Detail",
+        "price": "od 320 €",
+        "description": "Celovita nega in obnova videza vozila za maksimalen sijaj in zaščito.",
+        "features": [
+          "Vse iz Premium paketa",
+          "Dekontaminacija laka (glina)",
+          "Strojno poliranje (osvežitev sijaja)",
+          "Globinsko čiščenje sedežev (po potrebi)",
+          "Zaščita stekel",
+          "Zaščita pnevmatik in zunanjih plastik",
+          "Dolgotrajna zaščita laka (sealant ali keramika)"
+        ]
       }
     }
   },
