@@ -5,24 +5,6 @@ import { useTranslations, useMessages } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionEntrance } from "@/components/MotionSection";
 import { ease } from "@/lib/motion";
-
-const DETAILING_FACTOR_KEYS = [
-  "detailingIntroFactor2",
-  "detailingIntroFactor3",
-  "detailingIntroFactor4",
-  "detailingIntroFactor5",
-] as const;
-const CLEANING_SERVICE_KEYS = [
-  "cleaningService1",
-  "cleaningService2",
-  "cleaningService3",
-] as const;
-const CLEANING_PRICE_FACTOR_KEYS = [
-  "cleaningPriceFactor1",
-  "cleaningPriceFactor2",
-  "cleaningPriceFactor3",
-  "cleaningPriceFactor4",
-] as const;
 const EXTERIOR_KEYS = [
   "detailingExterior1",
   "detailingExterior2",
@@ -262,20 +244,7 @@ export default function Pricing() {
               <div className="text-center mb-6">
                 <p className="text-body-sm text-text-secondary mb-2.5">
                   {t("detailingIntro")}{" "}
-                  <span className="text-text-primary font-medium">
-                    {t("detailingIntroFactor1")}
-                  </span>
                 </p>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {DETAILING_FACTOR_KEYS.map((k) => (
-                    <span
-                      key={k}
-                      className="px-3 py-1 rounded-full text-xs text-text-secondary border border-border-default bg-premium-slate/50"
-                    >
-                      {t(k)}
-                    </span>
-                  ))}
-                </div>
               </div>
 
               {/* Packages */}
@@ -311,39 +280,8 @@ export default function Pricing() {
               {/* Compact intro */}
               <div className="text-center mb-6 space-y-2.5">
                 <p className="text-body-sm text-text-secondary">
-                  {t("cleaningIntroShort")} {t("cleaningIntroLine2")}
+                  {t("cleaningIntroLine2")}
                 </p>
-                <div className="flex flex-col sm:flex-row gap-2.5 justify-center items-center">
-                  <div className="flex flex-wrap items-center justify-center gap-1.5">
-                    <span className="text-xs font-medium text-text-primary shrink-0">
-                      {t("cleaningServicesHeading")}
-                    </span>
-                    {CLEANING_SERVICE_KEYS.map((k) => (
-                      <span
-                        key={k}
-                        className="px-2.5 py-0.5 rounded-full text-xs text-text-secondary border border-border-default bg-premium-slate/50"
-                      >
-                        {t(k)}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="hidden sm:block text-border-default/60 text-xs self-center select-none">
-                    |
-                  </span>
-                  <div className="flex flex-wrap items-center justify-center gap-1.5">
-                    <span className="text-xs font-medium text-text-primary shrink-0">
-                      {t("cleaningPriceHeading")}
-                    </span>
-                    {CLEANING_PRICE_FACTOR_KEYS.map((k) => (
-                      <span
-                        key={k}
-                        className="px-2.5 py-0.5 rounded-full text-xs text-text-secondary border border-border-default bg-premium-slate/50"
-                      >
-                        {t(k)}
-                      </span>
-                    ))}
-                  </div>
-                </div>
               </div>
 
               {/* Exterior & Interior – always visible, styled like table */}
