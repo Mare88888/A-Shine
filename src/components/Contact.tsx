@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { motion } from 'framer-motion'
 import { SectionEntrance } from '@/components/MotionSection'
 import { buttonTap } from '@/lib/motion'
@@ -94,6 +94,7 @@ function GroupSeparator() {
 export default function Contact() {
   const t = useTranslations('contact')
   const tPricing = useTranslations('pricing')
+  const locale = useLocale()
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
   const [submitError, setSubmitError] = useState<string | null>(null)
@@ -215,6 +216,7 @@ export default function Contact() {
       const payload = {
         ...values,
         service: getServiceLabel(values.serviceCategory, values.service),
+        locale,
       }
       const res = await fetch('/api/booking', {
         method: 'POST',

@@ -9,6 +9,8 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Server-side required fields. Car type, date and message are now optional.
 const REQUIRED_FIELDS = ["name", "email", "service"] as const;
 
+type SupportedLocale = "sl" | "en";
+
 export type BookingPayload = {
   name: string;
   email: string;
@@ -19,16 +21,76 @@ export type BookingPayload = {
   distance?: string;
   date?: string;
   message?: string;
+  locale?: SupportedLocale;
 };
 
-function getLocationLabel(payload: {
-  locationType?: string;
-  distance?: string;
-}): string {
-  const { locationType, distance } = payload;
+const EMAIL_TEXT = {
+  en: {
+    ownerSubject: (name: string, service: string) =>
+      `Booking request from ${name} – ${service}`,
+    customerSubject: "We received your booking request – AShine",
+    ownerHeading: "New booking request",
+    customerHeading: "We received your booking request",
+    greeting: (name: string) => `Hi ${name},`,
+    intro:
+      "Thank you for getting in touch. We've received your request and will get back to you soon to confirm your booking.",
+    summaryTitle: "Summary of your request:",
+    labels: {
+      name: "Name",
+      email: "Email",
+      phone: "Phone",
+      car: "Car type / model",
+      service: "Service",
+      location: "Location",
+      date: "Preferred date",
+      message: "Message",
+    },
+    locationOur: "At our location",
+    locationMobileNoDistance: "We come to you",
+    locationMobileWithDistance: (d: string) => `We come to you (−${d} km)`,
+    closingIntro:
+      "If you have any questions in the meantime, just reply to this email or give us a call.",
+    closingSignoff: "Best regards,<br>AShine",
+  },
+  sl: {
+    ownerSubject: (name: string, service: string) =>
+      `Novo povpraševanje od ${name} – ${service}`,
+    customerSubject: "Prejeli smo vaše povpraševanje – AShine",
+    ownerHeading: "Novo povpraševanje",
+    customerHeading: "Prejeli smo vaše povpraševanje",
+    greeting: (name: string) => `Pozdravljeni ${name},`,
+    intro:
+      "Hvala za vaše sporočilo. Prejeli smo vaše povpraševanje in vas bomo kmalu kontaktirali za potrditev termina.",
+    summaryTitle: "Povzetek vašega povpraševanja:",
+    labels: {
+      name: "Ime",
+      email: "E-pošta",
+      phone: "Telefon",
+      car: "Tip / model vozila",
+      service: "Storitev",
+      location: "Lokacija",
+      date: "Želeni datum",
+      message: "Sporočilo",
+    },
+    locationOur: "Pri nas",
+    locationMobileNoDistance: "Pridevamo do vas",
+    locationMobileWithDistance: (d: string) => `Pridevamo do vas (−${d} km)`,
+    closingIntro:
+      "Če imate vmes kakršna koli vprašanja, nam preprosto odgovorite na to e-pošto ali nas pokličite.",
+    closingSignoff: "Lep pozdrav,<br>AShine",
+  },
+} as const;
+
+function getLocationLabelLocalized(
+  lang: SupportedLocale,
+  locationType?: string,
+  distance?: string,
+): string {
+  const text = EMAIL_TEXT[lang];
   if (!locationType) return "";
-  if (locationType === "our-location") return "At our location";
-  return distance ? `We come to you (−${distance} km)` : "We come to you";
+  if (locationType === "our-location") return text.locationOur;
+  if (!distance) return text.locationMobileNoDistance;
+  return text.locationMobileWithDistance(distance);
 }
 
 function formatDateForDisplay(raw?: string): string {
@@ -62,7 +124,11 @@ export async function POST(request: Request) {
       distance,
       date,
       message,
+      locale,
     } = body;
+
+    const lang: SupportedLocale = locale === "en" ? "en" : "sl";
+    const TEXT = EMAIL_TEXT[lang];
 
     const missing = REQUIRED_FIELDS.filter((field) => !body[field]?.trim());
     if (missing.length > 0) {
@@ -86,29 +152,41 @@ export async function POST(request: Request) {
       );
     }
 
-    const locationLabel = getLocationLabel({ locationType, distance });
+    const locationLabel = getLocationLabelLocalized(
+      lang,
+      locationType,
+      distance,
+    );
     const phoneLine = phone?.trim()
-      ? `<p><strong>Phone:</strong> ${escapeHtml(phone.trim())}</p>`
+      ? `<p><strong>${TEXT.labels.phone}:</strong> ${escapeHtml(phone.trim())}</p>`
       : "";
     const carLine = carType?.trim()
-      ? `<p><strong>Car type / model:</strong> ${escapeHtml(carType.trim())}</p>`
+      ? `<p><strong>${TEXT.labels.car}:</strong> ${escapeHtml(
+          carType.trim(),
+        )}</p>`
       : "";
     const locationLine = locationLabel
-      ? `<p><strong>Location:</strong> ${locationLabel}</p>`
+      ? `<p><strong>${TEXT.labels.location}:</strong> ${locationLabel}</p>`
       : "";
     const messageSection = message?.trim()
       ? `<p><strong>Message:</strong></p><p>${escapeHtml(message.trim()).replace(/\n/g, "<br>")}</p>`
       : "";
     const formattedDate = formatDateForDisplay(date);
     const html = `
-      <h2>New booking request</h2>
-      <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-      <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+      <h2>${TEXT.ownerHeading}</h2>
+      <p><strong>${TEXT.labels.name}:</strong> ${escapeHtml(name)}</p>
+      <p><strong>${TEXT.labels.email}:</strong> ${escapeHtml(email)}</p>
       ${phoneLine}
       ${carLine}
-      <p><strong>Service:</strong> ${escapeHtml(service)}</p>
+      <p><strong>${TEXT.labels.service}:</strong> ${escapeHtml(service)}</p>
       ${locationLine}
-      ${formattedDate ? `<p><strong>Preferred date:</strong> ${escapeHtml(formattedDate)}</p>` : ""}
+      ${
+        formattedDate
+          ? `<p><strong>${TEXT.labels.date}:</strong> ${escapeHtml(
+              formattedDate,
+            )}</p>`
+          : ""
+      }
       ${messageSection}
     `.trim();
 
@@ -120,7 +198,7 @@ export async function POST(request: Request) {
       from: fromAddress,
       to: [BOOKING_TO_EMAIL],
       replyTo: email.trim(),
-      subject: `Booking request from ${name.trim()} – ${service.trim()}`,
+      subject: TEXT.ownerSubject(name.trim(), service.trim()),
       html,
     });
 
@@ -131,24 +209,36 @@ export async function POST(request: Request) {
 
     // Send confirmation email to the customer
     const confirmationHtml = `
-      <h2>We received your booking request</h2>
-      <p>Hi ${escapeHtml(name.trim())},</p>
-      <p>Thank you for getting in touch. We've received your request and will get back to you soon to confirm your booking.</p>
-      <p><strong>Summary of your request:</strong></p>
+      <h2>${TEXT.customerHeading}</h2>
+      <p>${escapeHtml(TEXT.greeting(name.trim()))}</p>
+      <p>${TEXT.intro}</p>
+      <p><strong>${TEXT.summaryTitle}</strong></p>
       <ul>
-        <li>Service: ${escapeHtml(service)}</li>
-        ${carType?.trim() ? `<li>Car: ${escapeHtml(carType.trim())}</li>` : ""}
-        ${locationLabel ? `<li>Location: ${escapeHtml(locationLabel)}</li>` : ""}
-        ${formattedDate ? `<li>Preferred date: ${escapeHtml(formattedDate)}</li>` : ""}
+        <li>${TEXT.labels.service}: ${escapeHtml(service)}</li>
+        ${
+          carType?.trim()
+            ? `<li>${TEXT.labels.car}: ${escapeHtml(carType.trim())}</li>`
+            : ""
+        }
+        ${
+          locationLabel
+            ? `<li>${TEXT.labels.location}: ${escapeHtml(locationLabel)}</li>`
+            : ""
+        }
+        ${
+          formattedDate
+            ? `<li>${TEXT.labels.date}: ${escapeHtml(formattedDate)}</li>`
+            : ""
+        }
       </ul>
-      <p>If you have any questions in the meantime, just reply to this email or give us a call.</p>
-      <p>Best regards,<br>AShine</p>
+      <p>${TEXT.closingIntro}</p>
+      <p>${TEXT.closingSignoff}</p>
     `.trim();
 
     const confirmResult = await RESEND.emails.send({
       from: fromAddress,
       to: [email.trim()],
-      subject: `We received your booking request – AShine`,
+      subject: TEXT.customerSubject,
       html: confirmationHtml,
     });
 
