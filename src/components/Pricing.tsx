@@ -107,22 +107,20 @@ function PackageCard({ pkg, index }: { pkg: PricingPackage; index: number }) {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
       transition={{ duration: 0.28, delay: index * 0.07, ease }}
-      className={`relative flex flex-col overflow-hidden rounded-card border transition-shadow duration-300 ${
-        isFeatured
-          ? "border-premium-accent bg-premium-accent-muted shadow-[0_0_48px_-8px_rgba(0,184,219,0.3)]"
-          : index === 1
-            ? "border-premium-graphite bg-premium-charcoal shadow-md shadow-black/50 hover:shadow-lg hover:shadow-black/60"
-            : "border-border-default bg-premium-slate/80 hover:border-premium-graphite"
-      }`}
+      className={`relative flex flex-col overflow-hidden rounded-card border transition-shadow duration-300 ${isFeatured
+        ? "border-premium-accent bg-premium-accent-muted shadow-[0_0_48px_-8px_rgba(0,184,219,0.3)]"
+        : index === 1
+          ? "border-premium-graphite bg-premium-charcoal/80 shadow-md shadow-black/60 hover:shadow-lg hover:shadow-black/70"
+          : "border-border-default bg-premium-slate/80 hover:border-premium-graphite"
+        }`}
     >
       {/* Top accent line */}
       <span
         aria-hidden
-        className={`pointer-events-none absolute inset-x-0 top-0 ${
-          isFeatured
-            ? "h-[2px] bg-gradient-to-r from-transparent via-premium-accent to-transparent"
-            : "h-px bg-border-default"
-        }`}
+        className={`pointer-events-none absolute inset-x-0 top-0 ${isFeatured
+          ? "h-[2px] bg-gradient-to-r from-transparent via-premium-accent to-transparent"
+          : "h-px bg-border-default"
+          }`}
       />
 
       {/* Header */}
@@ -134,11 +132,10 @@ function PackageCard({ pkg, index }: { pkg: PricingPackage; index: number }) {
 
       {/* Price band */}
       <div
-        className={`mx-5 sm:mx-6 mt-4 rounded-sharp px-4 py-3 ${
-          isFeatured
-            ? "bg-premium-accent/10 border border-premium-accent/25"
-            : "bg-black/25 border border-border-default"
-        }`}
+        className={`mx-5 sm:mx-6 mt-4 rounded-sharp px-4 py-3 ${isFeatured
+          ? "bg-premium-accent/10 border border-premium-accent/25"
+          : "bg-black/25 border border-border-default"
+          }`}
       >
         <p className="text-2xl sm:text-3xl font-bold tracking-tight text-premium-accent">
           {pkg.price}
@@ -242,11 +239,10 @@ export default function Pricing() {
                 aria-selected={activeTab === tab.id}
                 aria-controls={`panel-${tab.id}`}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2.5 text-body-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-premium-accent focus-visible:ring-inset ${
-                  activeTab === tab.id
-                    ? "bg-premium-accent text-premium-black"
-                    : "bg-premium-slate/80 text-text-secondary hover:text-text-primary"
-                }`}
+                className={`px-6 py-2.5 text-body-sm font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-premium-accent focus-visible:ring-inset ${activeTab === tab.id
+                  ? "bg-premium-accent text-premium-black"
+                  : "bg-premium-slate/80 text-text-secondary hover:text-text-primary"
+                  }`}
               >
                 {tab.label}
               </button>

@@ -14,7 +14,7 @@ export default function About() {
   return (
     <SectionEntrance
       id="about"
-      className="section-padding bg-premium-charcoal scroll-mt-20"
+      className="section-padding bg-premium-black scroll-mt-20"
       aria-labelledby="about-heading"
     >
       <div className="container-narrow">
