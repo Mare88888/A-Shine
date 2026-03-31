@@ -51,7 +51,7 @@ export default function Hero({
   }, [])
   const handleSecondaryClick = useCallback((e: React.MouseEvent) => {
     e.preventDefault()
-    scrollToSection('services')
+    scrollToSection('pricing')
   }, [])
 
   const gradientClass = hasMedia
