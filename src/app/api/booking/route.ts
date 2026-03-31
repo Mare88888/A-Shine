@@ -51,6 +51,13 @@ const EMAIL_TEXT = {
     closingIntro:
       "If you have any questions in the meantime, just reply to this email or give us a call.",
     closingSignoff: "Best regards,<br>AShine",
+    errors: {
+      rateLimited: "Too many requests. Please try again in a few minutes.",
+      invalidEmail: "Please enter a valid email address.",
+      datePast: "Preferred date cannot be in the past.",
+      dateYearHigh: "Try a sooner date.",
+      generic: "Something went wrong. Please try again.",
+    },
   },
   sl: {
     ownerSubject: (name: string, service: string) =>
@@ -78,6 +85,13 @@ const EMAIL_TEXT = {
     closingIntro:
       "Če imate vmes kakršna koli vprašanja, nam preprosto odgovorite na to e-pošto ali nas pokličite.",
     closingSignoff: "Lep pozdrav,<br>AShine",
+    errors: {
+      rateLimited: "Preveč zahtev. Poskusite znova čez nekaj minut.",
+      invalidEmail: "Vnesite veljaven e-poštni naslov.",
+      datePast: "Želeni datum ne sme biti v preteklosti.",
+      dateYearHigh: "Poskusite z manjšim datumom.",
+      generic: "Prišlo je do napake. Poskusite znova.",
+    },
   },
 } as const;
 
@@ -136,14 +150,6 @@ function isYearTooHigh(raw?: string, maxYear = 2050): boolean {
 
 export async function POST(request: Request) {
   try {
-    const ip = getClientIp(request);
-    if (isRateLimited(`${RATE_LIMIT_KEY_PREFIX}${ip}`)) {
-      return NextResponse.json(
-        { error: "Too many requests. Please try again in a few minutes." },
-        { status: 429 },
-      );
-    }
-
     const body = (await request.json()) as BookingPayload;
     const {
       name,
@@ -161,6 +167,14 @@ export async function POST(request: Request) {
     const lang: SupportedLocale = locale === "en" ? "en" : "sl";
     const TEXT = EMAIL_TEXT[lang];
 
+    const ip = getClientIp(request);
+    if (isRateLimited(`${RATE_LIMIT_KEY_PREFIX}${ip}`)) {
+      return NextResponse.json(
+        { error: TEXT.errors.rateLimited },
+        { status: 429 },
+      );
+    }
+
     const missing = REQUIRED_FIELDS.filter((field) => !body[field]?.trim());
     if (missing.length > 0) {
       return NextResponse.json(
@@ -170,19 +184,19 @@ export async function POST(request: Request) {
     }
     if (!EMAIL_REGEX.test(email.trim())) {
       return NextResponse.json(
-        { error: "Invalid email address" },
+        { error: TEXT.errors.invalidEmail },
         { status: 400 },
       );
     }
     if (isYearTooHigh(date)) {
       return NextResponse.json(
-        { error: "Preferred date year cannot be after 2050." },
+        { error: TEXT.errors.dateYearHigh },
         { status: 400 },
       );
     }
     if (isDateInPast(date)) {
       return NextResponse.json(
-        { error: "Preferred date cannot be in the past." },
+        { error: TEXT.errors.datePast },
         { status: 400 },
       );
     }
@@ -247,7 +261,7 @@ export async function POST(request: Request) {
 
     if (error) {
       console.error("Resend error:", error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({ error: TEXT.errors.generic }, { status: 500 });
     }
 
     // Send confirmation email to the customer
@@ -295,8 +309,7 @@ export async function POST(request: Request) {
     console.error("Booking API error:", err);
     return NextResponse.json(
       {
-        error:
-          err instanceof Error ? err.message : "Failed to send booking email",
+        error: EMAIL_TEXT.sl.errors.generic,
       },
       { status: 500 },
     );
