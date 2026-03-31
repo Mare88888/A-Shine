@@ -3,7 +3,6 @@ import { setRequestLocale } from 'next-intl/server'
 import { SITE_URL } from '@/config/site'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
-import Services from '@/components/Services'
 import Gallery from '@/components/Gallery'
 import Pricing from '@/components/Pricing'
 import MapSection from '@/components/MapSection'
@@ -46,7 +45,6 @@ export default async function Home({ params }: Props) {
       <JsonLd />
       <Hero backgroundVideo="/0205-web.mp4" />
       <Stats />
-      <Services />
       <Gallery />
       <About />
       <Pricing />

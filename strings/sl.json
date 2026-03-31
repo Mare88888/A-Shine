@@ -32,11 +32,11 @@
   "about": {
     "overline": "Zakaj A-Shine",
     "heading": "O nas",
-    "intro1": "Ashine je podjetje, specializirano za profesionalno nego vozil in čiščenje prostorov.",
-    "intro2": "Združujemo natančnost, občutek za detajle in strast do urejenega videza.",
+    "intro1": "Ashine je podjetje, specializirano za profesionalno nego vozil, čiščenje avtomobilov in detailing.",
+    "intro2": "Združujemo natančnost, občutek za detajle in strast do urejenega vozila.",
     "belief": "Verjamemo, da čistoča ni le videz — je občutek.",
-    "offer": "Ponujamo storitve avto detailinga ter temeljitega čiščenja zasebnih in poslovnih prostorov.",
-    "approach": "Vsaki storitvi pristopamo individualno, saj sta vsako vozilo in vsak prostor edinstvena.",
+    "offer": "Ponujamo mobilno čiščenje avtomobilov in storitve avto detailinga.",
+    "approach": "Vsaki storitvi pristopamo individualno, saj je vsako vozilo edinstveno.",
     "goal": "Naš cilj ni le čiščenje, temveč vidna razlika.",
     "whyHeading": "Zakaj izbrati nas",
     "why1": "Osebni pristop",
@@ -54,9 +54,9 @@
     "heading": "Storitve",
     "subheading": "Od hitrega valetinga do popolnega popravila laka in keramične zaščite — izberite raven nege, ki jo vaš avto zasluži.",
     "cleaning": {
-      "title": "Čistilni servis",
-      "description": "Profesionalno čiščenje stanovanjskih in poslovnih prostorov.",
-      "viewPackages": "Preberi več"
+      "title": "Čiščenje avtomobilov",
+      "description": "Zunanje in notranje čiščenje za vsakodnevna vozila, službene in družinske avtomobile.",
+      "viewPackages": "Poglej pakete čiščenja"
     },
     "detailing": {
       "title": "Detailing vozil",
@@ -119,45 +119,45 @@
     "detailingInterior4": "Čiščenje in nega usnja — 20€",
     "detailingInterior5": "Odstranjevanje dlak, peska — 20–40€",
     "detailingInterior6": "Parna dezinfekcija / dekontaminacija — 20€",
-    "cleaningHeading": "Čistilni servis",
-    "cleaningIntroShort": "Ponujamo redno in globinsko čiščenje.",
+    "cleaningHeading": "Čiščenje avtomobilov",
+    "cleaningIntroShort": "Ponujamo redno in globinsko čiščenje vozil.",
     "cleaningIntroLine2": "Cena se lahko prilagaja in je fleksibilna.",
     "cleaningServicesHeading": "Ponujamo:",
-    "cleaningService1": "Airbnb, stanovanja in domovi",
-    "cleaningService2": "Poslovni prostori in pisarne",
-    "cleaningService3": "Stanovanjski in poslovni prostori",
+    "cleaningService1": "Zunanje pranje, platišča in pnevmatike",
+    "cleaningService2": "Notranje sesanje in brisanje površin",
+    "cleaningService3": "Globinsko čiščenje notranjosti in odstranjevanje madežev",
     "cleaningPriceHeading": "Cene so odvisne od:",
-    "cleaningPriceFactor1": "velikosti prostora",
-    "cleaningPriceFactor2": "vrste površin",
-    "cleaningPriceFactor3": "pogostosti čiščenja",
-    "cleaningPriceFactor4": "stopnje umazanosti",
+    "cleaningPriceFactor1": "velikosti in tipa vozila",
+    "cleaningPriceFactor2": "stopnje umazanosti",
+    "cleaningPriceFactor3": "dodatnih želja",
+    "cleaningPriceFactor4": "pogostosti čiščenja",
     "detailingCta": "Pošlji povpraševanje",
     "cleaningCta": "Pošlji povpraševanje",
     "cleaningPriceOnRequest": "Po dogovoru",
-    "cleaningAdditionalHeading": "Dodatne storitve",
-    "cleaningAdditional1": "Čiščenje stekel in vitrin: 20–50€",
-    "cleaningAdditional2": "Odstranjevanje alergenskega prahu / parna dezinfekcija: po dogovoru",
-    "cleaningAdditional3": "Posebna globinska dekontaminacija: po dogovoru",
+    "cleaningAdditionalHeading": "Dodatne storitve za vozila",
+    "cleaningAdditional1": "Odstranjevanje dlak in peska: 20–40€",
+    "cleaningAdditional2": "Odstranjevanje vonjav in alergenov / parna dezinfekcija: po dogovoru",
+    "cleaningAdditional3": "Globinsko čiščenje motornega prostora ali blatnikov: po dogovoru",
     "readMore": "Več",
     "readLess": "Manj",
     "packages": {
       "cleaning-basic": {
-        "name": "BASIC – Osnovno čiščenje",
+        "name": "BASIC – Osvežitev zunaj in znotraj",
         "price": "Po dogovoru",
-        "description": "Sesanje tal in preprog, brisanje prahu z miz in polic, čiščenje kuhinje in sanitarij, čiščenje stekel.",
-        "features": ["Sesanje tal in preprog", "Brisanje prahu z miz in polic", "Čiščenje kuhinje in sanitarij", "Čiščenje stekel"]
+        "description": "Zunanje pranje, čiščenje platišč, notranje sesanje in brisanje površin.",
+        "features": ["Predpranje in ročno pranje", "Čiščenje platišč in pnevmatik", "Notranje sesanje", "Brisanje armaturne plošče in površin"]
       },
       "cleaning-full": {
-        "name": "FULL CLEAN – Poglobljeno čiščenje",
+        "name": "FULL CLEAN – Globinsko čiščenje vozila",
         "price": "Po dogovoru",
-        "description": "Vse iz Basic, globinsko čiščenje kopalnice in kuhinje, odstranjevanje madežev z tekstila, parno čiščenje tal ali pohištva.",
-        "features": ["Vse iz Basic", "Globinsko čiščenje kopalnice in kuhinje", "Odstranjevanje madežev z tekstila", "Parno čiščenje tal ali pohištva"]
+        "description": "Vse iz Basic, dodatno globinsko čiščenje notranjosti in odstranjevanje madežev na ključnih površinah.",
+        "features": ["Vse iz Basic", "Globinsko čiščenje notranjih površin", "Ciljno odstranjevanje madežev na tekstilu", "Parno čiščenje izbranih površin"]
       },
       "cleaning-premium": {
-        "name": "PREMIUM DEEP CLEAN – Po gradnji ali posebne potrebe",
+        "name": "PREMIUM DEEP CLEAN – Popolna osvežitev vozila",
         "price": "Po dogovoru",
-        "description": "Vse iz Full Clean, dekontaminacija površin in zraka, čiščenje trdovratnih madežev, priprava prostorov za vselitev ali poslovni pregled.",
-        "features": ["Vse iz Full Clean", "Dekontaminacija površin in zraka", "Čiščenje trdovratnih madežev", "Priprava prostorov za vselitev ali poslovni pregled"]
+        "description": "Vse iz Full Clean, odstranjevanje dlak, obdelava vonjav in alergenen ter zaključni detajli.",
+        "features": ["Vse iz Full Clean", "Odstranjevanje dlak in peska", "Obdelava vonjav in alergenov", "Zaključni detajli za občutek novega vozila"]
       },
       "detail-standard": {
         "name": "Standard / Quick Detail",

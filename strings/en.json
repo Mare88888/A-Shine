@@ -32,11 +32,11 @@
   "about": {
     "overline": "Why A-Shine",
     "heading": "About us",
-    "intro1": "Ashine is a company specialised in professional vehicle care and space cleaning.",
-    "intro2": "We combine precision, attention to detail and a passion for a well-kept appearance.",
+    "intro1": "Ashine is a company specialised in professional vehicle care, car cleaning and detailing.",
+    "intro2": "We combine precision, attention to detail and a passion for a well-kept vehicle.",
     "belief": "We believe that cleanliness is not just looks — it's a feeling.",
-    "offer": "We offer vehicle detailing and thorough cleaning of private and commercial spaces.",
-    "approach": "We approach every job individually, because every vehicle and every space is unique.",
+    "offer": "We offer mobile car cleaning and vehicle detailing services.",
+    "approach": "We approach every job individually, because every vehicle is unique.",
     "goal": "Our goal is not just cleaning, but a visible difference.",
     "whyHeading": "Why choose us",
     "why1": "Personal approach",
@@ -54,9 +54,9 @@
     "heading": "Services",
     "subheading": "From a quick valet to full paint correction and ceramic coating — choose the level of care your car deserves.",
     "cleaning": {
-      "title": "Cleaning Services",
-      "description": "Professional cleaning of residential and commercial spaces.",
-      "viewPackages": "View Packages"
+      "title": "Car cleaning",
+      "description": "Exterior and interior cleaning for daily drivers, company cars and family cars.",
+      "viewPackages": "View car cleaning packages"
     },
     "detailing": {
       "title": "Vehicle Detailing",
@@ -119,45 +119,45 @@
     "detailingInterior4": "Leather care and cleaning — €20",
     "detailingInterior5": "Pet hair, sand removal — €20–40",
     "detailingInterior6": "Steam disinfection / decontamination — €20",
-    "cleaningHeading": "Cleaning Service",
-    "cleaningIntroShort": "We offer regular and deep cleaning.",
+    "cleaningHeading": "Car cleaning",
+    "cleaningIntroShort": "We offer regular and deep car cleaning.",
     "cleaningIntroLine2": "The price is adjustable and flexible.",
     "cleaningServicesHeading": "We offer:",
-    "cleaningService1": "Airbnb, apartments and homes",
-    "cleaningService2": "Business premises and offices",
-    "cleaningService3": "Living and commercial spaces",
+    "cleaningService1": "Exterior wash, wheels and tyres",
+    "cleaningService2": "Interior vacuum and wipe-down",
+    "cleaningService3": "Deep interior clean and stain removal",
     "cleaningPriceHeading": "Prices depend on:",
-    "cleaningPriceFactor1": "size of space",
-    "cleaningPriceFactor2": "type of surfaces",
-    "cleaningPriceFactor3": "frequency of cleaning",
-    "cleaningPriceFactor4": "level of dirt",
+    "cleaningPriceFactor1": "vehicle size and type",
+    "cleaningPriceFactor2": "level of dirt",
+    "cleaningPriceFactor3": "extra requests",
+    "cleaningPriceFactor4": "frequency of cleaning",
     "detailingCta": "Send enquiry",
     "cleaningCta": "Send enquiry",
     "cleaningPriceOnRequest": "On request",
-    "cleaningAdditionalHeading": "Additional services",
-    "cleaningAdditional1": "Window and glass cleaning: €20–50",
-    "cleaningAdditional2": "Allergen dust removal / steam disinfection: on request",
-    "cleaningAdditional3": "Special deep decontamination: on request",
+    "cleaningAdditionalHeading": "Additional car services",
+    "cleaningAdditional1": "Pet hair and sand removal: €20–40",
+    "cleaningAdditional2": "Odour and allergen treatment / steam disinfection: on request",
+    "cleaningAdditional3": "Engine bay or wheel arch deep clean: on request",
     "readMore": "Read more",
     "readLess": "Read less",
     "packages": {
       "cleaning-basic": {
-        "name": "BASIC – Standard cleaning",
+        "name": "BASIC – Exterior & interior refresh",
         "price": "On request",
-        "description": "Floor and carpet vacuuming, dusting tables and shelves, kitchen and bathroom cleaning, windows.",
-        "features": ["Floor and carpet vacuuming", "Dusting tables and shelves", "Kitchen and bathroom cleaning", "Window cleaning"]
+        "description": "Exterior wash, wheel clean, interior vacuum and wipe-down.",
+        "features": ["Pre-wash and hand wash", "Wheel and tyre cleaning", "Interior vacuum", "Dashboard and surfaces wipe-down"]
       },
       "cleaning-full": {
-        "name": "FULL CLEAN – Deep cleaning",
+        "name": "FULL CLEAN – Deep car clean",
         "price": "On request",
-        "description": "Everything in Basic, deep bathroom and kitchen clean, stain removal from textiles, steam clean floors or furniture.",
-        "features": ["Everything in Basic", "Deep bathroom and kitchen cleaning", "Stain removal from textiles", "Steam cleaning floors or furniture"]
+        "description": "Everything in Basic plus deep interior clean and stain removal on key areas.",
+        "features": ["Everything in Basic", "Deep interior surface cleaning", "Targeted stain removal on textiles", "Steam cleaning of high-touch areas"]
       },
       "cleaning-premium": {
-        "name": "PREMIUM DEEP CLEAN – After build or special needs",
+        "name": "PREMIUM DEEP CLEAN – Full car reset",
         "price": "On request",
-        "description": "Everything in Full Clean, surface and air decontamination, stubborn stain removal, move-in or inspection ready.",
-        "features": ["Everything in Full Clean", "Surface and air decontamination", "Stubborn stain removal", "Move-in or inspection ready"]
+        "description": "Everything in Full Clean plus pet hair removal, odour treatment and detailed finishing touches.",
+        "features": ["Everything in Full Clean", "Pet hair and sand removal", "Odour and allergen treatment", "Finishing details for an as-new feel"]
       },
       "detail-standard": {
         "name": "Standard / Quick Detail",
