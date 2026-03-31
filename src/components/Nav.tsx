@@ -6,10 +6,10 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 
-const SECTION_IDS = ['gallery', 'about', 'pricing', 'map', 'testimonials', 'contact'] as const
+const SECTION_IDS = ['about', 'gallery', 'pricing', 'map', 'testimonials', 'contact'] as const
 const NAV_LINKS = [
-  { id: 'gallery' as const, key: 'gallery' },
   { id: 'about' as const, key: 'about' },
+  { id: 'gallery' as const, key: 'gallery' },
   { id: 'pricing' as const, key: 'pricing' },
   { id: 'map' as const, key: 'map' },
   { id: 'testimonials' as const, key: 'testimonials' },

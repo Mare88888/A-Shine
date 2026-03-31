@@ -8,7 +8,6 @@ import Pricing from '@/components/Pricing'
 import MapSection from '@/components/MapSection'
 import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
-import Stats from '@/components/Stats'
 import { JsonLd } from '@/components'
 
 const PAGE_META = {
@@ -44,9 +43,8 @@ export default async function Home({ params }: Props) {
     <>
       <JsonLd />
       <Hero backgroundVideo="/0205-web.mp4" />
-      <Stats />
-      <Gallery />
       <About />
+      <Gallery />
       <Pricing />
       <MapSection />
       <Testimonials />
