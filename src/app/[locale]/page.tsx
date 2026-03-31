@@ -9,6 +9,7 @@ import MapSection from '@/components/MapSection'
 import Testimonials from '@/components/Testimonials'
 import Contact from '@/components/Contact'
 import { JsonLd } from '@/components'
+import Stats from '@/components/Stats'
 
 const PAGE_META = {
   title: 'Car Detailing & Mobile Valeting | Slovenia',
@@ -43,6 +44,7 @@ export default async function Home({ params }: Props) {
     <>
       <JsonLd />
       <Hero backgroundVideo="/0205-web.mp4" />
+      <Stats />
       <About />
       <Gallery />
       <Pricing />
