@@ -103,6 +103,37 @@ function formatDateForDisplay(raw?: string): string {
   return `${day}/${month}/${year}`;
 }
 
+function isDateInPast(raw?: string): boolean {
+  const trimmed = raw?.trim();
+  if (!trimmed) return false;
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed);
+  if (!match) return false;
+  const [, year, month, day] = match;
+  const selected = new Date(
+    Number(year),
+    Number(month) - 1,
+    Number(day),
+    0,
+    0,
+    0,
+    0,
+  );
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return selected < today;
+}
+
+function isYearTooHigh(raw?: string, maxYear = 2050): boolean {
+  const trimmed = raw?.trim();
+  if (!trimmed) return false;
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed);
+  if (!match) return false;
+  const [year] = match.slice(1, 2);
+  const yr = Number(year);
+  if (Number.isNaN(yr)) return false;
+  return yr > maxYear;
+}
+
 export async function POST(request: Request) {
   try {
     const ip = getClientIp(request);
@@ -140,6 +171,18 @@ export async function POST(request: Request) {
     if (!EMAIL_REGEX.test(email.trim())) {
       return NextResponse.json(
         { error: "Invalid email address" },
+        { status: 400 },
+      );
+    }
+    if (isYearTooHigh(date)) {
+      return NextResponse.json(
+        { error: "Preferred date year cannot be after 2050." },
+        { status: 400 },
+      );
+    }
+    if (isDateInPast(date)) {
+      return NextResponse.json(
+        { error: "Preferred date cannot be in the past." },
         { status: 400 },
       );
     }
