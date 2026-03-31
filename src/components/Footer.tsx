@@ -165,6 +165,9 @@ export default function Footer() {
         <div className="mt-10 pt-6 border-t border-border-default flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
             <p className="text-text-muted text-body-sm">© {new Date().getFullYear()} AShine. {t('rights')}</p>
+            <p className="text-text-muted text-[0.7rem] sm:text-body-sm">
+              Made by <span className="font-semibold text-text-secondary">Marko Lempl</span>
+            </p>
             <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-body-sm">
               <Link href="/privacy" className="text-text-muted hover:text-premium-accent transition-colors">
                 {t('privacy')}
