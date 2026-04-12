@@ -166,7 +166,15 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
             <p className="text-text-muted text-body-sm">© {new Date().getFullYear()} AShine. {t('rights')}</p>
             <p className="text-text-muted text-[0.7rem] sm:text-body-sm">
-              Made by <span className="font-semibold text-text-secondary">Marko Lempl</span>
+              Made by{' '}
+              <a
+                href="https://my-portfolio-nine-neon-53.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-text-secondary hover:text-premium-accent transition-colors underline-offset-2 hover:underline"
+              >
+                Marko Lempl
+              </a>
             </p>
             <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-body-sm">
               <Link href="/privacy" className="text-text-muted hover:text-premium-accent transition-colors">
