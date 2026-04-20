@@ -33,12 +33,10 @@ export default function About() {
           initial="visible"
           animate="visible"
         >
-          {/* Rows 1 & 2: combined card, no gap between them */}
           <motion.div
             variants={staggerItem}
             className="overflow-hidden rounded-card border border-border-default"
           >
-            {/* Row 1: text left, image right */}
             <section className="grid lg:grid-cols-2 items-stretch">
               <div className="bg-premium-slate/80 p-6 sm:p-8 space-y-4 text-body text-text-secondary flex flex-col justify-center">
                 <p>{t("intro1")}</p>
@@ -58,10 +56,8 @@ export default function About() {
               </div>
             </section>
 
-            {/* Divider */}
             <div className="border-t border-border-default" />
 
-            {/* Row 2: image left, why-text right */}
             <section
               className="grid lg:grid-cols-2 items-stretch"
               aria-labelledby="about-why-heading"
@@ -106,7 +102,6 @@ export default function About() {
             </section>
           </motion.div>
 
-          {/* Commitment strip below grid */}
           <motion.section
             variants={staggerItem}
             className="rounded-card border border-border-default bg-premium-slate/80 p-6 sm:p-8"

@@ -36,7 +36,6 @@ export default function CookieBanner() {
           className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-50"
         >
           <div className="relative overflow-hidden rounded-card border border-border-default bg-premium-charcoal shadow-2xl shadow-black/60">
-            {/* Cyan top accent line */}
             <span
               aria-hidden
               className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-premium-accent to-transparent"

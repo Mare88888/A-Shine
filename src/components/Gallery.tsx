@@ -21,7 +21,6 @@ const CARD_IMAGE_SIZES =
 const LIGHTBOX_IMAGE_SIZES = "(max-width: 896px) 100vw, 896px";
 const CARD_TRANSITION = { duration: 0.2, ease };
 
-/* Placeholder pairs using picsum.photos (replace with your own /gallery/*.jpg paths) */
 const defaultItems: GalleryItem[] = [
   { id: 1, before: "/before1.png", after: "/after1.png" },
   { id: 2, before: "/before2.png", after: "/after2.png" },
@@ -84,7 +83,6 @@ function ComparisonCard({
         className="group relative aspect-[4/3] w-full overflow-hidden rounded-card border border-border-default bg-premium-slate transition-colors duration-300 hover:border-premium-accent/50 hover:shadow-xl hover:shadow-black/20 focus:outline-none focus:ring-2 focus:ring-premium-accent focus:ring-offset-2 focus:ring-offset-premium-black"
         aria-label={ariaLabel}
       >
-        {/* After image (base layer) */}
         <div className="absolute inset-0">
           <Image
             src={item.after}
@@ -115,7 +113,6 @@ function ComparisonCard({
           />
         </div>
 
-        {/* Labels overlay */}
         <div className="absolute bottom-0 left-0 right-0 flex justify-between p-3 bg-gradient-to-t from-black/80 to-transparent text-white/90">
           <span
             className={`text-overline uppercase ${showingBefore ? "" : "text-premium-accent"}`}
@@ -135,7 +132,6 @@ function ComparisonCard({
         </div>
       </motion.button>
 
-      {/* Mobile expand button */}
       {isMobile && (
         <button
           type="button"
@@ -276,7 +272,6 @@ function Lightbox({
         className="relative w-full max-w-4xl aspect-[4/3] rounded-card overflow-hidden border border-border-default bg-premium-black shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Before (full) */}
         <div className="absolute inset-0">
           <Image
             src={item.before}
@@ -306,7 +301,6 @@ function Lightbox({
           />
         </div>
 
-        {/* Slider line + handle (wider hit area for easier dragging) */}
         <div
           ref={sliderHandleRef}
           className="absolute inset-y-0 w-8 -translate-x-1/2 cursor-ew-resize select-none touch-none"
@@ -334,7 +328,6 @@ function Lightbox({
           </div>
         </div>
 
-        {/* Labels in lightbox */}
         <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between p-4 bg-gradient-to-t from-black/90 to-transparent text-sm text-white/90">
           <span>{afterLabel}</span>
           <span className="text-premium-accent">{afterDragLabel}</span>

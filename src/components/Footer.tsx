@@ -4,7 +4,6 @@ import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 import { motion } from 'framer-motion'
 
-/* Simple solid icons – light gray, before label */
 export function PhoneIcon({ className }: { className?: string }) {
   return (
     <svg className={className} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -91,7 +90,6 @@ export default function Footer() {
   const tNav = useTranslations('nav')
   return (
     <footer id="footer-root" className="bg-premium-black relative">
-      {/* Cyan top border */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-premium-accent to-transparent" aria-hidden />
       <div className="container-narrow section-padding">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

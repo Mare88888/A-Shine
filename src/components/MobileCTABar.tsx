@@ -23,7 +23,6 @@ export default function MobileCTABar() {
   const [scrolledPast, setScrolledPast] = useState(false)
   const [contactVisible, setContactVisible] = useState(false)
 
-  // Show only after scrolling past threshold
   useEffect(() => {
     const onScroll = () => setScrolledPast(window.scrollY > SCROLL_THRESHOLD)
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -31,7 +30,6 @@ export default function MobileCTABar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Hide when contact section (or footer) is in view — bar is redundant there
   useEffect(() => {
     const targets = ['contact', 'footer-root']
       .map((id) => document.getElementById(id))
@@ -67,7 +65,6 @@ export default function MobileCTABar() {
           style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
           aria-label={t('ariaLabel')}
         >
-          {/* Top accent line */}
           <div
             aria-hidden
             className="h-px w-full bg-gradient-to-r from-transparent via-premium-accent/60 to-transparent"

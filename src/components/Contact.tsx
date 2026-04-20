@@ -42,7 +42,6 @@ interface FormErrors {
   message?: string
 }
 
-// Input base — no ring, clean border-color transition
 const inputBase =
   'w-full px-4 py-3 bg-premium-black/40 border rounded-sharp text-text-primary placeholder-text-muted/50 text-body-sm focus:outline-none focus:border-premium-accent focus:bg-premium-black/60 transition-all duration-200'
 const inputError = 'border-error'
@@ -263,7 +262,6 @@ export default function Contact() {
           </p>
         </header>
 
-        {/* Trust signals */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {(['trust1', 'trust2', 'trust3', 'trust4'] as const).map((key) => (
             <div
@@ -282,7 +280,6 @@ export default function Contact() {
 
         <div className="grid lg:grid-cols-[1fr,auto] gap-10 lg:gap-16 lg:items-start">
 
-          {/* ── Form column ── */}
           <div className="rounded-card border border-border-default bg-premium-slate/20 p-6 sm:p-8">
             {submitted ? (
               <motion.div
@@ -312,7 +309,6 @@ export default function Contact() {
                   </p>
                 )}
 
-                {/* ── Group 1: Personal details ── */}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <FieldLabel htmlFor="contact-name" required>{t('name')}</FieldLabel>
@@ -366,7 +362,6 @@ export default function Contact() {
                   <FieldError id="contact-phone-error" message={touched.phone ? errors.phone : undefined} />
                 </div>
 
-                {/* ── Group 2: Service ── */}
                 <GroupSeparator />
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
@@ -428,7 +423,6 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* ── Group 3: Logistics ── */}
                 <GroupSeparator />
                 <div>
                   <FieldLabel>{t('whereService')}</FieldLabel>
@@ -498,7 +492,6 @@ export default function Contact() {
                   <FieldError id="contact-date-error" message={touched.date ? errors.date : undefined} />
                 </div>
 
-                {/* ── Group 4: Message ── */}
                 <GroupSeparator />
                 <div>
                   <FieldLabel htmlFor="contact-message">{t('message')}</FieldLabel>
@@ -517,7 +510,6 @@ export default function Contact() {
                   <FieldError id="contact-message-error" message={touched.message ? errors.message : undefined} />
                 </div>
 
-                {/* ── Submit ── */}
                 <div className="mt-6">
                   <motion.button
                     type="submit"
@@ -532,10 +524,8 @@ export default function Contact() {
             )}
           </div>
 
-          {/* ── Contact details column ── */}
           <div className="lg:w-72 lg:sticky lg:top-24">
             <div className="relative overflow-hidden rounded-card bg-premium-slate border border-border-default p-6 sm:p-8">
-              {/* Cyan top line */}
               <span
                 aria-hidden
                 className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-premium-accent to-transparent"

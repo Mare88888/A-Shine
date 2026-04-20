@@ -17,7 +17,6 @@ export default function Stats() {
   const inView = useInView(ref, { once: true, margin: '-5% 0px' })
 
   return (
-    /* gap-px with a border-color background creates pixel-width cell dividers; py-px adds top/bottom borders */
     <div ref={ref} role="region" aria-label="Key figures" className="bg-border-default py-px">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-px">
         {STATS.map(({ value, key }, i) => (

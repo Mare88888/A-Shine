@@ -9,7 +9,6 @@ import { GEO } from '@/config/site'
 const MAP_CENTER = { lat: GEO.latitude, lng: GEO.longitude }
 const GEOCODE_ADDRESS = 'Celestrina 19, Malečnik, Slovenia'
 
-// Largest first so smallest is on top: red 200km, blue 100km, green 50km
 const CIRCLE_CONFIGS = [
   { radius: 200000, fillColor: '#e53935', km: 200, priceKey: 'perKm' as const, priceValue: '0.40€' },
   { radius: 100000, fillColor: '#1e88e5', km: 100, priceKey: 'perKm' as const, priceValue: '0.50€' },
@@ -138,7 +137,6 @@ export default function MapSection() {
             aria-hidden
           />
 
-          {/* Legend: color = distance + pricing */}
           <div className="mt-6 rounded-card border border-border-default bg-premium-slate/80 p-4 sm:p-5 text-center">
             <p className="text-body-sm font-semibold text-text-primary mb-3">{t('legendTitle')}</p>
             <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2 sm:gap-x-8 text-body-sm text-text-secondary" role="list">

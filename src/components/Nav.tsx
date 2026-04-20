@@ -100,7 +100,6 @@ export default function Nav() {
         className="container-narrow px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between gap-4"
         aria-label="Main navigation"
       >
-        {/* Logo + brand — left */}
         <Link
           href="/"
           onClick={handleLogoClick}
@@ -141,7 +140,6 @@ export default function Nav() {
           </Link>
         </div>
 
-        {/* Mobile: language switcher + hamburger */}
         <div className="flex md:hidden items-center gap-2">
           <LanguageSwitcher />
           <button
@@ -153,13 +151,11 @@ export default function Nav() {
             aria-label={mobileOpen ? t('closeMenu') : t('openMenu')}
           >
             <svg className="w-6 h-6 absolute inset-0 m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} strokeLinecap="round" aria-hidden>
-              {/* Hamburger: three lines */}
               <g className={`transition-opacity duration-200 ease-out ${mobileOpen ? 'opacity-0' : 'opacity-100'}`}>
                 <line x1="4" y1="6" x2="20" y2="6" />
                 <line x1="4" y1="12" x2="20" y2="12" />
                 <line x1="4" y1="18" x2="20" y2="18" />
               </g>
-              {/* X: two equal diagonals crossing at center */}
               <g className={`transition-opacity duration-200 ease-out ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}>
                 <line x1="6" y1="6" x2="18" y2="18" />
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -169,7 +165,6 @@ export default function Nav() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
       <div
         id="mobile-menu"
         className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${mobileOpen ? 'max-h-[85vh] opacity-100' : 'max-h-0 opacity-0'

@@ -58,7 +58,6 @@ export const carDetailingPackages: PricingPackage[] = [
   { id: "detail-showroom", name: "", price: "", description: "", features: [] },
 ];
 
-// The top-tier in each service gets the accent treatment
 const FEATURED_IDS = new Set(["detail-showroom", "cleaning-premium"]);
 
 function useTranslatedPackages(
@@ -98,7 +97,6 @@ function PackageCard({ pkg, index }: { pkg: PricingPackage; index: number }) {
           : "border-border-default bg-premium-slate/80 hover:border-premium-graphite"
         }`}
     >
-      {/* Top accent line */}
       <span
         aria-hidden
         className={`pointer-events-none absolute inset-x-0 top-0 ${isFeatured
@@ -107,14 +105,12 @@ function PackageCard({ pkg, index }: { pkg: PricingPackage; index: number }) {
           }`}
       />
 
-      {/* Header */}
       <div className="p-5 sm:p-6 pb-0">
         <h3 className="text-h4 text-text-primary font-semibold leading-snug">
           {pkg.name}
         </h3>
       </div>
 
-      {/* Price band */}
       <div
         className={`mx-5 sm:mx-6 mt-4 rounded-sharp px-4 py-3 ${isFeatured
           ? "bg-premium-accent/10 border border-premium-accent/25"
@@ -129,7 +125,6 @@ function PackageCard({ pkg, index }: { pkg: PricingPackage; index: number }) {
         </p>
       </div>
 
-      {/* Features */}
       <ul className="p-5 sm:p-6 pt-4 mt-auto space-y-2.5" role="list">
         {pkg.features.map((feature) => (
           <li
@@ -190,7 +185,6 @@ export default function Pricing() {
       aria-labelledby="pricing-heading"
     >
       <div className="container-narrow">
-        {/* Header */}
         <header className="text-center mb-10">
           <p className="text-premium-accent text-overline uppercase mb-2">
             {t("overline")}
@@ -203,7 +197,6 @@ export default function Pricing() {
           </p>
         </header>
 
-        {/* Tab switcher */}
         <div
           className="flex justify-center mb-8"
           role="tablist"
@@ -228,7 +221,6 @@ export default function Pricing() {
           </div>
         </div>
 
-        {/* Tab panels */}
         <AnimatePresence mode="wait">
           {activeTab === "detailing" ? (
             <motion.div
@@ -240,21 +232,18 @@ export default function Pricing() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2, ease }}
             >
-              {/* Compact factors note */}
               <div className="text-center mb-6">
                 <p className="text-body-sm text-text-secondary mb-2.5">
                   {t("detailingIntro")}{" "}
                 </p>
               </div>
 
-              {/* Packages */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 {translatedDetailing.map((pkg, i) => (
                   <PackageCard key={pkg.id} pkg={pkg} index={i} />
                 ))}
               </div>
 
-              {/* CTA */}
               <div className="text-center mt-8">
                 <motion.button
                   type="button"
@@ -277,14 +266,12 @@ export default function Pricing() {
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2, ease }}
             >
-              {/* Compact intro */}
               <div className="text-center mb-6 space-y-2.5">
                 <p className="text-body-sm text-text-secondary">
                   {t("cleaningIntroLine2")}
                 </p>
               </div>
 
-              {/* Exterior & Interior – always visible, styled like table */}
               <div className="rounded-card border border-border-default overflow-hidden mb-8 bg-premium-charcoal">
                 <div className="border-b border-border-default/80 bg-gradient-to-r from-premium-black via-premium-charcoal to-premium-black px-4 py-2.5 text-center text-[0.75rem] font-semibold uppercase tracking-[0.24em] text-text-secondary">
                   {t("detailingExteriorHeading")} &amp; {t("detailingInteriorHeading")}
@@ -341,7 +328,6 @@ export default function Pricing() {
                 </div>
               </div>
 
-              {/* CTA */}
               <div className="text-center">
                 <motion.button
                   type="button"
