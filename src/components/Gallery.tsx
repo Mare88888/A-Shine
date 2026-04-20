@@ -37,6 +37,7 @@ const defaultItems: GalleryItem[] = [
     after: "/after9.png",
     afterObjectPosition: "bottom",
   },
+  { id: 10, before: "/before10.png", after: "/after10.png" },
 ];
 
 interface ComparisonCardProps {

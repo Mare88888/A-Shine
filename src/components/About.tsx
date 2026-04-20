@@ -68,10 +68,11 @@ export default function About() {
             >
               <div className="order-last lg:order-first relative min-h-64 border-t lg:border-t-0 lg:border-r border-border-default">
                 <Image
-                  src="/mercedes.png"
-                  alt="AShine logo"
-                  fill
-                  className="object-contain p-6"
+                  src="/certificate2.png"
+                  alt="AShine certificate"
+                  width={0}
+                  height={0}
+                  className="w-full h-auto"
                   sizes="(min-width: 1024px) 320px, 60vw"
                 />
               </div>
