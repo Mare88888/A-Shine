@@ -23,7 +23,7 @@ const CARD_TRANSITION = { duration: 0.2, ease };
 
 const defaultItems: GalleryItem[] = [
   { id: 1, before: "/before1.png", after: "/after1.png" },
-  { id: 2, before: "/before2.png", after: "/after2.png" },
+  { id: 2, before: "/before10.png", after: "/after10.png" },
   { id: 3, before: "/before3.png", after: "/after3.png" },
   { id: 4, before: "/before4.png", after: "/after4.png" },
   { id: 5, before: "/before5.png", after: "/after5.png" },
@@ -36,7 +36,6 @@ const defaultItems: GalleryItem[] = [
     after: "/after9.png",
     afterObjectPosition: "bottom",
   },
-  { id: 10, before: "/before10.png", after: "/after10.png" },
 ];
 
 interface ComparisonCardProps {
