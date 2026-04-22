@@ -134,9 +134,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:AShine@gmail.com" className="inline-flex items-center gap-2 hover:text-premium-accent transition-colors">
+                <a href="alen.stermecki10@gmail.com" className="inline-flex items-center gap-2 hover:text-premium-accent transition-colors">
                   <EmailIcon className="shrink-0" />
-                  <span>AShine@gmail.com</span>
+                  <span>alen.stermecki10@gmail.com</span>
                 </a>
               </li>
             </ul>
