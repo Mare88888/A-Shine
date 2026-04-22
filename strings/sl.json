@@ -86,7 +86,10 @@
     "perKm": "{price}/km",
     "noKeyHeading": "Območje storitve",
     "noKeyHint": "Dodajte NEXT_PUBLIC_GOOGLE_MAPS_API_KEY v okolje za prikaz zemljevida.",
-    "address": "Celestrina 19, Malečnik"
+    "address": "Celestrina 19, Malečnik",
+    "fallbackHeading": "Zemljevid je trenutno nedosegljiv",
+    "fallbackHint": "Vaša naprava ali brskalnik morda blokira Google Maps. Lokacijo lahko vseeno odprete neposredno v Google Zemljevidih.",
+    "openInGoogleMaps": "Odpri v Google Zemljevidih"
   },
   "testimonials": {
     "overline": "Ocene",

@@ -46,6 +46,8 @@ export default function MapSection() {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<google.maps.Map | null>(null)
   const [scriptLoaded, setScriptLoaded] = useState(false)
+  const [mapLoadFailed, setMapLoadFailed] = useState(false)
+  const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(GEOCODE_ADDRESS)}`
 
   useEffect(() => {
     if (typeof google !== 'undefined' && google.maps) {
@@ -108,6 +110,14 @@ export default function MapSection() {
           <p className="text-text-muted text-body-sm mt-2">
             {t('address')}
           </p>
+          <a
+            href={mapsLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center justify-center rounded-sharp border border-border-default bg-premium-slate px-4 py-2.5 text-body-sm font-medium text-text-primary transition-colors hover:border-premium-accent hover:text-premium-accent"
+          >
+            {t('openInGoogleMaps')}
+          </a>
         </div>
       </SectionEntrance>
     )
@@ -118,7 +128,11 @@ export default function MapSection() {
       <Script
         src={`https://maps.googleapis.com/maps/api/js?key=${apiKey}`}
         strategy="afterInteractive"
-        onLoad={() => setScriptLoaded(true)}
+        onLoad={() => {
+          setScriptLoaded(true)
+          setMapLoadFailed(false)
+        }}
+        onError={() => setMapLoadFailed(true)}
       />
       <SectionEntrance id="map" className="section-padding bg-premium-charcoal" aria-labelledby="map-heading">
         <div className="container-narrow">
@@ -131,11 +145,29 @@ export default function MapSection() {
               {t('subheading')}
             </p>
           </header>
-          <div
-            ref={containerRef}
-            className="w-full h-[400px] sm:h-[480px] rounded-card overflow-hidden border border-border-default bg-premium-slate"
-            aria-hidden
-          />
+          {mapLoadFailed ? (
+            <div className="w-full rounded-card border border-border-default bg-premium-slate p-8 text-center">
+              <h3 className="text-h4 text-text-primary mb-2">{t('fallbackHeading')}</h3>
+              <p className="text-body-sm text-text-secondary max-w-xl mx-auto">
+                {t('fallbackHint')}
+              </p>
+              <p className="text-text-muted text-body-sm mt-3">{t('address')}</p>
+              <a
+                href={mapsLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-5 inline-flex items-center justify-center rounded-sharp border border-border-default bg-premium-black/40 px-4 py-2.5 text-body-sm font-medium text-text-primary transition-colors hover:border-premium-accent hover:text-premium-accent"
+              >
+                {t('openInGoogleMaps')}
+              </a>
+            </div>
+          ) : (
+            <div
+              ref={containerRef}
+              className="w-full h-[400px] sm:h-[480px] rounded-card overflow-hidden border border-border-default bg-premium-slate"
+              aria-hidden
+            />
+          )}
 
           <div className="mt-6 rounded-card border border-border-default bg-premium-slate/80 p-4 sm:p-5 text-center">
             <p className="text-body-sm font-semibold text-text-primary mb-3">{t('legendTitle')}</p>

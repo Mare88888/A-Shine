@@ -86,7 +86,10 @@
     "perKm": "{price}/km",
     "noKeyHeading": "Service area",
     "noKeyHint": "Add NEXT_PUBLIC_GOOGLE_MAPS_API_KEY to your environment to show the map.",
-    "address": "Celestrina 19, Malečnik"
+    "address": "Celestrina 19, Malečnik",
+    "fallbackHeading": "Map temporarily unavailable",
+    "fallbackHint": "Your device or browser may be blocking Google Maps. You can still open our location directly in Google Maps.",
+    "openInGoogleMaps": "Open in Google Maps"
   },
   "testimonials": {
     "overline": "Reviews",
