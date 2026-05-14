@@ -8,7 +8,7 @@ import { cardHover } from '@/lib/motion'
 const STATS = [
   { value: '100+', key: 'vehicles' },
   { value: '200 km', key: 'radius' },
-  { value: '50 km', key: 'free' },
+  { value: '25 km', key: 'free' },
   { value: '5★', key: 'rating' },
 ] as const
 

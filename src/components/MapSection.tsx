@@ -12,7 +12,7 @@ const GEOCODE_ADDRESS = 'Celestrina 19, Malečnik, Slovenia'
 const CIRCLE_CONFIGS = [
   { radius: 200000, fillColor: '#e53935', km: 200, priceKey: 'perKm' as const, priceValue: '0.40€' },
   { radius: 100000, fillColor: '#1e88e5', km: 100, priceKey: 'perKm' as const, priceValue: '0.50€' },
-  { radius: 50000, fillColor: '#43a047', km: 50, priceKey: 'free' as const, priceValue: '' },
+  { radius: 50000, fillColor: '#43a047', km: 25, priceKey: 'free' as const, priceValue: '' },
 ] as const
 const LEGEND_CONFIGS = [...CIRCLE_CONFIGS].reverse()
 const FILL_OPACITY = 0.2
