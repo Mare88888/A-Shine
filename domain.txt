@@ -1,0 +1,33 @@
+DKIM
+
+
+TXT
+resend._domainkey
+p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqYdpPrUxfhh/Rovd8iYudsOHyiKwBd9cCswlV5wqW/PMTu1LSkVsqYM40hb4t2fjy6t8f9Xrx4uriCKqXmFfuLSN8dWwUsIZzcuQEadnhm248DjlipSodPSeixWsL6MjiYqFRse6SIvqdblhdjIAmTrOTxxvAhgbErSGOM+QhkQIDAQAB
+
+
+
+
+
+SPF
+
+
+MX
+send
+feedback-smtp.eu-west-1.amazonses.com
+
+TXT
+send
+v=spf1 include:amazonses.com ~all
+
+
+
+
+
+
+DMARC
+
+
+TXT
+_dmarc
+v=DMARC1; p=none;
