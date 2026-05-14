@@ -20,6 +20,21 @@ const CARD_IMAGE_SIZES =
   "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw";
 const LIGHTBOX_IMAGE_SIZES = "(max-width: 896px) 100vw, 896px";
 const CARD_TRANSITION = { duration: 0.2, ease };
+const HOVER_INTENT_MS = 140;
+
+type RevealDirection = "right-to-left" | "bottom-to-top" | "left-to-right";
+
+function getClipPath(direction: RevealDirection, showing: boolean): string {
+  if (showing) return "inset(0 0 0 0)";
+  switch (direction) {
+    case "right-to-left":
+      return "inset(0 0 0 100%)";
+    case "left-to-right":
+      return "inset(0 100% 0 0)";
+    case "bottom-to-top":
+      return "inset(100% 0 0 0)";
+  }
+}
 
 const defaultItems: GalleryItem[] = [
   { id: 1, before: "/before1.png", after: "/after1.png" },
@@ -46,6 +61,7 @@ interface ComparisonCardProps {
   afterLabel: string;
   tapToCompareLabel: string;
   isMobile: boolean;
+  direction: RevealDirection;
 }
 
 function ComparisonCard({
@@ -56,11 +72,37 @@ function ComparisonCard({
   afterLabel,
   tapToCompareLabel,
   isMobile,
+  direction,
 }: ComparisonCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [showBefore, setShowBefore] = useState(false);
+  const hoverTimerRef = useRef<number | null>(null);
 
   const showingBefore = isMobile ? showBefore : isHovered;
+
+  const clearHoverTimer = () => {
+    if (hoverTimerRef.current !== null) {
+      window.clearTimeout(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    if (isMobile) return;
+    clearHoverTimer();
+    hoverTimerRef.current = window.setTimeout(() => {
+      setIsHovered(true);
+      hoverTimerRef.current = null;
+    }, HOVER_INTENT_MS);
+  };
+
+  const handleMouseLeave = () => {
+    if (isMobile) return;
+    clearHoverTimer();
+    setIsHovered(false);
+  };
+
+  useEffect(() => () => clearHoverTimer(), []);
 
   const handleClick = () => {
     if (isMobile) {
@@ -75,8 +117,8 @@ function ComparisonCard({
       <motion.button
         type="button"
         onClick={handleClick}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         whileHover={isMobile ? undefined : cardHover}
         transition={CARD_TRANSITION}
         className="group relative aspect-[4/3] w-full overflow-hidden rounded-card border border-border-default bg-premium-slate transition-colors duration-300 hover:border-premium-accent/50 hover:shadow-xl hover:shadow-black/20 focus:outline-none focus:ring-2 focus:ring-premium-accent focus:ring-offset-2 focus:ring-offset-premium-black"
@@ -98,10 +140,8 @@ function ComparisonCard({
         </div>
 
         <div
-          className="absolute inset-0 transition-[clip-path] duration-500 ease-out"
-          style={{
-            clipPath: showingBefore ? "inset(0 0 0 0)" : "inset(0 0 0 100%)",
-          }}
+          className="absolute inset-0 transition-[clip-path] duration-500 ease-out motion-reduce:transition-none"
+          style={{ clipPath: getClipPath(direction, showingBefore) }}
         >
           <Image
             src={item.before}
@@ -412,21 +452,29 @@ export default function Gallery({ items = defaultItems }: GalleryProps) {
           initial="visible"
           animate="visible"
         >
-          {itemsToShow.map((item) => (
-            <motion.div key={item.id} variants={staggerItem}>
-              <ComparisonCard
-                item={item}
-                onClick={() => setLightboxItem(item)}
-                ariaLabel={t("viewBeforeAfter", {
-                  label: item.label ?? "Gallery image",
-                })}
-                beforeLabel={t("before")}
-                afterLabel={t("after")}
-                tapToCompareLabel={t("tapToCompare")}
-                isMobile={isMobile}
-              />
-            </motion.div>
-          ))}
+          {itemsToShow.map((item, index) => {
+            const directions: RevealDirection[] = [
+              "right-to-left",
+              "bottom-to-top",
+              "left-to-right",
+            ];
+            return (
+              <motion.div key={item.id} variants={staggerItem}>
+                <ComparisonCard
+                  item={item}
+                  onClick={() => setLightboxItem(item)}
+                  ariaLabel={t("viewBeforeAfter", {
+                    label: item.label ?? "Gallery image",
+                  })}
+                  beforeLabel={t("before")}
+                  afterLabel={t("after")}
+                  tapToCompareLabel={t("tapToCompare")}
+                  isMobile={isMobile}
+                  direction={directions[index % 3]}
+                />
+              </motion.div>
+            );
+          })}
         </motion.div>
 
         {hasMore && (
