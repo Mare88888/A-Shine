@@ -34,7 +34,7 @@
     "heading": "About us",
     "intro1": "AShine is a professional mobile car detailing service focused on delivering high-end results with precision and care.",
     "intro2": "We combine precision, attention to detail and a passion for a well-kept vehicle.",
-    "belief": "We believe a clean car isn’t just about looks — it’s about how it makes you feel.",
+    "belief": "We believe a clean car isn’t just about looks - it’s about how it makes you feel.",
     "offer": "We come fully equipped to your location, saving you time while delivering professional-grade results.",
     "approach": "We approach every job individually, because every vehicle is unique.",
     "goal": "Our goal is not just cleaning, but a visible difference.",
@@ -47,12 +47,12 @@
     "whyTagline": "We focus on delivering consistent, high-quality results every time.",
     "commitmentHeading": "Our commitment",
     "commitment1": "We want to offer every client an experience that exceeds expectations.",
-    "commitment2": "We don't compromise on details — they are what create the perfect result."
+    "commitment2": "We don't compromise on details - they are what create the perfect result."
   },
   "services": {
     "overline": "What we offer",
     "heading": "Services",
-    "subheading": "From a quick valet to full paint correction and ceramic coating — choose the level of care your car deserves.",
+    "subheading": "From a quick valet to full paint correction and ceramic coating - choose the level of care your car deserves.",
     "cleaning": {
       "title": "Car cleaning",
       "description": "Exterior and interior cleaning for daily drivers, company cars and family cars.",
@@ -60,7 +60,7 @@
     },
     "detailing": {
       "title": "Vehicle Detailing",
-      "description": "Thorough cleaning, shine restoration and vehicle protection — we come to you.",
+      "description": "Thorough cleaning, shine restoration and vehicle protection - we come to you.",
       "viewPackages": "View Packages"
     }
   },
@@ -265,7 +265,7 @@
     },
     "trust1": "Reply within 24 hours",
     "trust2": "100+ vehicles detailed",
-    "trust3": "Mobile — we come to you",
+    "trust3": "Mobile - we come to you",
     "trust4": "Professional equipment & products"
   },
   "privacy": {
