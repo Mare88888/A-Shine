@@ -1,11 +1,28 @@
 import { ImageResponse } from 'next/og'
 import { BRAND } from '@/config/site'
+import { routing, type Locale } from '@/i18n/routing'
+import enMessages from '../../../strings/en.json'
+import slMessages from '../../../strings/sl.json'
+
+const MESSAGES = { en: enMessages, sl: slMessages } as const
 
 export const alt = 'AShine — Car Detailing & Mobile Valeting | Slovenia'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default function OpenGraphImage() {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+type Props = { params: Promise<{ locale: string }> }
+
+export default async function OpenGraphImage({ params }: Props) {
+  const { locale } = await params
+  const safeLocale: Locale = routing.locales.includes(locale as Locale)
+    ? (locale as Locale)
+    : routing.defaultLocale
+  const m = MESSAGES[safeLocale].metadata
+
   return new ImageResponse(
     (
       <div
@@ -55,7 +72,7 @@ export default function OpenGraphImage() {
             maxWidth: 980,
           }}
         >
-          Car Detailing & Mobile Valeting
+          {m.ogImageTitle}
         </div>
 
         <div
@@ -63,11 +80,11 @@ export default function OpenGraphImage() {
             marginTop: 28,
             fontSize: 32,
             color: '#9ca3af',
-            maxWidth: 900,
+            maxWidth: 1040,
             lineHeight: 1.3,
           }}
         >
-          Slovenia · Ceramic coating · Paint correction · We come to you
+          {m.ogImageSubtitle}
         </div>
 
         <div
@@ -80,7 +97,7 @@ export default function OpenGraphImage() {
             color: '#6b7280',
           }}
         >
-          <span>Celestrina 19, Malečnik</span>
+          <span>{m.ogImageAddress}</span>
           <span style={{ color: BRAND.accent }}>ashine.si</span>
         </div>
       </div>

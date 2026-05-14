@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages, setRequestLocale } from 'next-intl/server'
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing, type Locale } from '@/i18n/routing'
 import { languageAlternates, localePath, OG_LOCALE } from '@/lib/seo'
@@ -26,7 +26,12 @@ function isValidLocale(locale: string): locale is Locale {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
   if (!isValidLocale(locale)) return {}
+  const t = await getTranslations({ locale, namespace: 'metadata' })
+  const keywords = t.raw('keywords') as string[]
   return {
+    title: { template: '%s | AShine', default: t('siteTitleDefault') },
+    description: t('siteDescription'),
+    keywords,
     openGraph: {
       locale: OG_LOCALE[locale],
       alternateLocale: routing.locales

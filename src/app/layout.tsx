@@ -13,21 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: 'AShine',
-  title: {
-    default: 'AShine – Car Detailing & Mobile Valeting | Slovenia',
-    template: '%s | AShine',
-  },
-  description:
-    'Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – Celestrina 19, Malečnik. Book online.',
-  keywords: [
-    'car detailing Slovenia',
-    'mobile valeting',
-    'ceramic coating',
-    'paint correction',
-    'avto detailing',
-    'valeting Malečnik',
-    'car detailing Maribor',
-  ],
+  title: { template: '%s | AShine', default: 'AShine' },
   authors: [{ name: 'AShine', url: SITE_URL }],
   creator: 'AShine',
   publisher: 'AShine',
