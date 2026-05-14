@@ -267,9 +267,12 @@ export default function Contact() {
           {(['trust1', 'trust2', 'trust3', 'trust4'] as const).map((key) => (
             <div
               key={key}
-              className="inline-flex items-center gap-2 rounded-sharp border border-border-default bg-premium-slate/60 px-3.5 py-2 text-body-sm text-text-secondary"
+              className="group inline-flex items-center gap-2 rounded-sharp border border-border-default bg-premium-slate/60 px-3.5 py-2 text-body-sm text-text-secondary transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-premium-accent/60 hover:bg-premium-slate hover:text-text-primary hover:shadow-sm hover:shadow-premium-accent/10 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
-              <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-premium-accent/20 text-premium-accent" aria-hidden>
+              <span
+                className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-premium-accent/20 text-premium-accent transition-all duration-300 ease-out group-hover:scale-110 group-hover:bg-premium-accent/35 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                aria-hidden
+              >
                 <svg viewBox="0 0 12 12" fill="currentColor" className="h-2.5 w-2.5">
                   <path fillRule="evenodd" d="M10.157 3.843a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 1 1 1.06-1.06l1.47 1.47 3.97-3.97a.75.75 0 0 1 1.06 0Z" clipRule="evenodd" />
                 </svg>
