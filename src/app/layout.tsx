@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { getLocale } from 'next-intl/server'
 import { SITE_URL, BRAND } from '@/config/site'
 import './globals.css'
 
@@ -32,24 +33,15 @@ export const metadata: Metadata = {
   publisher: 'AShine',
   openGraph: {
     type: 'website',
-    locale: 'en_GB',
     siteName: 'AShine',
-    title: 'AShine – Car Detailing & Mobile Valeting | Slovenia',
-    description: 'Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction. We come to you.',
-    url: '/',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AShine – Car Detailing & Mobile Valeting | Slovenia',
-    description: 'Professional car detailing and mobile valeting in Slovenia. We come to you.',
   },
   robots: {
     index: true,
     follow: true,
     googleBot: { index: true, follow: true },
-  },
-  alternates: {
-    canonical: '/',
   },
   category: 'automotive',
   icons: {
@@ -68,13 +60,14 @@ export const viewport: Viewport = {
   themeColor: BRAND.bg,
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const locale = await getLocale()
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
+    <html lang={locale} className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col font-sans antialiased bg-premium-black text-text-primary">
         {children}
       </body>

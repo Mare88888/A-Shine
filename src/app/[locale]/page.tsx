@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
-import { setRequestLocale } from 'next-intl/server'
-import { SITE_URL } from '@/config/site'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
+import { routing, type Locale } from '@/i18n/routing'
+import { languageAlternates, localePath } from '@/lib/seo'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Gallery from '@/components/Gallery'
@@ -11,30 +12,35 @@ import Contact from '@/components/Contact'
 import { JsonLd } from '@/components'
 import Stats from '@/components/Stats'
 
-const PAGE_META = {
-  title: 'Car Detailing & Mobile Valeting | Slovenia',
-  description: 'Book car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – service area 50–200 km from Malečnik. AShine.',
-  ogTitle: 'AShine – Car Detailing & Mobile Valeting | Slovenia',
-  ogDescription: 'Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction. We come to you. Book online.',
-} as const
+type Props = { params: Promise<{ locale: string }> }
 
-export const metadata: Metadata = {
-  title: PAGE_META.title,
-  description: PAGE_META.description,
-  openGraph: {
-    title: PAGE_META.ogTitle,
-    description: PAGE_META.ogDescription,
-    url: SITE_URL,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: PAGE_META.ogTitle,
-    description: PAGE_META.ogDescription,
-  },
-  alternates: { canonical: SITE_URL },
+function isValidLocale(locale: string): locale is Locale {
+  return routing.locales.includes(locale as Locale)
 }
 
-type Props = { params: Promise<{ locale: string }> }
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  if (!isValidLocale(locale)) return {}
+  const t = await getTranslations({ locale, namespace: 'metadata' })
+  const url = localePath(locale)
+  return {
+    title: t('homeTitle'),
+    description: t('homeDescription'),
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      url,
+    },
+    twitter: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+    },
+    alternates: {
+      canonical: url,
+      languages: languageAlternates(),
+    },
+  }
+}
 
 export default async function Home({ params }: Props) {
   const { locale } = await params
