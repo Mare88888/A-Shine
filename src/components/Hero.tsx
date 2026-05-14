@@ -93,7 +93,7 @@ export default function Hero({
           <p className="text-premium-accent text-overline uppercase mb-4">{overlineText}</p>
           <h1 className="text-display text-text-primary max-w-4xl mx-auto">{headlineText}</h1>
           <p className="mt-4 text-base text-text-secondary max-w-2xl mx-auto sm:mt-6 sm:text-lg">{subheadlineText}</p>
-          <div className="mt-8 flex flex-col gap-4 justify-center sm:mt-10 sm:flex-row sm:gap-5">
+          <div className="mt-8 flex flex-col gap-4 justify-center sm:mt-10 sm:flex-row sm:items-center sm:gap-5">
             <motion.div whileHover={buttonHover} whileTap={buttonTap}>
               <Link href="/" onClick={handlePrimaryClick} className="btn-primary inline-flex items-center justify-center px-7 py-3.5 sm:px-8 sm:py-4">
                 {primaryCta}
