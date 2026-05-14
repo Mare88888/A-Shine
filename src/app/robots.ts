@@ -5,30 +5,28 @@ const IS_PRODUCTION_DEPLOY =
   process.env.VERCEL_ENV === 'production' ||
   (process.env.NODE_ENV === 'production' && !process.env.VERCEL_ENV)
 
+/**
+ * Bots that crawl the web to train generative models. Blocked so our content
+ * is not used as training data. Search/agent crawlers (ChatGPT-User,
+ * PerplexityBot, etc.) are intentionally NOT in this list so AI assistants can
+ * still cite the site in real-time answers. See also /llms.txt.
+ */
 const AI_TRAINING_BOTS = [
   'GPTBot',
-  'ChatGPT-User',
-  'OAI-SearchBot',
   'ClaudeBot',
   'anthropic-ai',
   'Google-Extended',
   'Applebot-Extended',
   'Meta-ExternalAgent',
-  'Meta-ExternalFetcher',
   'FacebookBot',
-  'CCBot',
-  'PerplexityBot',
   'Bytespider',
-  'Amazonbot',
   'cohere-ai',
-  'MistralAI-User',
-  'DuckAssistBot',
-  'YouBot',
-  'iaskspider/2.0',
+  'CCBot',
   'Diffbot',
   'Timpibot',
   'omgili',
   'ImagesiftBot',
+  'Amazonbot',
 ]
 
 export default function robots(): MetadataRoute.Robots {
