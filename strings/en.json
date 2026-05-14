@@ -328,10 +328,11 @@
     "whatAreBody": "Cookies are small text files stored on your device when you visit a website. They are widely used to make sites work properly, remember preferences, and understand how visitors use the site.",
     "howWeUseTitle": "2. How we use cookies",
     "howWeUseIntro": "Our website uses or may use:",
+    "localeStorageNote": "Your selected language is saved in your browser’s local storage (not in a first-party cookie). You can remove it by clearing site data for this website in your browser settings.",
     "necessaryLabel": "Strictly necessary cookies:",
     "necessaryDesc": "Required for the site to function (e.g. security, load balancing). These generally do not require consent under applicable law.",
     "functionalLabel": "Functional cookies:",
-    "functionalDesc": "Remember choices you make (e.g. language, region) to improve your experience.",
+    "functionalDesc": "Optional cookies for UI preferences if we enable them. Your language choice is stored in local storage, not cookies (see above).",
     "analyticsLabel": "Analytics cookies:",
     "analyticsDesc": "If enabled, analytics cookies help us understand site usage and improve performance. They are used only according to your consent settings where required by law.",
     "thirdPartyTitle": "3. Third-party services",
@@ -352,7 +353,7 @@
   "cookieBanner": {
     "ariaLabel": "Cookie consent",
     "title": "We use cookies",
-    "message": "We use cookies to remember your language preference and understand how our site is used.",
+    "message": "We only use optional cookies where you allow (for example, analytics). Your language choice is saved in your browser’s local storage, not in cookies.",
     "learnMore": "Cookie Policy",
     "acceptAll": "Accept All",
     "necessary": "Necessary Only"

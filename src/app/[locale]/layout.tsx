@@ -6,6 +6,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import CookieBanner from '@/components/CookieBanner'
 import MobileCTABar from '@/components/MobileCTABar'
+import LocaleFromStorage from '@/components/LocaleFromStorage'
 
 type Props = {
   children: React.ReactNode
@@ -28,6 +29,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
+      <LocaleFromStorage />
       <Nav />
       <main className="flex-1" id="main-content">
         {children}

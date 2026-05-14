@@ -328,10 +328,11 @@
     "whatAreBody": "Piškotki so majhne besedilne datoteke, ki se ob obisku spletne strani shranijo na vašo napravo. Pogosto se uporabljajo za pravilno delovanje strani, pomnjenje nastavitev in razumevanje, kako obiskovalci uporabljajo stran.",
     "howWeUseTitle": "2. Kako uporabljamo piškotke",
     "howWeUseIntro": "Naša spletna stran uporablja ali lahko uporablja:",
+    "localeStorageNote": "Izbrani jezik shranimo v lokalno shrambo brskalnika (local storage), ne v piškotku prve strani. Podatek lahko odstranite z brisanjem podatkov strani v nastavitvah brskalnika.",
     "necessaryLabel": "Nujno potrebni piškotki:",
     "necessaryDesc": "Potrebni za delovanje strani (npr. varnost, razporejanje obremenitve). Po veljavni zakonodaji običajno ne zahtevajo privolitve.",
     "functionalLabel": "Funkcionalni piškotki:",
-    "functionalDesc": "Zapomnijo si vaše izbire (npr. jezik, regija) za boljšo izkušnjo.",
+    "functionalDesc": "Izbirni piškotki za nastavitve vmesnika, če jih omogočimo. Jezikovna izbira je shranjena v lokalni shrambi, ne v piškotkih (glej zgoraj).",
     "analyticsLabel": "Analitični piškotki:",
     "analyticsDesc": "Če je analitika vključena, nam analitični piškotki pomagajo razumeti uporabo strani in izboljšati delovanje. Uporabljajo se v skladu z vašimi nastavitvami soglasja, kjer to zahteva zakon.",
     "thirdPartyTitle": "3. Storitve tretjih strani",
@@ -352,7 +353,7 @@
   "cookieBanner": {
     "ariaLabel": "Soglasje za piškotke",
     "title": "Uporabljamo piškotke",
-    "message": "Piškotke uporabljamo za pomnjenje jezikovnih nastavitev in razumevanje uporabe naše strani.",
+    "message": "Izbirne piškotke uporabljamo le, kjer soglašate (npr. analitika). Jezikovno izbiro shranimo v lokalno shrambo brskalnika, ne v piškotkih.",
     "learnMore": "Pravilnik o piškotkih",
     "acceptAll": "Sprejmi vse",
     "necessary": "Samo nujni"

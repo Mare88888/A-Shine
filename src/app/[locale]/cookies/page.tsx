@@ -36,6 +36,7 @@ export default async function CookiesPage({ params }: Props) {
           <section>
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('howWeUseTitle')}</h2>
             <p>{t('howWeUseIntro')}</p>
+            <p className="mt-3">{t('localeStorageNote')}</p>
             <ul className="list-disc pl-6 space-y-1 mt-2">
               <li>
                 <strong className="text-text-primary">{t('necessaryLabel')}</strong> {t('necessaryDesc')}

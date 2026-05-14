@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useLocale } from 'next-intl'
 import { usePathname, useRouter } from '@/i18n/navigation'
 import { useTransition } from 'react'
+import { writeStoredLocale } from '@/lib/locale-storage'
 
 const LOCALES = [
   { code: 'en' as const, label: 'English', ariaLabel: 'Switch to English', flag: '/flag-united-kingdom.svg' },
@@ -23,6 +24,7 @@ export default function LanguageSwitcher() {
 
   const handleChange = (nextLocale: 'en' | 'sl') => {
     if (nextLocale === locale) return
+    writeStoredLocale(nextLocale)
     startTransition(() => router.replace(pathname, { locale: nextLocale }))
   }
 
