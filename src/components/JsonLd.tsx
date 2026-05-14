@@ -2,7 +2,7 @@
  * JSON-LD structured data for SEO: WebSite, Organization, LocalBusiness.
  * Rendered on the home page so search engines can show rich results.
  */
-import { SITE_URL, GEO } from '@/config/site'
+import { SITE_URL, GEO, CONTACT_EMAIL } from '@/config/site'
 
 const BUSINESS_DESCRIPTION =
   'Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – Celestrina 19, Malečnik. Service area 50–200 km.'
@@ -14,7 +14,7 @@ const localBusiness = {
   description: BUSINESS_DESCRIPTION,
   url: SITE_URL,
   telephone: '+38670742363',
-  email: 'AShine@gmail.com',
+  email: CONTACT_EMAIL,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Celestrina 19',
@@ -54,7 +54,7 @@ const organization = {
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+38670742363',
-    email: 'AShine@gmail.com',
+    email: CONTACT_EMAIL,
     areaServed: 'SI',
     availableLanguage: 'English, Slovenian',
   },

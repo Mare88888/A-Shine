@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
+import { CONTACT_EMAIL } from '@/config/site'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -37,6 +38,7 @@ export default async function CookiesPage({ params }: Props) {
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('howWeUseTitle')}</h2>
             <p>{t('howWeUseIntro')}</p>
             <p className="mt-3">{t('localeStorageNote')}</p>
+            <p className="mt-3">{t('consentStorageNote')}</p>
             <ul className="list-disc pl-6 space-y-1 mt-2">
               <li>
                 <strong className="text-text-primary">{t('necessaryLabel')}</strong> {t('necessaryDesc')}
@@ -69,8 +71,8 @@ export default async function CookiesPage({ params }: Props) {
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('contactTitle')}</h2>
             <p>
               {t('contactPrefix')}
-              <a href="alen.stermecki10@gmail.com" className="text-premium-accent hover:underline">
-                alen.stermecki10@gmail.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-premium-accent hover:underline">
+                {CONTACT_EMAIL}
               </a>
               {t('contactSuffix')}
             </p>

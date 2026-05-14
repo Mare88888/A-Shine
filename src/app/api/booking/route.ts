@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
+import { BOOKING_INBOX_EMAIL } from "@/config/site";
 
 const RESEND = new Resend(process.env.RESEND_API_KEY);
-const BOOKING_TO_EMAIL = "marko.lempl4@gmail.com";
 const RATE_LIMIT_KEY_PREFIX = "booking:";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Server-side required fields. Car type, date and message are now optional.
@@ -149,6 +149,7 @@ function isYearTooHigh(raw?: string, maxYear = 2050): boolean {
 }
 
 export async function POST(request: Request) {
+  let errorLocale: SupportedLocale = "sl";
   try {
     const body = (await request.json()) as BookingPayload;
     const {
@@ -165,6 +166,7 @@ export async function POST(request: Request) {
     } = body;
 
     const lang: SupportedLocale = locale === "en" ? "en" : "sl";
+    errorLocale = lang;
     const TEXT = EMAIL_TEXT[lang];
 
     const ip = getClientIp(request);
@@ -204,7 +206,7 @@ export async function POST(request: Request) {
     if (!process.env.RESEND_API_KEY) {
       console.error("RESEND_API_KEY is not set");
       return NextResponse.json(
-        { error: "Email is not configured. Please set RESEND_API_KEY." },
+        { error: TEXT.errors.generic },
         { status: 500 },
       );
     }
@@ -226,7 +228,7 @@ export async function POST(request: Request) {
       ? `<p><strong>${TEXT.labels.location}:</strong> ${locationLabel}</p>`
       : "";
     const messageSection = message?.trim()
-      ? `<p><strong>Message:</strong></p><p>${escapeHtml(message.trim()).replace(/\n/g, "<br>")}</p>`
+      ? `<p><strong>${TEXT.labels.message}:</strong></p><p>${escapeHtml(message.trim()).replace(/\n/g, "<br>")}</p>`
       : "";
     const formattedDate = formatDateForDisplay(date);
     const html = `
@@ -253,7 +255,7 @@ export async function POST(request: Request) {
 
     const { data, error } = await RESEND.emails.send({
       from: fromAddress,
-      to: [BOOKING_TO_EMAIL],
+      to: [BOOKING_INBOX_EMAIL],
       replyTo: email.trim(),
       subject: TEXT.ownerSubject(name.trim(), service.trim()),
       html,
@@ -308,9 +310,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("Booking API error:", err);
     return NextResponse.json(
-      {
-        error: EMAIL_TEXT.sl.errors.generic,
-      },
+      { error: EMAIL_TEXT[errorLocale].errors.generic },
       { status: 500 },
     );
   }

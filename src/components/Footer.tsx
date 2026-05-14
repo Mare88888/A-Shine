@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
+import { CONTACT_EMAIL } from '@/config/site'
 import { motion } from 'framer-motion'
 
 export function PhoneIcon({ className }: { className?: string }) {
@@ -134,9 +135,9 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="alen.stermecki10@gmail.com" className="inline-flex items-center gap-2 hover:text-premium-accent transition-colors">
+                <a href={`mailto:${CONTACT_EMAIL}`} className="inline-flex items-center gap-2 hover:text-premium-accent transition-colors">
                   <EmailIcon className="shrink-0" />
-                  <span>alen.stermecki10@gmail.com</span>
+                  <span>{CONTACT_EMAIL}</span>
                 </a>
               </li>
             </ul>

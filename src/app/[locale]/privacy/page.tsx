@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Link } from '@/i18n/navigation'
+import { CONTACT_EMAIL } from '@/config/site'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -67,11 +68,18 @@ export default async function PrivacyPage({ params }: Props) {
           </section>
 
           <section>
+            <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('additionalTitle')}</h2>
+            <p>{t('additionalProcessors')}</p>
+            <p className="mt-3">{t('additionalSecurity')}</p>
+            <p className="mt-3">{t('additionalDevice')}</p>
+          </section>
+
+          <section>
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('yourRightsTitle')}</h2>
             <p>
               {t('yourRightsBody')}
-              <a href="alen.stermecki10@gmail.com" className="text-premium-accent hover:underline">
-                alen.stermecki10@gmail.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-premium-accent hover:underline">
+                {CONTACT_EMAIL}
               </a>
               {t('yourRightsSuffix')}
             </p>

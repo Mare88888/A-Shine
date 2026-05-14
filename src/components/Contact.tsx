@@ -7,6 +7,7 @@ import { SectionEntrance } from '@/components/MotionSection'
 import { buttonTap } from '@/lib/motion'
 import { EmailIcon, PhoneIcon } from './Footer'
 import { carCleaningPackages, carDetailingPackages } from './Pricing'
+import { CONTACT_EMAIL } from '@/config/site'
 
 const PACKAGE_CUSTOM_ID = 'custom'
 
@@ -555,13 +556,13 @@ export default function Contact() {
                     {t('email')}
                   </span>
                   <a
-                    href="alen.stermecki10@gmail.com"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="inline-flex items-center gap-2.5 text-text-primary hover:text-premium-accent transition-colors font-medium break-all"
                   >
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-premium-accent/10 border border-premium-accent/20 text-premium-accent shrink-0">
                       <EmailIcon />
                     </span>
-                    <span>alen.stermecki10@gmail.com</span>
+                    <span>{CONTACT_EMAIL}</span>
                   </a>
                 </li>
               </ul>

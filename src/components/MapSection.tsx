@@ -17,19 +17,19 @@ const CIRCLE_CONFIGS = [
 const LEGEND_CONFIGS = [...CIRCLE_CONFIGS].reverse()
 const FILL_OPACITY = 0.2
 
+const MAP_ID =
+  process.env.NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID?.trim() || 'DEMO_MAP_ID'
+
 const MAP_OPTIONS: google.maps.MapOptions = {
   center: MAP_CENTER,
   zoom: 9,
+  mapId: MAP_ID,
   disableDefaultUI: false,
   zoomControl: true,
   mapTypeControl: true,
   scaleControl: true,
   streetViewControl: false,
   fullscreenControl: true,
-  styles: [
-    { featureType: 'poi', elementType: 'labels', stylers: [{ visibility: 'off' }] },
-    { featureType: 'transit', elementType: 'labels', stylers: [{ visibility: 'off' }] },
-  ],
 }
 
 type LatLng = { lat: number; lng: number }
@@ -60,40 +60,56 @@ export default function MapSection() {
     const container = containerRef.current
     if (!container) return
 
-    const map = new google.maps.Map(container, MAP_OPTIONS)
-    mapRef.current = map
+    let cancelled = false
 
-    const placeMarkerAndCircles = (center: LatLng) => {
-      new google.maps.Marker({
-        position: center,
-        map,
-        title: t('address'),
-      })
-      CIRCLE_CONFIGS.forEach(({ radius, fillColor }) => {
-        new google.maps.Circle({
-          map,
-          center,
-          radius,
-          fillColor,
-          fillOpacity: FILL_OPACITY,
-          strokeColor: fillColor,
-          strokeOpacity: 0.4,
-          strokeWeight: 1,
+    const init = async () => {
+      try {
+        const [{ Map, Circle }, { AdvancedMarkerElement }, { Geocoder }] =
+          await Promise.all([
+            google.maps.importLibrary('maps') as Promise<google.maps.MapsLibrary>,
+            google.maps.importLibrary('marker') as Promise<google.maps.MarkerLibrary>,
+            google.maps.importLibrary('geocoding') as Promise<google.maps.GeocodingLibrary>,
+          ])
+        if (cancelled) return
+
+        const map = new Map(container, MAP_OPTIONS)
+        mapRef.current = map
+
+        const placeMarkerAndCircles = (center: LatLng) => {
+          new AdvancedMarkerElement({ position: center, map, title: t('address') })
+          CIRCLE_CONFIGS.forEach(({ radius, fillColor }) => {
+            new Circle({
+              map,
+              center,
+              radius,
+              fillColor,
+              fillOpacity: FILL_OPACITY,
+              strokeColor: fillColor,
+              strokeOpacity: 0.4,
+              strokeWeight: 1,
+            })
+          })
+          map.setCenter(center)
+        }
+
+        new Geocoder().geocode({ address: GEOCODE_ADDRESS }, (results, status) => {
+          if (cancelled) return
+          const center =
+            status === 'OK' && results?.[0]
+              ? getGeocodeLocation(results[0])
+              : null
+          placeMarkerAndCircles(center ?? MAP_CENTER)
         })
-      })
-      map.setCenter(center)
+      } catch (err) {
+        console.error('Google Maps init failed:', err)
+        if (!cancelled) setMapLoadFailed(true)
+      }
     }
 
-    const geocoder = new google.maps.Geocoder()
-    geocoder.geocode({ address: GEOCODE_ADDRESS }, (results, status) => {
-      const center =
-        status === 'OK' && results?.[0]
-          ? getGeocodeLocation(results[0])
-          : null
-      placeMarkerAndCircles(center ?? MAP_CENTER)
-    })
+    init()
 
     return () => {
+      cancelled = true
       mapRef.current = null
     }
   }, [scriptLoaded, t])
@@ -126,13 +142,16 @@ export default function MapSection() {
   return (
     <>
       <Script
-        src={`https://maps.googleapis.com/maps/api/js?key=${apiKey}`}
+        id="google-maps-bootstrap"
         strategy="afterInteractive"
+        onError={() => setMapLoadFailed(true)}
         onLoad={() => {
           setScriptLoaded(true)
           setMapLoadFailed(false)
         }}
-        onError={() => setMapLoadFailed(true)}
+        dangerouslySetInnerHTML={{
+          __html: `(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=\`https://maps.\${c}apis.com/maps/api/js?\`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({key:${JSON.stringify(apiKey)},v:"weekly"});`,
+        }}
       />
       <SectionEntrance id="map" className="section-padding bg-premium-charcoal" aria-labelledby="map-heading">
         <div className="container-narrow">
