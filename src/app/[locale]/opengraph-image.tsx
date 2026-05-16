@@ -32,17 +32,31 @@ export default async function OpenGraphImage({ params }: Props) {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
-          padding: '80px',
-          background: `radial-gradient(ellipse at top right, ${BRAND.accent}33 0%, transparent 60%), ${BRAND.bg}`,
-          color: '#fff',
+          padding: 80,
+          backgroundColor: BRAND.bg,
+          color: '#ffffff',
           fontFamily: 'sans-serif',
+          position: 'relative',
         }}
       >
         <div
           style={{
+            position: 'absolute',
+            top: 0,
+            right: 0,
+            width: 480,
+            height: 480,
+            borderRadius: 9999,
+            backgroundColor: BRAND.accent,
+            opacity: 0.12,
+          }}
+        />
+
+        <div
+          style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '16px',
+            gap: 16,
             fontSize: 28,
             letterSpacing: 4,
             textTransform: 'uppercase',
@@ -54,9 +68,8 @@ export default async function OpenGraphImage({ params }: Props) {
             style={{
               width: 12,
               height: 12,
-              borderRadius: 999,
-              background: BRAND.accent,
-              boxShadow: `0 0 24px ${BRAND.accent}`,
+              borderRadius: 9999,
+              backgroundColor: BRAND.accent,
             }}
           />
           AShine
@@ -95,6 +108,7 @@ export default async function OpenGraphImage({ params }: Props) {
             justifyContent: 'space-between',
             fontSize: 22,
             color: '#6b7280',
+            width: '100%',
           }}
         >
           <span>{m.ogImageAddress}</span>
