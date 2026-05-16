@@ -77,7 +77,7 @@ export default function MapSection() {
 
     const init = async () => {
       try {
-        const [{ Map, Circle }, { AdvancedMarkerElement }, { Geocoder }] =
+        const [{ Map, Circle, RenderingType }, { AdvancedMarkerElement }, { Geocoder }] =
           await Promise.all([
             google.maps.importLibrary('maps') as Promise<google.maps.MapsLibrary>,
             google.maps.importLibrary('marker') as Promise<google.maps.MarkerLibrary>,
@@ -85,7 +85,12 @@ export default function MapSection() {
           ])
         if (cancelled) return
 
-        const map = new Map(container, MAP_OPTIONS)
+        // Raster avoids "Vector Map failed, falling back to Raster" when WebGL is blocked
+        // (Brave shields, devtools mobile emulation, some GPUs). mapId still enables Advanced Markers.
+        const map = new Map(container, {
+          ...MAP_OPTIONS,
+          renderingType: RenderingType.RASTER,
+        })
         mapRef.current = map
 
         const placeMarkerAndCircles = (center: LatLng) => {
