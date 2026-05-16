@@ -1,5 +1,8 @@
 /* Minimal types for Google Maps JavaScript API (loaded via script) */
 declare global {
+  interface Window {
+    gm_authFailure?: () => void
+  }
   const google: {
     maps: {
       Map: new (el: HTMLElement, opts?: Record<string, unknown>) => object

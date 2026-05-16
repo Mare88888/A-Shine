@@ -53,6 +53,19 @@ export default function MapSection() {
     if (typeof google !== 'undefined' && google.maps) {
       setScriptLoaded(true)
     }
+    // Fired when the API key is invalid or HTTP referrer is not allowed (common on production).
+    const w = window as Window & { gm_authFailure?: () => void }
+    const prevAuthFailure = w.gm_authFailure
+    w.gm_authFailure = () => {
+      console.error(
+        'Google Maps auth failed — check API key, billing, enabled APIs, and HTTP referrer restrictions for this domain.',
+      )
+      setMapLoadFailed(true)
+      prevAuthFailure?.()
+    }
+    return () => {
+      w.gm_authFailure = prevAuthFailure
+    }
   }, [])
 
   useEffect(() => {
