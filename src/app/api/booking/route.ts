@@ -12,8 +12,14 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 const RATE_LIMIT_KEY_PREFIX = "booking:";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-// Server-side required fields. Car type, date and message are now optional.
-const REQUIRED_FIELDS = ["name", "email", "service"] as const;
+// Server-side required fields. Distance required when locationType is mobile.
+const REQUIRED_FIELDS = [
+  "name",
+  "email",
+  "service",
+  "locationType",
+  "date",
+] as const;
 
 type SupportedLocale = "sl" | "en";
 
@@ -60,6 +66,9 @@ const EMAIL_TEXT = {
     errors: {
       rateLimited: "Too many requests. Please try again in a few minutes.",
       invalidEmail: "Please enter a valid email address.",
+      missingLocation: "Please choose where the service will be",
+      missingDate: "Please choose a preferred date",
+      missingDistance: "Please select distance",
       datePast: "Preferred date cannot be in the past.",
       dateYearHigh: "Try a sooner date.",
       generic: "Something went wrong. Please try again.",
@@ -94,6 +103,9 @@ const EMAIL_TEXT = {
     errors: {
       rateLimited: "Preveč zahtev. Poskusite znova čez nekaj minut.",
       invalidEmail: "Vnesite veljaven e-poštni naslov.",
+      missingLocation: "Izberite, kje naj opravimo storitev",
+      missingDate: "Izberite želeni datum",
+      missingDistance: "Izberite razdaljo",
       datePast: "Želeni datum ne sme biti v preteklosti.",
       dateYearHigh: "Poskusite z manjšim datumom.",
       generic: "Prišlo je do napake. Poskusite znova.",
@@ -185,8 +197,26 @@ export async function POST(request: Request) {
 
     const missing = REQUIRED_FIELDS.filter((field) => !body[field]?.trim());
     if (missing.length > 0) {
+      if (missing.includes("locationType")) {
+        return NextResponse.json(
+          { error: TEXT.errors.missingLocation },
+          { status: 400 },
+        );
+      }
+      if (missing.includes("date")) {
+        return NextResponse.json(
+          { error: TEXT.errors.missingDate },
+          { status: 400 },
+        );
+      }
       return NextResponse.json(
         { error: `Missing required fields: ${missing.join(", ")}` },
+        { status: 400 },
+      );
+    }
+    if (locationType === "mobile" && !distance?.trim()) {
+      return NextResponse.json(
+        { error: TEXT.errors.missingDistance },
         { status: 400 },
       );
     }

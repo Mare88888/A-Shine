@@ -119,7 +119,7 @@ export default function Contact() {
   )
   const distanceOptions = useMemo(
     () => [
-      { value: '50', label: t('distance50') },
+      { value: '25', label: t('distance25') },
       { value: '100', label: t('distance100') },
       { value: '200', label: t('distance200') },
     ] as const,
@@ -144,11 +144,23 @@ export default function Contact() {
       case 'service':
         return !trimmed ? t('errors.service') : undefined
       case 'locationType':
-        return undefined
+        return !trimmed ? t('errors.locationType') : undefined
       case 'distance':
         return values.locationType === 'mobile' && !trimmed ? t('errors.distance') : undefined
-      case 'date':
+      case 'date': {
+        if (!trimmed) return t('errors.date')
+        const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed)
+        if (!match) return t('errors.date')
+        const year = Number(match[1])
+        const month = Number(match[2])
+        const day = Number(match[3])
+        const selected = new Date(year, month - 1, day, 0, 0, 0, 0)
+        const today = new Date()
+        today.setHours(0, 0, 0, 0)
+        if (selected < today) return t('errors.datePast')
+        if (year > 2050) return t('errors.dateYearHigh')
         return undefined
+      }
       case 'message':
         return trimmed && trimmed.length < 10 ? t('errors.message') : undefined
       default:
@@ -429,7 +441,7 @@ export default function Contact() {
 
                 <GroupSeparator />
                 <div>
-                  <FieldLabel>{t('whereService')}</FieldLabel>
+                  <FieldLabel required>{t('whereService')}</FieldLabel>
                   <div className="flex flex-wrap gap-4 items-start">
                     <div className="flex-1 min-w-[180px]">
                       <div className="relative">
@@ -439,6 +451,7 @@ export default function Contact() {
                           value={values.locationType}
                           onChange={handleChange}
                           onBlur={handleBlur}
+                          required
                           className={getSelectClass('locationType')}
                           aria-invalid={!!errors.locationType}
                           aria-describedby={errors.locationType ? 'contact-locationType-error' : undefined}
@@ -462,6 +475,7 @@ export default function Contact() {
                             value={values.distance}
                             onChange={handleChange}
                             onBlur={handleBlur}
+                            required
                             className={getSelectClass('distance')}
                             aria-invalid={!!errors.distance}
                             aria-describedby={errors.distance ? 'contact-distance-error' : undefined}
@@ -480,7 +494,7 @@ export default function Contact() {
                 </div>
 
                 <div className="mt-4">
-                  <FieldLabel htmlFor="contact-date">{t('preferredDate')}</FieldLabel>
+                  <FieldLabel htmlFor="contact-date" required>{t('preferredDate')}</FieldLabel>
                   <input
                     id="contact-date"
                     name="date"
@@ -489,6 +503,7 @@ export default function Contact() {
                     min={new Date().toISOString().slice(0, 10)}
                     onChange={handleChange}
                     onBlur={handleBlur}
+                    required
                     className={`${getInputClass('date')} date-picker-white-icon`}
                     aria-invalid={!!errors.date}
                     aria-describedby={errors.date ? 'contact-date-error' : undefined}
