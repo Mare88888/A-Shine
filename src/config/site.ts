@@ -3,9 +3,41 @@
  * Used by layout, page metadata, sitemap, robots, JsonLd.
  */
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://ashine.si";
+/** Remove trailing slashes so paths like `${SITE_URL}/privacy` never become `//privacy`. */
+export function normalizeSiteUrl(url: string): string {
+  return url.trim().replace(/\/+$/, "");
+}
 
+function resolveSiteUrl(): string {
+  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (fromEnv) {
+    const normalized = normalizeSiteUrl(fromEnv);
+    // Production deploys sometimes keep an old *.vercel.app value in NEXT_PUBLIC_SITE_URL.
+    if (
+      process.env.VERCEL_ENV === "production" &&
+      /\.vercel\.app$/i.test(new URL(normalized).hostname)
+    ) {
+      const vercelProd = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+      if (vercelProd) {
+        const host = vercelProd
+          .replace(/^https?:\/\//i, "")
+          .replace(/\/+$/, "");
+        return normalizeSiteUrl(`https://${host}`);
+      }
+    }
+    return normalized;
+  }
+
+  const vercelProd = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (vercelProd && process.env.VERCEL_ENV === "production") {
+    const host = vercelProd.replace(/^https?:\/\//i, "").replace(/\/+$/, "");
+    return normalizeSiteUrl(`https://${host}`);
+  }
+
+  return "https://ashine.si";
+}
+
+export const SITE_URL = resolveSiteUrl();
 /** Shown on legal pages and used as fallback booking inbox. Set `NEXT_PUBLIC_CONTACT_EMAIL` on Vercel. */
 export const CONTACT_EMAIL =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "info.ashine@gmail.com";
