@@ -6,7 +6,6 @@ import { routing, type Locale } from '@/i18n/routing'
 import { languageAlternates, localePath, OG_LOCALE } from '@/lib/seo'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import CookieBanner from '@/components/CookieBanner'
 import MobileCTABar from '@/components/MobileCTABar'
 import LocaleFromStorage from '@/components/LocaleFromStorage'
 
@@ -61,7 +60,6 @@ export default async function LocaleLayout({ children, params }: Props) {
       </main>
       <Footer />
       <MobileCTABar />
-      <CookieBanner />
     </NextIntlClientProvider>
   )
 }

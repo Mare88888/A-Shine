@@ -354,7 +354,6 @@
     "howWeUseTitle": "2. Kako uporabljamo piškotke",
     "howWeUseIntro": "Naša spletna stran uporablja ali lahko uporablja:",
     "localeStorageNote": "Izbrani jezik shranimo v lokalno shrambo brskalnika (local storage), ne v piškotku prve strani. Podatek lahko odstranite z brisanjem podatkov strani v nastavitvah brskalnika.",
-    "consentStorageNote": "Če uporabite pasico za piškotke, shranimo vašo izbiro (npr. »samo nujni« ali »sprejmi vse«) v lokalno shrambo brskalnika, da pasice ne prikazujemo ob vsakem obisku.",
     "necessaryLabel": "Nujno potrebni piškotki:",
     "necessaryDesc": "Potrebni za delovanje strani (npr. varnost, razporejanje obremenitve). Po veljavni zakonodaji običajno ne zahtevajo privolitve.",
     "functionalLabel": "Funkcionalni piškotki:",
@@ -364,7 +363,7 @@
     "thirdPartyTitle": "3. Storitve tretjih strani",
     "thirdPartyBody": "Stran lahko vključuje vdelan Google Maps (Maps JavaScript API in Geocoding API). Ko se zemljevid naloži, Google lahko nastavi ali prebere piškotke in obdeluje tehnične podatke v skladu z Googlovimi pogoji in pravilniki. Nad Googlovimi piškotki nimamo neposrednega nadzora; prilagodite nastavitve brskalnika ali Google računa po potrebi.",
     "managingTitle": "4. Upravljanje piškotkov",
-    "managingBody": "Soglasje lahko upravljate prek naših nastavitev piškotkov in nastavitev brskalnika. Privolitev lahko kadarkoli prekličete. Blokiranje ali brisanje piškotkov lahko vpliva na delovanje spletne strani.",
+    "managingBody": "Sami ne nastavljamo piškotkov prve strani in zato na strani ne prikazujemo pasice za privolitev. Če želite blokirati ali izbrisati piškotke, ki jih nastavi Google Maps, uporabite nastavitve brskalnika ali nastavitve svojega Google računa.",
     "updatesTitle": "5. Posodobitve",
     "updatesBody": "Ta pravilnik o piškotkih lahko občasno posodobimo zaradi pravnih ali tehničnih sprememb. Datum \"Zadnja posodobitev\" bo ustrezno popravljen.",
     "contactTitle": "6. Kontakt",
@@ -375,14 +374,6 @@
     "ariaLabel": "Hitra kontaktna vrstica",
     "callAriaLabel": "Pokliči AShine",
     "bookNow": "Rezerviraj"
-  },
-  "cookieBanner": {
-    "ariaLabel": "Soglasje za piškotke",
-    "title": "Uporabljamo piškotke",
-    "message": "Izbirne piškotke uporabljamo le, kjer soglašate (npr. analitika). Jezikovno izbiro in izbiro piškotkov shranimo v lokalno shrambo brskalnika. Vdelan Google Maps ob nalaganju zemljevida lahko uporabi dodatno shranjevanje; glejte pravilnik o piškotkih.",
-    "learnMore": "Pravilnik o piškotkih",
-    "acceptAll": "Sprejmi vse",
-    "necessary": "Samo nujni"
   },
   "stats": {
     "vehicles": "Obdelanih vozil",
