@@ -1,9 +1,15 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getClientIp, isRateLimited } from "@/lib/rate-limit";
-import { BOOKING_INBOX_EMAIL } from "@/config/site";
+import {
+  getBookingInboxEmail,
+  getResendApiKey,
+  getResendFromAddress,
+  resendErrorMessage,
+} from "@/lib/booking-email";
 
-const RESEND = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = "force-dynamic";
+export const runtime = "nodejs";
 const RATE_LIMIT_KEY_PREFIX = "booking:";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Server-side required fields. Car type, date and message are now optional.
@@ -203,13 +209,20 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!process.env.RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is not set");
+    const resendApiKey = getResendApiKey();
+    if (!resendApiKey) {
+      console.error(
+        "RESEND_API_KEY is not set (add it in Vercel → Settings → Environment Variables → Production, then redeploy).",
+      );
       return NextResponse.json(
         { error: TEXT.errors.generic },
         { status: 500 },
       );
     }
+
+    const resend = new Resend(resendApiKey);
+    const bookingInbox = getBookingInboxEmail();
+    const fromAddress = getResendFromAddress();
 
     const locationLabel = getLocationLabelLocalized(
       lang,
@@ -249,21 +262,32 @@ export async function POST(request: Request) {
       ${messageSection}
     `.trim();
 
-    const fromAddress =
-      process.env.RESEND_FROM ??
-      "Car Detailing Website <onboarding@resend.dev>";
-
-    const { data, error } = await RESEND.emails.send({
+    const { data, error } = await resend.emails.send({
       from: fromAddress,
-      to: [BOOKING_INBOX_EMAIL],
+      to: [bookingInbox],
       replyTo: email.trim(),
       subject: TEXT.ownerSubject(name.trim(), service.trim()),
       html,
     });
 
     if (error) {
-      console.error("Resend error:", error);
-      return NextResponse.json({ error: TEXT.errors.generic }, { status: 500 });
+      const errMsg = resendErrorMessage(error);
+      console.error("Resend owner email failed:", {
+        error,
+        from: fromAddress,
+        to: bookingInbox,
+        message: errMsg,
+      });
+      if (errMsg.includes("not verified")) {
+        console.error(
+          "Resend: domain not verified — finish DNS at https://resend.com/domains and redeploy.",
+        );
+      }
+      const clientError =
+        process.env.NODE_ENV === "development" && errMsg
+          ? errMsg
+          : TEXT.errors.generic;
+      return NextResponse.json({ error: clientError }, { status: 500 });
     }
 
     // Send confirmation email to the customer
@@ -294,7 +318,7 @@ export async function POST(request: Request) {
       <p>${TEXT.closingSignoff}</p>
     `.trim();
 
-    const confirmResult = await RESEND.emails.send({
+    const confirmResult = await resend.emails.send({
       from: fromAddress,
       to: [email.trim()],
       subject: TEXT.customerSubject,
