@@ -48,6 +48,14 @@ export const BOOKING_INBOX_EMAIL =
 
 export const BRAND = {
   name: "A-Shine",
+  /** Search / schema aliases (brand query “ashine”, domain, legal trade name). */
+  alternateNames: [
+    "ashine",
+    "ashine.si",
+    "A-Shine Mobile Detailing",
+    "ashine mobile",
+    "ashinemobile",
+  ] as const,
   /** Tailwind premium-black equivalent */
   bg: "#08080a",
   /** Tailwind premium-accent equivalent */

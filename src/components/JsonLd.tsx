@@ -7,10 +7,15 @@ import { SITE_URL, GEO, CONTACT_EMAIL, BRAND } from '@/config/site'
 const BUSINESS_DESCRIPTION =
   'Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – Celestrina 19, Malečnik. Service area 50–200 km.'
 
+const brandNames = {
+  name: BRAND.name,
+  alternateName: [...BRAND.alternateNames],
+}
+
 const localBusiness = {
   '@type': 'AutoRepair',
   '@id': `${SITE_URL}/#business`,
-  name: BRAND.name,
+  ...brandNames,
   description: BUSINESS_DESCRIPTION,
   url: SITE_URL,
   telephone: '+38670742363',
@@ -47,7 +52,7 @@ const localBusiness = {
 const organization = {
   '@type': 'Organization',
   '@id': `${SITE_URL}/#organization`,
-  name: BRAND.name,
+  ...brandNames,
   url: SITE_URL,
   description: BUSINESS_DESCRIPTION,
   sameAs: localBusiness.sameAs,
@@ -64,7 +69,8 @@ const webSite = {
   '@type': 'WebSite',
   '@id': `${SITE_URL}/#website`,
   url: SITE_URL,
-  name: `${BRAND.name} – Car Detailing & Mobile Valeting | Slovenia`,
+  name: `${BRAND.name} | ashine.si`,
+  alternateName: [...BRAND.alternateNames],
   description: 'Book car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you.',
   publisher: { '@id': `${SITE_URL}/#organization` },
   inLanguage: 'en-GB',
