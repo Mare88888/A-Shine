@@ -47,7 +47,7 @@ export const BOOKING_INBOX_EMAIL =
   process.env.BOOKING_TO_EMAIL?.trim() || CONTACT_EMAIL;
 
 export const BRAND = {
-  name: "AShine",
+  name: "A-Shine",
   /** Tailwind premium-black equivalent */
   bg: "#08080a",
   /** Tailwind premium-accent equivalent */

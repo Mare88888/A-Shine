@@ -40,7 +40,7 @@ const EMAIL_TEXT = {
   en: {
     ownerSubject: (name: string, service: string) =>
       `Booking request from ${name} – ${service}`,
-    customerSubject: "We received your booking request – AShine",
+    customerSubject: "We received your booking request – A-Shine",
     ownerHeading: "New booking request",
     customerHeading: "We received your booking request",
     greeting: (name: string) => `Hi ${name},`,
@@ -62,7 +62,7 @@ const EMAIL_TEXT = {
     locationMobileWithDistance: (d: string) => `We come to you (−${d} km)`,
     closingIntro:
       "If you have any questions in the meantime, just reply to this email or give us a call.",
-    closingSignoff: "Best regards,<br>AShine",
+    closingSignoff: "Best regards,<br>A-Shine",
     errors: {
       rateLimited: "Too many requests. Please try again in a few minutes.",
       invalidEmail: "Please enter a valid email address.",
@@ -77,7 +77,7 @@ const EMAIL_TEXT = {
   sl: {
     ownerSubject: (name: string, service: string) =>
       `Novo povpraševanje od ${name} – ${service}`,
-    customerSubject: "Prejeli smo vaše povpraševanje – AShine",
+    customerSubject: "Prejeli smo vaše povpraševanje – A-Shine",
     ownerHeading: "Novo povpraševanje",
     customerHeading: "Prejeli smo vaše povpraševanje",
     greeting: (name: string) => `Pozdravljeni ${name},`,
@@ -99,7 +99,7 @@ const EMAIL_TEXT = {
     locationMobileWithDistance: (d: string) => `Pridevamo do vas (−${d} km)`,
     closingIntro:
       "Če imate vmes kakršna koli vprašanja, nam preprosto odgovorite na to e-pošto ali nas pokličite.",
-    closingSignoff: "Lep pozdrav,<br>AShine",
+    closingSignoff: "Lep pozdrav,<br>A-Shine",
     errors: {
       rateLimited: "Preveč zahtev. Poskusite znova čez nekaj minut.",
       invalidEmail: "Vnesite veljaven e-poštni naslov.",

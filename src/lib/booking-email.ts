@@ -1,7 +1,7 @@
 /** Server-only helpers for the booking API (read env at request time). */
 
 const DEFAULT_INBOX = "info.ashine@gmail.com";
-const DEFAULT_FROM = "AShine <bookings@ashine.si>";
+const DEFAULT_FROM = "A-Shine <bookings@ashine.si>";
 
 /** Strip wrapping quotes Vercel/users sometimes add in env values. */
 function stripEnvQuotes(value: string): string {

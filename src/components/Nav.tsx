@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslations } from 'next-intl'
+import { BRAND } from '@/config/site'
 import { Link } from '@/i18n/navigation'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 
@@ -108,7 +109,7 @@ export default function Nav() {
         >
           <Image
             src="/NavbarLogoTransparent.png"
-            alt="AShine Logo"
+            alt={`${BRAND.name} Logo`}
             width={100}
             height={100}
             style={{ borderRadius: "5px" }}
@@ -116,7 +117,7 @@ export default function Nav() {
             priority
             sizes="(max-width: 768px) 96px, 100px"
           />
-          <span>AShine</span>
+          <span>{BRAND.name}</span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">

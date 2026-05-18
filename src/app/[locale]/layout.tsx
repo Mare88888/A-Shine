@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { routing, type Locale } from '@/i18n/routing'
+import { BRAND } from '@/config/site'
 import { languageAlternates, localePath, OG_LOCALE } from '@/lib/seo'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' })
   const keywords = t.raw('keywords') as string[]
   return {
-    title: { template: '%s | AShine', default: t('siteTitleDefault') },
+    title: { template: `%s | ${BRAND.name}`, default: t('siteTitleDefault') },
     description: t('siteDescription'),
     keywords,
     openGraph: {

@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "siteTitleDefault": "AShine – Car Detailing & Mobile Valeting | Slovenia",
+    "siteTitleDefault": "A-Shine – Car Detailing & Mobile Valeting | Slovenia",
     "siteDescription": "Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – Celestrina 19, Malečnik. Book online.",
     "homeTitle": "Car Detailing & Mobile Valeting | Slovenia",
-    "homeDescription": "Book car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – service area 25–200 km from Malečnik. AShine.",
-    "ogTitle": "AShine – Car Detailing & Mobile Valeting | Slovenia",
+    "homeDescription": "Book car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – service area 25–200 km from Malečnik. A-Shine.",
+    "ogTitle": "A-Shine – Car Detailing & Mobile Valeting | Slovenia",
     "ogDescription": "Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction. We come to you. Book online.",
     "ogImageTitle": "Car Detailing & Mobile Valeting",
     "ogImageSubtitle": "Slovenia · Ceramic coating · Paint correction · We come to you",
@@ -59,7 +59,7 @@
   "about": {
     "overline": "Why A-Shine",
     "heading": "About us",
-    "intro1": "AShine is a professional mobile car detailing service focused on delivering high-end results with precision and care.",
+    "intro1": "A-Shine is a professional mobile car detailing service focused on delivering high-end results with precision and care.",
     "intro2": "We combine precision, attention to detail and a passion for a well-kept vehicle.",
     "belief": "We believe a clean car isn’t just about looks - it’s about how it makes you feel.",
     "offer": "We come fully equipped to your location, saving you time while delivering professional-grade results.",
@@ -300,10 +300,10 @@
   "privacy": {
     "backToHome": "← Back to home",
     "title": "Privacy Policy",
-    "description": "Privacy policy for AShine – how we collect, use and protect your personal data.",
+    "description": "Privacy policy for A-Shine – how we collect, use and protect your personal data.",
     "lastUpdated": "Last updated: April 2026",
     "whoWeAreTitle": "1. Who we are",
-    "whoWeAreBody": "AShine (\"we\", \"us\") is the data controller for personal data processed through this website. We provide car detailing and mobile valeting services in Slovenia. This policy explains how we process and protect your personal data in line with the GDPR and applicable Slovenian law.",
+    "whoWeAreBody": "A-Shine (\"we\", \"us\") is the data controller for personal data processed through this website. We provide car detailing and mobile valeting services in Slovenia. This policy explains how we process and protect your personal data in line with the GDPR and applicable Slovenian law.",
     "dataWeCollectTitle": "2. Data we collect",
     "dataWeCollectIntro": "When you use our booking form or contact us, we may collect:",
     "dataWeCollect1": "Name and email address",
@@ -334,12 +334,12 @@
   "terms": {
     "backToHome": "← Back to home",
     "title": "Terms of Service",
-    "description": "Terms and conditions for using AShine website and booking our car detailing services.",
+    "description": "Terms and conditions for using A-Shine website and booking our car detailing services.",
     "lastUpdated": "Last updated: April 2026",
     "agreementTitle": "1. Agreement",
-    "agreementBody": "By using the AShine website and submitting a booking request, you agree to these terms. If you do not agree, please do not use the site or our services.",
+    "agreementBody": "By using the A-Shine website and submitting a booking request, you agree to these terms. If you do not agree, please do not use the site or our services.",
     "servicesTitle": "2. Services",
-    "servicesBody": "AShine provides car detailing and mobile valeting services in Slovenia. Service areas, packages, and prices shown on the website are informational and may be adjusted based on vehicle condition, location, and requested scope. A booking becomes binding only after explicit confirmation (for example, by email or phone).",
+    "servicesBody": "A-Shine provides car detailing and mobile valeting services in Slovenia. Service areas, packages, and prices shown on the website are informational and may be adjusted based on vehicle condition, location, and requested scope. A booking becomes binding only after explicit confirmation (for example, by email or phone).",
     "bookingsTitle": "3. Bookings and payment",
     "bookingsBody": "Submitting a booking request via the website does not itself create a binding contract. We will contact you to confirm availability, final scope, and price. Payment terms (for example, payment on completion or deposit) are agreed before service delivery. You are responsible for providing accurate and complete contact and vehicle information. Email delivery depends on our email provider (Resend) and your mailbox provider; we are not liable for delays caused by spam filters, incorrect addresses, or third-party outages.",
     "cancellationTitle": "4. Cancellation and rescheduling",
@@ -355,7 +355,7 @@
   "cookies": {
     "backToHome": "← Back to home",
     "title": "Cookie Policy",
-    "description": "How AShine uses cookies and similar technologies on this website.",
+    "description": "How A-Shine uses cookies and similar technologies on this website.",
     "lastUpdated": "Last updated: April 2026",
     "whatAreTitle": "1. What are cookies?",
     "whatAreBody": "Cookies are small text files stored on your device when you visit a website. They are widely used to make sites work properly, remember preferences, and understand how visitors use the site.",
@@ -380,7 +380,7 @@
   },
   "mobileCta": {
     "ariaLabel": "Quick contact bar",
-    "callAriaLabel": "Call AShine",
+    "callAriaLabel": "Call A-Shine",
     "bookNow": "Book Now"
   },
   "stats": {

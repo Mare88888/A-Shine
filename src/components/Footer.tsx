@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl'
 import { Link } from '@/i18n/navigation'
-import { CONTACT_EMAIL } from '@/config/site'
+import { BRAND, CONTACT_EMAIL } from '@/config/site'
 import { motion } from 'framer-motion'
 
 export function PhoneIcon({ className }: { className?: string }) {
@@ -100,7 +100,7 @@ export default function Footer() {
               onClick={scrollToTop}
               className="text-h4 text-text-primary hover:text-premium-accent transition-colors"
             >
-              AShine
+              {BRAND.name}
             </Link>
             <p className="mt-3 text-body-sm text-text-muted">
               {t('tagline')}
