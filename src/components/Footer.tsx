@@ -161,35 +161,42 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-10 pt-6 border-t border-border-default flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-            <p className="text-text-muted text-body-sm">© {new Date().getFullYear()} AShine. {t('rights')}</p>
-            <p className="text-text-muted text-[0.7rem] sm:text-body-sm">
-              Made by{' '}
-              <a
-                href="https://my-portfolio-nine-neon-53.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-text-secondary hover:text-premium-accent transition-colors underline-offset-2 hover:underline"
-              >
-                Marko Lempl
-              </a>
-            </p>
-            <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-body-sm">
-              <Link href="/privacy" className="text-text-muted hover:text-premium-accent transition-colors">
-                {t('privacy')}
-              </Link>
-              <span className="text-text-disabled">·</span>
-              <Link href="/terms" className="text-text-muted hover:text-premium-accent transition-colors">
-                {t('terms')}
-              </Link>
-              <span className="text-text-disabled">·</span>
-              <Link href="/cookies" className="text-text-muted hover:text-premium-accent transition-colors">
-                {t('cookies')}
-              </Link>
-            </nav>
+        <div className="mt-10 pt-6 border-t border-border-default flex flex-col gap-4">
+          <p className="hidden md:block text-center text-[0.6875rem] leading-relaxed text-text-muted/90 max-w-3xl mx-auto px-2">
+            {t('legalNameFull')}
+          </p>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+              <p className="text-text-muted text-body-sm text-center sm:text-left">
+                © {new Date().getFullYear()} {t('legalNameShort')} - {t('rights')}
+              </p>
+              <p className="text-text-muted text-[0.7rem] sm:text-body-sm">
+                Made by{' '}
+                <a
+                  href="https://my-portfolio-nine-neon-53.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-text-secondary hover:text-premium-accent transition-colors underline-offset-2 hover:underline"
+                >
+                  Marko Lempl
+                </a>
+              </p>
+              <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-body-sm">
+                <Link href="/privacy" className="text-text-muted hover:text-premium-accent transition-colors">
+                  {t('privacy')}
+                </Link>
+                <span className="text-text-disabled">·</span>
+                <Link href="/terms" className="text-text-muted hover:text-premium-accent transition-colors">
+                  {t('terms')}
+                </Link>
+                <span className="text-text-disabled">·</span>
+                <Link href="/cookies" className="text-text-muted hover:text-premium-accent transition-colors">
+                  {t('cookies')}
+                </Link>
+              </nav>
+            </div>
+            <BackToTop />
           </div>
-          <BackToTop />
         </div>
       </div>
     </footer>
