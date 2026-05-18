@@ -11,6 +11,12 @@ function scrollToSection(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
 }
 
+function videoMimeType(src: string): string {
+  if (src.endsWith('.webm')) return 'video/webm'
+  if (src.endsWith('.ogg') || src.endsWith('.ogv')) return 'video/ogg'
+  return 'video/mp4'
+}
+
 export interface HeroProps {
   /** Optional background image path (e.g. /hero-bg.jpg). If not set, gradient only. */
   backgroundImage?: string
@@ -30,7 +36,7 @@ export interface HeroProps {
 
 export default function Hero({
   backgroundImage,
-  backgroundVideo = "/0205-web.mp4",
+  backgroundVideo = "/HeroVideo.webm",
   overline,
   headline,
   subheadline,
@@ -55,7 +61,7 @@ export default function Hero({
   }, [])
 
   const gradientClass = hasMedia
-    ? 'from-premium-charcoal/60 via-premium-black/70 to-premium-black/95'
+    ? 'from-premium-charcoal/20 via-premium-black/30 to-premium-black/60'
     : 'from-premium-charcoal via-premium-black to-premium-black'
 
   return (
@@ -68,14 +74,14 @@ export default function Hero({
       {backgroundVideo ? (
         <div className="absolute inset-0" aria-hidden>
           <video
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover brightness-[1.2] contrast-[1.03]"
             autoPlay
             muted
             loop
             playsInline
             preload="auto"
           >
-            <source src={backgroundVideo} type="video/mp4" />
+            <source src={backgroundVideo} type={videoMimeType(backgroundVideo)} />
           </video>
         </div>
       ) : backgroundImage ? (
@@ -85,7 +91,7 @@ export default function Hero({
       ) : null}
       <div className={`absolute inset-0 bg-gradient-to-b ${gradientClass}`} aria-hidden />
       <div
-        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(0,184,219,0.08),transparent)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(0,184,219,0.12),transparent)]"
         aria-hidden
       />
       <div className="relative z-10 w-full px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
