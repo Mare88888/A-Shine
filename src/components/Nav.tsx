@@ -108,7 +108,7 @@ export default function Nav() {
           aria-label={t('home')}
         >
           <Image
-            src="/NavbarLogoTransparent.png"
+            src="/NavbarLogoTransparent.webp"
             alt={`${BRAND.name} Logo`}
             width={100}
             height={100}

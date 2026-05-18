@@ -48,7 +48,7 @@ export default function About() {
               </div>
               <div className="border-t lg:border-t-0 lg:border-l border-border-default flex items-center justify-center">
                 <Image
-                  src="/certificate.png"
+                  src="/certificate.webp"
                   alt="A-Shine certificate"
                   width={0}
                   height={0}
@@ -66,7 +66,7 @@ export default function About() {
             >
               <div className="order-last lg:order-first relative min-h-64 border-t lg:border-t-0 lg:border-r border-border-default">
                 <Image
-                  src="/certificate2.png"
+                  src="/certificate2.webp"
                   alt="A-Shine certificate"
                   width={0}
                   height={0}

@@ -7,8 +7,8 @@ import { useTransition } from 'react'
 import { writeStoredLocale } from '@/lib/locale-storage'
 
 const LOCALES = [
-  { code: 'en' as const, label: 'English', ariaLabel: 'Switch to English', flag: '/flag-united-kingdom.svg' },
-  { code: 'sl' as const, label: 'Slovenščina', ariaLabel: 'Preklopi na slovenščino', flag: '/flag-slovenia.svg' },
+  { code: 'en' as const, label: 'English', ariaLabel: 'Switch to English', flag: '/flag-united-kingdom.webp' },
+  { code: 'sl' as const, label: 'Slovenščina', ariaLabel: 'Preklopi na slovenščino', flag: '/flag-slovenia.webp' },
 ] as const
 
 const BUTTON_BASE_CLASS =

@@ -37,18 +37,18 @@ function getClipPath(direction: RevealDirection, showing: boolean): string {
 }
 
 const defaultItems: GalleryItem[] = [
-  { id: 1, before: "/before1.png", after: "/after1.png" },
-  { id: 2, before: "/before10.png", after: "/after10.png" },
-  { id: 3, before: "/before3.png", after: "/after3.png" },
-  { id: 4, before: "/before4.png", after: "/after4.png" },
-  { id: 5, before: "/before5.png", after: "/after5.png" },
-  { id: 6, before: "/before6.png", after: "/after6.png" },
-  { id: 7, before: "/before7.png", after: "/after7.png" },
-  { id: 8, before: "/before8.png", after: "/after8.png" },
+  { id: 1, before: "/before1.webp", after: "/after1.webp" },
+  { id: 2, before: "/before10.webp", after: "/after10.webp" },
+  { id: 3, before: "/before3.webp", after: "/after3.webp" },
+  { id: 4, before: "/before4.webp", after: "/after4.webp" },
+  { id: 5, before: "/before5.webp", after: "/after5.webp" },
+  { id: 6, before: "/before6.webp", after: "/after6.webp" },
+  { id: 7, before: "/before7.webp", after: "/after7.webp" },
+  { id: 8, before: "/before8.webp", after: "/after8.webp" },
   {
     id: 9,
-    before: "/before9.png",
-    after: "/after9.png",
+    before: "/before9.webp",
+    after: "/after9.webp",
     afterObjectPosition: "bottom",
   },
 ];

@@ -78,7 +78,7 @@ const categories = [
     key: "cleaning" as const,
     icon: CleaningIcon,
     href: "#car-cleaning",
-    heroImage: "/cleaningServices.png",
+    heroImage: "/cleaningServices.webp",
     bgClass:
       "bg-gradient-to-br from-premium-slate via-premium-charcoal to-premium-black",
     patternClass:
@@ -89,7 +89,7 @@ const categories = [
     key: "detailing" as const,
     icon: DetailingIcon,
     href: "#car-detailing",
-    heroImage: "/vehicleDetailing.png",
+    heroImage: "/vehicleDetailing.webp",
     bgClass:
       "bg-gradient-to-br from-premium-charcoal via-premium-slate to-premium-black",
     patternClass:
