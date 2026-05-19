@@ -108,16 +108,15 @@ export default function Nav() {
           aria-label={t('home')}
         >
           <Image
-            src="/NavbarLogoTransparent.webp"
-            alt={`${BRAND.name} Logo`}
-            width={100}
-            height={100}
-            style={{ borderRadius: "5px" }}
-            className="h-30 w-30 object-contain"
+            src={BRAND.logoSrc}
+            alt={BRAND.name}
+            width={160}
+            height={48}
+            className="h-10 w-auto object-contain sm:h-11"
             priority
-            sizes="(max-width: 768px) 96px, 100px"
+            sizes="(max-width: 768px) 120px, 160px"
           />
-          <span>{BRAND.name}</span>
+          <span className="sr-only">{BRAND.name}</span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">
