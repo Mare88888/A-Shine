@@ -269,9 +269,17 @@
     "openInGoogleMaps": "Open in Google Maps"
   },
   "testimonials": {
-    "overline": "Reviews",
-    "heading": "Testimonials",
-    "subheading": "What our customers say about our detailing and valeting."
+    "overline": "Google reviews",
+    "heading": "What customers say",
+    "subheading": "Real reviews from Google. See all opinions on our Google Business profile.",
+    "googleReview": "Google review",
+    "ratingSummary": "{count} Google reviews",
+    "seeAllReviews": "See all on Google",
+    "writeReview": "Leave a review",
+    "prev": "Previous reviews",
+    "next": "Next reviews",
+    "carouselNav": "Review carousel",
+    "goToSlide": "Go to slide {n}"
   },
   "pricing": {
     "overline": "Packages",

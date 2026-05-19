@@ -269,9 +269,17 @@
     "openInGoogleMaps": "Odpri v Google Zemljevidih"
   },
   "testimonials": {
-    "overline": "Ocene",
-    "heading": "Mnenja",
-    "subheading": "Kaj naše stranke pravijo o našem detailingu in valetingu."
+    "overline": "Google mnenja",
+    "heading": "Kaj pravijo stranke",
+    "subheading": "Prava mnenja z Googla. Vsa mnenja si oglejte na našem Google Business profilu.",
+    "googleReview": "Google mnenje",
+    "ratingSummary": "{count} Google mnenj",
+    "seeAllReviews": "Vsa mnenja na Googlu",
+    "writeReview": "Dodajte mnenje",
+    "prev": "Prejšnja mnenja",
+    "next": "Naslednja mnenja",
+    "carouselNav": "Vrtiljak mnenj",
+    "goToSlide": "Pojdi na {n}. stran"
   },
   "pricing": {
     "overline": "Paketi",
