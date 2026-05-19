@@ -208,13 +208,13 @@ export default function Contact() {
     if (serviceCategory === 'custom' || packageId === PACKAGE_CUSTOM_ID) {
       if (serviceCategory === 'custom') return t('serviceCustom')
       const categoryLabel = serviceCategory === 'cleaning' ? t('serviceCleaning') : t('serviceDetailing')
-      return `${categoryLabel} – ${customPackageLabel}`
+      return `${categoryLabel} - ${customPackageLabel}`
     }
     const packages = getPackagesForType(serviceCategory)
     const pkg = packages.find((p) => p.id === packageId)
     const categoryLabel = serviceCategory === 'cleaning' ? t('serviceCleaning') : t('serviceDetailing')
     const pkgName = pkg ? tPricing(`packages.${pkg.id}.name`) : packageId
-    return pkg ? `${categoryLabel} – ${pkgName}` : packageId
+    return pkg ? `${categoryLabel} - ${pkgName}` : packageId
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {

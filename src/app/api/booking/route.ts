@@ -39,8 +39,8 @@ export type BookingPayload = {
 const EMAIL_TEXT = {
   en: {
     ownerSubject: (name: string, service: string) =>
-      `Booking request from ${name} – ${service}`,
-    customerSubject: "We received your booking request – A-Shine",
+      `Booking request from ${name} - ${service}`,
+    customerSubject: "We received your booking request - A-Shine",
     ownerHeading: "New booking request",
     customerHeading: "We received your booking request",
     greeting: (name: string) => `Hi ${name},`,
@@ -76,8 +76,8 @@ const EMAIL_TEXT = {
   },
   sl: {
     ownerSubject: (name: string, service: string) =>
-      `Novo povpraševanje od ${name} – ${service}`,
-    customerSubject: "Prejeli smo vaše povpraševanje – A-Shine",
+      `Novo povpraševanje od ${name} - ${service}`,
+    customerSubject: "Prejeli smo vaše povpraševanje - A-Shine",
     ownerHeading: "Novo povpraševanje",
     customerHeading: "Prejeli smo vaše povpraševanje",
     greeting: (name: string) => `Pozdravljeni ${name},`,
@@ -357,7 +357,7 @@ export async function POST(request: Request) {
 
     if (confirmResult.error) {
       console.error("Confirmation email error:", confirmResult.error);
-      // Still return success – the booking was received by the business
+      // Still return success - the booking was received by the business
     }
 
     return NextResponse.json({ success: true, id: data?.id });

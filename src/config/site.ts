@@ -67,7 +67,7 @@ export const BRAND = {
   accent: "#00b8db",
 } as const;
 
-/** Celestrina 19, Malečnik – used by MapSection and JsonLd */
+/** Celestrina 19, Malečnik - used by MapSection and JsonLd */
 export const GEO = {
   latitude: 46.56174661845999,
   longitude: 15.717263781943037,

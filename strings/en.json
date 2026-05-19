@@ -1,9 +1,9 @@
 {
   "metadata": {
     "siteTitleDefault": "A-Shine Mobile Detailing",
-    "siteDescription": "A-Shine (ashine.si) – professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – Celestrina 19, Malečnik. Book online.",
+    "siteDescription": "A-Shine (ashine.si) - professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you - Celestrina 19, Malečnik. Book online.",
     "homeTitle": "A-Shine Mobile Detailing",
-    "homeDescription": "Official A-Shine website at ashine.si. Book car detailing and mobile valeting in Slovenia – ceramic coating, paint correction, full detail. Service area 25–200 km from Malečnik.",
+    "homeDescription": "Official A-Shine website at ashine.si. Book car detailing and mobile valeting in Slovenia - ceramic coating, paint correction, full detail. Service area 25-200 km from Malečnik.",
     "ogTitle": "A-Shine Mobile Detailing",
     "ogDescription": "Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction. We come to you. Book online.",
     "ogImageTitle": "Car Detailing & Mobile Valeting",
@@ -287,20 +287,20 @@
     "detailingExteriorHeading": "Exterior",
     "detailingInteriorHeading": "Interior",
     "detailingPackagesHeading": "Packages",
-    "detailingExterior1": "Basic exterior clean (pre-wash, hand wash, wheel clean, dry) – from €30",
-    "detailingExterior2": "Paint decontamination – from €30",
-    "detailingExterior3": "Refresh machine polish (gloss enhancement) – from €150",
-    "detailingExterior4": "Paint correction (scratch and defect removal) – after vehicle inspection",
-    "detailingExterior5": "Protective coatings (wax, sealant) – from €10",
-    "detailingExterior6": "Ceramic coating – from €350",
-    "detailingExterior7": "Engine bay clean – from €40",
-    "detailingExterior8": "Headlight restoration – from €25 / light",
-    "detailingInterior1": "Basic interior (wipe-down, vacuum, glass cleaning) – from €40",
-    "detailingInterior2": "Deep interior (cleaners, brushing, blow-out, thorough vacuum) – from €60",
-    "detailingInterior3": "Chemical seat cleaning – from €15 / seat",
-    "detailingInterior4": "Leather cleaning and care – from €20",
-    "detailingInterior5": "Pet hair and sand removal – from €20",
-    "detailingInterior6": "Steam disinfection / decontamination – from €20",
+    "detailingExterior1": "Basic exterior clean (pre-wash, hand wash, wheel clean, dry) - from €30",
+    "detailingExterior2": "Paint decontamination - from €30",
+    "detailingExterior3": "Refresh machine polish (gloss enhancement) - from €150",
+    "detailingExterior4": "Paint correction (scratch and defect removal) - after vehicle inspection",
+    "detailingExterior5": "Protective coatings (wax, sealant) - from €10",
+    "detailingExterior6": "Ceramic coating - from €350",
+    "detailingExterior7": "Engine bay clean - from €40",
+    "detailingExterior8": "Headlight restoration - from €25 / light",
+    "detailingInterior1": "Basic interior (wipe-down, vacuum, glass cleaning) - from €40",
+    "detailingInterior2": "Deep interior (cleaners, brushing, blow-out, thorough vacuum) - from €60",
+    "detailingInterior3": "Chemical seat cleaning - from €15 / seat",
+    "detailingInterior4": "Leather cleaning and care - from €20",
+    "detailingInterior5": "Pet hair and sand removal - from €20",
+    "detailingInterior6": "Steam disinfection / decontamination - from €20",
     "cleaningHeading": "Car cleaning",
     "cleaningIntroShort": "We offer regular and deep car cleaning.",
     "cleaningIntroLine2": "Final price depends on vehicle size and condition. You’ll always receive a clear quote before we start.",
@@ -317,14 +317,14 @@
     "cleaningCta": "Send enquiry",
     "cleaningPriceOnRequest": "On request",
     "cleaningAdditionalHeading": "Additional car services",
-    "cleaningAdditional1": "Pet hair and sand removal: €20–40",
+    "cleaningAdditional1": "Pet hair and sand removal: €20-40",
     "cleaningAdditional2": "Odour and allergen treatment / steam disinfection: on request",
     "cleaningAdditional3": "Engine bay or wheel arch deep clean: on request",
     "readMore": "Read more",
     "readLess": "Read less",
     "packages": {
       "cleaning-basic": {
-        "name": "BASIC – Exterior & interior refresh",
+        "name": "BASIC - Exterior & interior refresh",
         "price": "On request",
         "description": "Exterior wash, wheel clean, interior vacuum and wipe-down.",
         "features": [
@@ -335,7 +335,7 @@
         ]
       },
       "cleaning-full": {
-        "name": "FULL CLEAN – Deep car clean",
+        "name": "FULL CLEAN - Deep car clean",
         "price": "On request",
         "description": "Everything in Basic plus a deep interior clean and stain removal in key areas.",
         "features": [
@@ -346,7 +346,7 @@
         ]
       },
       "cleaning-premium": {
-        "name": "PREMIUM DEEP CLEAN – Full car reset",
+        "name": "PREMIUM DEEP CLEAN - Full car reset",
         "price": "On request",
         "description": "Everything in Full Clean plus pet hair removal, odour treatment and detailed finishing touches.",
         "features": [
@@ -357,7 +357,7 @@
         ]
       },
       "detail-standard": {
-        "name": "Standard Detail – Quick detail",
+        "name": "Standard Detail - Quick detail",
         "price": "from €70",
         "description": "Basic maintenance detail to keep your car looking fresh.",
         "features": [
@@ -429,8 +429,8 @@
     "locationOur": "At our location",
     "locationMobile": "We come to you",
     "distance25": "Up to 25 km",
-    "distance100": "50–100 km",
-    "distance200": "100–200 km",
+    "distance100": "50-100 km",
+    "distance200": "100-200 km",
     "customPackage": "Custom / Other",
     "placeholderName": "John Doe",
     "placeholderEmail": "john.doe@gmail.com",
@@ -450,8 +450,8 @@
       "datePast": "Preferred date cannot be in the past",
       "dateYearHigh": "Try a sooner date",
       "dateFormat": "Use DD/MM/YYYY (e.g. 25/03/2025)",
-      "dateMonth": "Month must be 01–12",
-      "dateDay": "Day must be 01–31",
+      "dateMonth": "Month must be 01-12",
+      "dateDay": "Day must be 01-31",
       "dateYear": "Enter a valid year",
       "message": "Please add a few more details (min 10 characters)",
       "submitError": "Something went wrong. Please try again.",
@@ -465,7 +465,7 @@
   "privacy": {
     "backToHome": "← Back to home",
     "title": "Privacy Policy",
-    "description": "Privacy policy for A-Shine – how we collect, use and protect your personal data.",
+    "description": "Privacy policy for A-Shine - how we collect, use and protect your personal data.",
     "lastUpdated": "Last updated: April 2026",
     "whoWeAreTitle": "1. Who we are",
     "whoWeAreBody": "A-Shine (\"we\", \"us\") is the data controller for personal data processed through this website. We provide car detailing and mobile valeting services in Slovenia. This policy explains how we process and protect your personal data in line with the GDPR and applicable Slovenian law.",

@@ -69,10 +69,10 @@ High-end car detailing / automotive performance feel. Dark, minimal, aggressive.
 
 | Role           | Size (rem)             | Weight  | Line height | Letter-spacing | Use                       |
 | -------------- | ---------------------- | ------- | ----------- | -------------- | ------------------------- |
-| **Display**    | 3.5–4.5 rem (56–72px)  | 700–800 | 1.05        | -0.02em        | Hero headline             |
-| **H1**         | 2.5–3 rem (40–48px)    | 700     | 1.1         | -0.02em        | Page title                |
-| **H2**         | 2–2.25 rem (32–36px)   | 700     | 1.15        | -0.01em        | Section title             |
-| **H3**         | 1.5–1.75 rem (24–28px) | 600     | 1.2         | 0              | Subsection                |
+| **Display**    | 3.5-4.5 rem (56-72px)  | 700-800 | 1.05        | -0.02em        | Hero headline             |
+| **H1**         | 2.5-3 rem (40-48px)    | 700     | 1.1         | -0.02em        | Page title                |
+| **H2**         | 2-2.25 rem (32-36px)   | 700     | 1.15        | -0.01em        | Section title             |
+| **H3**         | 1.5-1.75 rem (24-28px) | 600     | 1.2         | 0              | Subsection                |
 | **H4**         | 1.25 rem (20px)        | 600     | 1.25        | 0              | Card title                |
 | **Body large** | 1.125 rem (18px)       | 400     | 1.5         | 0              | Lead paragraph            |
 | **Body**       | 1 rem (16px)           | 400     | 1.5         | 0              | Default copy              |
@@ -82,7 +82,7 @@ High-end car detailing / automotive performance feel. Dark, minimal, aggressive.
 
 **Rules:**
 
-- Headings: bold (600–800), tight tracking, single clean sans.
+- Headings: bold (600-800), tight tracking, single clean sans.
 - Overlines: uppercase, wide letter-spacing, small size.
 - No serifs in body for this theme; keep it sharp and automotive.
 
@@ -95,7 +95,7 @@ High-end car detailing / automotive performance feel. Dark, minimal, aggressive.
 - **Background:** Accent (e.g. `#00ff88`)
 - **Text:** Black `#08080a`, weight 600
 - **Padding:** 14px 28px (py-3.5 px-7)
-- **Border radius:** 2–4px (sharp) or 6px (slightly soft)
+- **Border radius:** 2-4px (sharp) or 6px (slightly soft)
 - **Font:** 0.875rem (14px), uppercase optional for “Book now” style
 - **Hover:** Slightly lighter/darker accent + slight scale (1.02) or brightness
 - **Active:** Scale 0.98
@@ -123,20 +123,20 @@ High-end car detailing / automotive performance feel. Dark, minimal, aggressive.
 - **Text:** White or red
 - **Hover:** Darker red
 
-**Aggressive touch:** Slight corner radius (2–6px), bold weight, optional uppercase + letter-spacing on primary.
+**Aggressive touch:** Slight corner radius (2-6px), bold weight, optional uppercase + letter-spacing on primary.
 
 ---
 
 ## 4. Section spacing rules
 
-- **Section padding (vertical):** 80px–120px (5rem–7.5rem). Use 80px on mobile, 96px tablet, 120px desktop.
+- **Section padding (vertical):** 80px-120px (5rem-7.5rem). Use 80px on mobile, 96px tablet, 120px desktop.
 - **Section padding (horizontal):** 16px mobile, 24px tablet, 32px desktop (align with grid).
 - **Container max-width:** 1280px (80rem) or 1152px (72rem) for content; center with auto margins.
 - **Gap between sections:** Consistent padding only; no extra margin between sections (padding creates the rhythm).
 - **In-section spacing:**
-  - Section title to content: 48px–64px (3rem–4rem).
-  - Card grid gap: 24px–32px (1.5rem–2rem).
-  - Block (e.g. text block) to next block: 24px–32px.
+  - Section title to content: 48px-64px (3rem-4rem).
+  - Card grid gap: 24px-32px (1.5rem-2rem).
+  - Block (e.g. text block) to next block: 24px-32px.
 
 **Tailwind-style tokens:**
 
@@ -159,15 +159,15 @@ High-end car detailing / automotive performance feel. Dark, minimal, aggressive.
 
 ### Animation
 
-- **Page load / section in view:** Fade-in + slide-up (opacity 0→1, translateY 12–20px→0), 0.5–0.6s ease-out; stagger children by 0.05–0.1s.
-- **Hero:** Headline and CTA with short delay (0.1–0.2s) after load.
+- **Page load / section in view:** Fade-in + slide-up (opacity 0→1, translateY 12-20px→0), 0.5-0.6s ease-out; stagger children by 0.05-0.1s.
+- **Hero:** Headline and CTA with short delay (0.1-0.2s) after load.
 - **Numbers / stats:** Count-up or simple fade-in when in viewport.
-- **Accent glow:** Subtle box-shadow or pseudo-element pulse on primary CTA (e.g. accent at 20–30% opacity, 2–3s loop).
+- **Accent glow:** Subtle box-shadow or pseudo-element pulse on primary CTA (e.g. accent at 20-30% opacity, 2-3s loop).
 - **Micro:** Button press scale(0.98); focus ring 0.15s ease.
 
 ### Performance / automotive feel
 
-- **Fast, short transitions:** 0.15–0.25s for UI; 0.3s max for cards/imagery.
+- **Fast, short transitions:** 0.15-0.25s for UI; 0.3s max for cards/imagery.
 - **Easing:** `ease-out` for enter; `ease-in-out` for hover.
 - **Avoid:** Bouncy or playful easing; keep it tight and precise.
 - **Optional:** Thin accent underline that “draws” on hover (width 0→100%, 0.2s).

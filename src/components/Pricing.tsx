@@ -284,7 +284,9 @@ export default function Pricing() {
                     <ul className="space-y-1.5 text-body-sm leading-relaxed text-text-secondary" role="list">
                       {EXTERIOR_KEYS.map((key) => {
                         const raw = t(key)
-                        const [service, price] = raw.split("–").map((part) => part.trim())
+                        const [service, price] = raw
+                          .split(/\s-\s(?=(?:from|after|od|po)\s)/)
+                          .map((part) => part.trim())
                         return (
                           <li
                             key={key}
@@ -308,7 +310,9 @@ export default function Pricing() {
                     <ul className="space-y-1.5 text-body-sm leading-relaxed text-text-secondary" role="list">
                       {INTERIOR_KEYS.map((key) => {
                         const raw = t(key)
-                        const [service, price] = raw.split("–").map((part) => part.trim())
+                        const [service, price] = raw
+                          .split(/\s-\s(?=(?:from|after|od|po)\s)/)
+                          .map((part) => part.trim())
                         return (
                           <li
                             key={key}

@@ -1,9 +1,9 @@
 {
   "metadata": {
     "siteTitleDefault": "A-Shine Mobile Detailing",
-    "siteDescription": "A-Shine (ashine.si) – profesionalni avto detailing in mobilna nega v Sloveniji. Keramične prevleke, korekcija laka, popolna obnova. Pridemo k vam – Celestrina 19, Malečnik. Rezervirajte preko spleta.",
+    "siteDescription": "A-Shine (ashine.si) - profesionalni avto detailing in mobilna nega v Sloveniji. Keramične prevleke, korekcija laka, popolna obnova. Pridemo k vam - Celestrina 19, Malečnik. Rezervirajte preko spleta.",
     "homeTitle": "A-Shine Mobile Detailing",
-    "homeDescription": "Uradna spletna stran A-Shine na ashine.si. Rezervirajte avto detailing in mobilno nego v Sloveniji – keramične prevleke, korekcija laka, popolna obnova. Območje 25–200 km od Malečnika.",
+    "homeDescription": "Uradna spletna stran A-Shine na ashine.si. Rezervirajte avto detailing in mobilno nego v Sloveniji - keramične prevleke, korekcija laka, popolna obnova. Območje 25-200 km od Malečnika.",
     "ogTitle": "A-Shine Mobile Detailing",
     "ogDescription": "Profesionalni avto detailing in mobilna nega v Sloveniji. Keramične prevleke, korekcija laka. Pridemo k vam. Rezervirajte preko spleta.",
     "ogImageTitle": "Avto detailing in mobilna nega",
@@ -287,20 +287,20 @@
     "detailingExteriorHeading": "Zunanjost",
     "detailingInteriorHeading": "Notranjost",
     "detailingPackagesHeading": "Paketi",
-    "detailingExterior1": "Osnovno čiščenje zunanjosti (predpranje, ročno pranje, čiščenje platišč, sušenje) – od 30 €",
-    "detailingExterior2": "Dekontaminacija laka – od 30 €",
-    "detailingExterior3": "Osvežitveno strojno poliranje (povečanje sijaja) – od 150 €",
-    "detailingExterior4": "Korekcija laka (odstranjevanje prask in nepravilnosti) – po ogledu vozila",
-    "detailingExterior5": "Zaščitni premazi (vosek, sealant) – od 10 €",
-    "detailingExterior6": "Keramični premaz – od 350 €",
-    "detailingExterior7": "Čiščenje motornega prostora – od 40 €",
-    "detailingExterior8": "Obnova žarometov – od 25 € / luč",
-    "detailingInterior1": "Osnovno čiščenje (brisanje površin, sesanje, stekla) – od 40 €",
-    "detailingInterior2": "Globinsko čiščenje (čistila, krtačenje, izpihovanje, temeljito sesanje) – od 60 €",
-    "detailingInterior3": "Kemično čiščenje sedežev – od 15 € / sedež",
-    "detailingInterior4": "Čiščenje in nega usnja – od 20 €",
-    "detailingInterior5": "Odstranjevanje dlak in peska – od 20 €",
-    "detailingInterior6": "Parna dezinfekcija / dekontaminacija – od 20 €",
+    "detailingExterior1": "Osnovno čiščenje zunanjosti (predpranje, ročno pranje, čiščenje platišč, sušenje) - od 30 €",
+    "detailingExterior2": "Dekontaminacija laka - od 30 €",
+    "detailingExterior3": "Osvežitveno strojno poliranje (povečanje sijaja) - od 150 €",
+    "detailingExterior4": "Korekcija laka (odstranjevanje prask in nepravilnosti) - po ogledu vozila",
+    "detailingExterior5": "Zaščitni premazi (vosek, sealant) - od 10 €",
+    "detailingExterior6": "Keramični premaz - od 350 €",
+    "detailingExterior7": "Čiščenje motornega prostora - od 40 €",
+    "detailingExterior8": "Obnova žarometov - od 25 € / luč",
+    "detailingInterior1": "Osnovno čiščenje (brisanje površin, sesanje, stekla) - od 40 €",
+    "detailingInterior2": "Globinsko čiščenje (čistila, krtačenje, izpihovanje, temeljito sesanje) - od 60 €",
+    "detailingInterior3": "Kemično čiščenje sedežev - od 15 € / sedež",
+    "detailingInterior4": "Čiščenje in nega usnja - od 20 €",
+    "detailingInterior5": "Odstranjevanje dlak in peska - od 20 €",
+    "detailingInterior6": "Parna dezinfekcija / dekontaminacija - od 20 €",
     "cleaningHeading": "Čiščenje avtomobilov",
     "cleaningIntroShort": "Ponujamo redno in globinsko čiščenje vozil.",
     "cleaningIntroLine2": "Končna cena je odvisna od velikosti in stanja vozila. Preden začnemo, boste vedno prejeli jasno ponudbo.",
@@ -317,14 +317,14 @@
     "cleaningCta": "Pošlji povpraševanje",
     "cleaningPriceOnRequest": "Po dogovoru",
     "cleaningAdditionalHeading": "Dodatne storitve za vozila",
-    "cleaningAdditional1": "Odstranjevanje dlak in peska: 20 – 40 €",
+    "cleaningAdditional1": "Odstranjevanje dlak in peska: 20 - 40 €",
     "cleaningAdditional2": "Odstranjevanje vonjav in alergenov / parna dezinfekcija: po dogovoru",
     "cleaningAdditional3": "Globinsko čiščenje motornega prostora ali blatnikov: po dogovoru",
     "readMore": "Več",
     "readLess": "Manj",
     "packages": {
       "cleaning-basic": {
-        "name": "BASIC – Osvežitev zunaj in znotraj",
+        "name": "BASIC - Osvežitev zunaj in znotraj",
         "price": "Po dogovoru",
         "description": "Zunanje pranje, čiščenje platišč, notranje sesanje in brisanje površin.",
         "features": [
@@ -335,7 +335,7 @@
         ]
       },
       "cleaning-full": {
-        "name": "FULL CLEAN – Globinsko čiščenje vozila",
+        "name": "FULL CLEAN - Globinsko čiščenje vozila",
         "price": "Po dogovoru",
         "description": "Vse iz Basic, dodatno globinsko čiščenje notranjosti in odstranjevanje madežev na ključnih površinah.",
         "features": [
@@ -346,7 +346,7 @@
         ]
       },
       "cleaning-premium": {
-        "name": "PREMIUM DEEP CLEAN – Popolna osvežitev vozila",
+        "name": "PREMIUM DEEP CLEAN - Popolna osvežitev vozila",
         "price": "Po dogovoru",
         "description": "Vse iz Full Clean, odstranjevanje dlak, obdelava vonjav in alergenov ter zaključni detajli.",
         "features": [
@@ -357,7 +357,7 @@
         ]
       },
       "detail-standard": {
-        "name": "Standard Detail – Quick detail",
+        "name": "Standard Detail - Quick detail",
         "price": "od 70 €",
         "description": "Osnovna nega za redno vzdrževanje vozila.",
         "features": [
@@ -429,8 +429,8 @@
     "locationOur": "Pri nas",
     "locationMobile": "Pridemo do vas.",
     "distance25": "Do 25 km",
-    "distance100": "50–100 km",
-    "distance200": "100–200 km",
+    "distance100": "50-100 km",
+    "distance200": "100-200 km",
     "customPackage": "Po meri / drugo",
     "placeholderName": "Janez Novak",
     "placeholderEmail": "janez.novak@gmail.com",
@@ -450,8 +450,8 @@
       "datePast": "Želeni datum ne sme biti v preteklosti",
       "dateYearHigh": "Poskusite z manjšim datumom",
       "dateFormat": "Uporabite DD/MM/LLLL (npr. 25/03/2025)",
-      "dateMonth": "Mesec mora biti 01–12",
-      "dateDay": "Dan mora biti 01–31",
+      "dateMonth": "Mesec mora biti 01-12",
+      "dateDay": "Dan mora biti 01-31",
       "dateYear": "Vnesite veljavno leto",
       "message": "Dodajte še nekaj podrobnosti (min. 10 znakov)",
       "submitError": "Prišlo je do napake. Poskusite znova.",
@@ -465,7 +465,7 @@
   "privacy": {
     "backToHome": "← Nazaj na domov",
     "title": "Pravilnik o zasebnosti",
-    "description": "Pravilnik o zasebnosti A-Shine – kako zbiramo, uporabljamo in ščitimo vaše osebne podatke.",
+    "description": "Pravilnik o zasebnosti A-Shine - kako zbiramo, uporabljamo in ščitimo vaše osebne podatke.",
     "lastUpdated": "Zadnja posodobitev: april 2026",
     "whoWeAreTitle": "1. Kdo smo",
     "whoWeAreBody": "A-Shine je upravljavec osebnih podatkov, obdelovanih prek te spletne strani. Ponujamo storitve mobilnega avto detailinga v Sloveniji. Ta pravilnik pojasnjuje, kako osebne podatke obdelujemo in varujemo v skladu z GDPR in veljavno slovensko zakonodajo.",

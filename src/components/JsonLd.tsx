@@ -5,7 +5,7 @@
 import { SITE_URL, GEO, CONTACT_EMAIL, BRAND } from '@/config/site'
 
 const BUSINESS_DESCRIPTION =
-  'Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – Celestrina 19, Malečnik. Service area 50–200 km.'
+  'Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you - Celestrina 19, Malečnik. Service area 50-200 km.'
 
 const brandNames = {
   name: BRAND.seoName,
