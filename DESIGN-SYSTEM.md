@@ -1,4 +1,4 @@
-# Dark Premium UI Theme — Design System
+# Dark Premium UI Theme - Design System
 
 High-end car detailing / automotive performance feel. Dark, minimal, aggressive.
 
@@ -27,7 +27,7 @@ High-end car detailing / automotive performance feel. Dark, minimal, aggressive.
 
 ### Accent options (pick one primary)
 
-**Electric green (default — performance / go)**
+**Electric green (default - performance / go)**
 | Token | Hex |
 |-------|-----|
 | Accent | `#00ff88` |

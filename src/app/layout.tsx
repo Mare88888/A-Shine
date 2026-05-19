@@ -13,13 +13,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: BRAND.name,
-  title: { template: `%s | ${BRAND.name}`, default: BRAND.name },
-  authors: [{ name: BRAND.name, url: SITE_URL }],
-  creator: BRAND.name,
-  publisher: BRAND.name,
+  title: { template: `%s | ${BRAND.seoName}`, default: BRAND.seoName },
+  authors: [{ name: BRAND.seoName, url: SITE_URL }],
+  creator: BRAND.seoName,
+  publisher: BRAND.seoName,
   openGraph: {
     type: 'website',
-    siteName: BRAND.name,
+    siteName: BRAND.seoName,
   },
   twitter: {
     card: 'summary_large_image',

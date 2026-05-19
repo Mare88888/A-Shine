@@ -6,7 +6,7 @@ import slMessages from '../../../strings/sl.json'
 
 const MESSAGES = { en: enMessages, sl: slMessages } as const
 
-export const alt = `${BRAND.name} — Car Detailing & Mobile Valeting | Slovenia`
+export const alt = `${BRAND.seoName} - Car Detailing & Mobile Valeting | Slovenia`
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -72,7 +72,7 @@ export default async function OpenGraphImage({ params }: Props) {
               backgroundColor: BRAND.accent,
             }}
           />
-          {BRAND.name}
+          {BRAND.seoName}
         </div>
 
         <div

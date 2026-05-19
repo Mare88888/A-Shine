@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' })
   const keywords = t.raw('keywords') as string[]
   return {
-    title: { template: `%s | ${BRAND.name}`, default: BRAND.name },
+    title: { template: `%s | ${BRAND.seoName}`, default: t('siteTitleDefault') },
     description: t('siteDescription'),
     keywords,
     openGraph: {

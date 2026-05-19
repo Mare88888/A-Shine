@@ -18,6 +18,6 @@ export function writeStoredLocale(locale: Locale): void {
   try {
     window.localStorage.setItem(LOCALE_STORAGE_KEY, locale)
   } catch {
-    // Private mode / blocked storage — ignore
+    // Private mode / blocked storage - ignore
   }
 }

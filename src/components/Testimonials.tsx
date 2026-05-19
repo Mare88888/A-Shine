@@ -170,7 +170,7 @@ export default function Testimonials() {
             </svg>
           </button>
 
-          {/* Single horizontal strip — one slide per click; inner overflow so clipping matches measured width */}
+          {/* Single horizontal strip - one slide per click; inner overflow so clipping matches measured width */}
           <div className="overflow-hidden pl-14 pr-14 sm:pl-20 sm:pr-20 relative min-h-[240px] sm:min-h-[220px]">
             <div ref={trackRef} className="w-full overflow-hidden">
               <motion.div

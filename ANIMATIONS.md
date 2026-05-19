@@ -1,12 +1,12 @@
 # Premium animations (Framer Motion)
 
-Subtle, fast, professional animations — no flashy effects.
+Subtle, fast, professional animations - no flashy effects.
 
 ## Setup
 
 - **Package:** `framer-motion`
-- **Config:** `src/lib/motion.ts` — shared durations, ease, and variants
-- **Section wrapper:** `src/components/MotionSection.tsx` — `SectionEntrance` for in-view fade + slide up
+- **Config:** `src/lib/motion.ts` - shared durations, ease, and variants
+- **Section wrapper:** `src/components/MotionSection.tsx` - `SectionEntrance` for in-view fade + slide up
 
 ## Where animations are used
 

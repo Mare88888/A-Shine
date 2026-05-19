@@ -8,8 +8,8 @@ const BUSINESS_DESCRIPTION =
   'Professional car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you – Celestrina 19, Malečnik. Service area 50–200 km.'
 
 const brandNames = {
-  name: BRAND.name,
-  alternateName: [...BRAND.alternateNames],
+  name: BRAND.seoName,
+  alternateName: [BRAND.name, ...BRAND.alternateNames],
 }
 
 const localBusiness = {
@@ -69,7 +69,7 @@ const webSite = {
   '@type': 'WebSite',
   '@id': `${SITE_URL}/#website`,
   url: SITE_URL,
-  name: `${BRAND.name} | ashine.si`,
+  name: `${BRAND.seoName} | ashine.si`,
   alternateName: [...BRAND.alternateNames],
   description: 'Book car detailing and mobile valeting in Slovenia. Ceramic coating, paint correction, full detail. We come to you.',
   publisher: { '@id': `${SITE_URL}/#organization` },

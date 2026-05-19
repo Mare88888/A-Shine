@@ -1,4 +1,4 @@
-# Car Detailing Website — Documentation
+# Car Detailing Website - Documentation
 
 ## 1. Folder structure
 
@@ -45,7 +45,7 @@ The site is a **single-page layout**: one route (`/`) with sections reached via 
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
 | **Nav**          | Fixed/sticky header. Shows logo + links (Services, Gallery, Pricing, Testimonials, Book Now). Becomes solid on scroll; mobile hamburger with slide-down menu.                                              |
 | **Hero**         | Full-viewport hero. Headline, subline, two CTAs (Book in now, View services). Dark gradient + subtle gold radial + grid overlay.                                                                           |
-| **Services**     | Two columns: (1) **Cleaning & Valeting** — wash, interior, engine bay, quick valet; (2) **Detailing & Protection** — paint correction, ceramic, full detail, new car prep. Numbered headers and card grid. |
+| **Services**     | Two columns: (1) **Cleaning & Valeting** - wash, interior, engine bay, quick valet; (2) **Detailing & Protection** - paint correction, ceramic, full detail, new car prep. Numbered headers and card grid. |
 | **Gallery**      | Before/after grid. Each tile is split (before                                                                                                                                                              | after) with placeholder visuals; clickable for future lightbox. |
 | **Pricing**      | Four packages (Quick valet, Full valet, Day detail, Like new) with price, description, feature list, “Get a quote” CTA. One package marked “Popular”.                                                      |
 | **Testimonials** | Three quote cards (quote, author, role).                                                                                                                                                                   |

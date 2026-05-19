@@ -109,14 +109,15 @@ export default function Nav() {
         >
           <Image
             src={BRAND.logoSrc}
-            alt={BRAND.name}
-            width={160}
-            height={48}
-            className="h-10 w-auto object-contain sm:h-11"
+            alt={`${BRAND.name} Logo`}
+            width={100}
+            height={100}
+            style={{ borderRadius: '5px' }}
+            className="h-30 w-30 object-contain"
             priority
-            sizes="(max-width: 768px) 120px, 160px"
+            sizes="(max-width: 768px) 96px, 100px"
           />
-          <span className="sr-only">{BRAND.name}</span>
+          <span>{BRAND.name}</span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">

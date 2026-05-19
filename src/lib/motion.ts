@@ -4,7 +4,7 @@ import { Variants } from "framer-motion";
 
 /**
  * Premium motion config: smooth, fast, professional.
- * No flashy effects — short duration, ease-out, subtle movement.
+ * No flashy effects - short duration, ease-out, subtle movement.
  */
 
 export const duration = {

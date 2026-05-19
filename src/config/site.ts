@@ -47,14 +47,17 @@ export const BOOKING_INBOX_EMAIL =
   process.env.BOOKING_TO_EMAIL?.trim() || CONTACT_EMAIL;
 
 export const BRAND = {
-  name: "A-Shine Mobile Detailing",
+  /** On-site branding (nav, footer, page copy). */
+  name: "A-Shine",
+  /** Google / browser tab title, Open Graph, JSON-LD. */
+  seoName: "A-Shine Mobile Detailing",
   /** Nav / header logo (public/NavbarLogoTransparent.webp). */
   logoSrc: "/NavbarLogoTransparent.webp",
   /** Search / schema aliases (brand query “ashine”, domain). */
   alternateNames: [
     "ashine",
     "ashine.si",
-    "A-Shine",
+    "A-Shine Mobile Detailing",
     "ashine mobile",
     "ashinemobile",
   ] as const,

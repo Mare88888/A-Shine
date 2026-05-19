@@ -14,9 +14,9 @@ A-Shine is a mobile car detailing business operating across Slovenia from Celest
 
 ## Services
 
-- Cleaning packages — interior, exterior, and full cleaning options.
-- Detailing packages — paint correction, ceramic coating, and full detailing.
-- Mobile service — the technician travels to the client's location within the service area.
+- Cleaning packages - interior, exterior, and full cleaning options.
+- Detailing packages - paint correction, ceramic coating, and full detailing.
+- Mobile service - the technician travels to the client's location within the service area.
 
 ## Service area and travel pricing
 
@@ -34,14 +34,14 @@ A-Shine is a mobile car detailing business operating across Slovenia from Celest
 
 ## Pages
 
-- [Home — Slovenian (default)](${SITE_URL}/): Overview, services, gallery, pricing, map, testimonials, booking form.
-- [Home — English](${SITE_URL}/en): Same page in English.
-- [Privacy Policy — Slovenian](${SITE_URL}/privacy)
-- [Privacy Policy — English](${SITE_URL}/en/privacy)
-- [Terms of Service — Slovenian](${SITE_URL}/terms)
-- [Terms of Service — English](${SITE_URL}/en/terms)
-- [Cookie Policy — Slovenian](${SITE_URL}/cookies)
-- [Cookie Policy — English](${SITE_URL}/en/cookies)
+- [Home - Slovenian (default)](${SITE_URL}/): Overview, services, gallery, pricing, map, testimonials, booking form.
+- [Home - English](${SITE_URL}/en): Same page in English.
+- [Privacy Policy - Slovenian](${SITE_URL}/privacy)
+- [Privacy Policy - English](${SITE_URL}/en/privacy)
+- [Terms of Service - Slovenian](${SITE_URL}/terms)
+- [Terms of Service - English](${SITE_URL}/en/terms)
+- [Cookie Policy - Slovenian](${SITE_URL}/cookies)
+- [Cookie Policy - English](${SITE_URL}/en/cookies)
 
 ## Optional
 

@@ -1,4 +1,4 @@
-# Deployment Guide — Vercel
+# Deployment Guide - Vercel
 
 Production-ready Next.js App Router car detailing site. Steps and advice for deploying on Vercel.
 

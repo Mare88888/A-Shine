@@ -58,7 +58,7 @@ export default function MapSection() {
     const prevAuthFailure = w.gm_authFailure
     w.gm_authFailure = () => {
       console.error(
-        'Google Maps auth failed — check API key, billing, enabled APIs, and HTTP referrer restrictions for this domain.',
+        'Google Maps auth failed - check API key, billing, enabled APIs, and HTTP referrer restrictions for this domain.',
       )
       setMapLoadFailed(true)
       prevAuthFailure?.()
@@ -218,7 +218,7 @@ export default function MapSection() {
                   />
                   <span>
                     <strong className="text-text-primary">{km} km</strong>
-                    <span className="mx-1.5 text-text-muted">—</span>
+                    <span className="mx-1.5 text-text-muted">-</span>
                     <span className={priceKey === 'free' ? 'text-premium-accent font-medium' : ''}>
                       {priceKey === 'free' ? t('free') : t('perKm', { price: priceValue })}
                     </span>

@@ -310,7 +310,7 @@ export async function POST(request: Request) {
       });
       if (errMsg.includes("not verified")) {
         console.error(
-          "Resend: domain not verified — finish DNS at https://resend.com/domains and redeploy.",
+          "Resend: domain not verified - finish DNS at https://resend.com/domains and redeploy.",
         );
       }
       const clientError =
