@@ -32,9 +32,9 @@ export const metadata: Metadata = {
   category: 'automotive',
   icons: {
     icon: [
-      { url: '/favicon.webp', type: 'image/webp' },
       { url: '/favicon.svg', type: 'image/svg+xml' },
     ],
+    shortcut: ['/favicon.svg'],
     apple: [
       { url: '/apple-icon', type: 'image/png', sizes: '180x180' },
     ],

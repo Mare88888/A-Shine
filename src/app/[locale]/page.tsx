@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata' })
   const url = localePath(locale)
   return {
-    title: t('homeTitle'),
+    title: { absolute: t('homeTitle') },
     description: t('homeDescription'),
     openGraph: {
       title: t('ogTitle'),
