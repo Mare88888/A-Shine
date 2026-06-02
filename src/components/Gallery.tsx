@@ -228,8 +228,11 @@ function Lightbox({
   const sliderHandleRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef(SLIDER_DEFAULT_PCT);
   const rafIdRef = useRef<number | null>(null);
+  // Cache the container rect on pointer-down so pointermove never triggers a
+  // forced synchronous layout (getBoundingClientRect) on every event.
+  const rectRef = useRef<{ left: number; width: number } | null>(null);
 
-  // Apply position to DOM only (no React re-render) for 60fps drag
+  // Apply position to DOM only (no React re-render) for 60fps drag.
   const applyPositionToDOM = useCallback((pct: number) => {
     const clip = afterClipRef.current;
     const handle = sliderHandleRef.current;
@@ -238,7 +241,9 @@ function Lightbox({
   }, []);
 
   const handleMove = useCallback(
-    (clientX: number, rect: DOMRect) => {
+    (clientX: number) => {
+      const rect = rectRef.current;
+      if (!rect) return;
       const x = clientX - rect.left;
       const pct = Math.max(0, Math.min(100, (x / rect.width) * 100));
       positionRef.current = pct;
@@ -252,18 +257,27 @@ function Lightbox({
     [applyPositionToDOM],
   );
 
-  const handlePointerDown = useCallback((e: React.PointerEvent) => {
-    setIsDragging(true);
-    (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+  const cacheRect = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const r = container.getBoundingClientRect();
+    rectRef.current = { left: r.left, width: r.width };
   }, []);
+
+  const handlePointerDown = useCallback(
+    (e: React.PointerEvent) => {
+      cacheRect();
+      setIsDragging(true);
+      (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+      handleMove(e.clientX);
+    },
+    [cacheRect, handleMove],
+  );
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent) => {
       if (!isDragging) return;
-      const container = containerRef.current;
-      if (!container) return;
-      const rect = container.getBoundingClientRect();
-      handleMove(e.clientX, rect);
+      handleMove(e.clientX);
     },
     [isDragging, handleMove],
   );
@@ -329,7 +343,10 @@ function Lightbox({
         <div
           ref={afterClipRef}
           className="absolute inset-0 transition-none"
-          style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+          style={{
+            clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+            willChange: isDragging ? "clip-path" : "auto",
+          }}
         >
           <Image
             src={item.after}
