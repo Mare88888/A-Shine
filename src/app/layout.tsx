@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   category: 'automotive',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/icon.png', type: 'image/png', sizes: '48x48' },
+      { url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' },
     ],
-    shortcut: ['/favicon.svg'],
-    apple: [
-      { url: '/apple-icon', type: 'image/png', sizes: '180x180' },
-    ],
+    shortcut: ['/favicon.ico'],
+    apple: [{ url: '/apple-icon', type: 'image/png', sizes: '180x180' }],
   },
 }
 
