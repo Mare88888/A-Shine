@@ -3,7 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { SectionEntrance } from "@/components/MotionSection";
 import { staggerContainer, staggerItem, cardHover, ease } from "@/lib/motion";
 
@@ -24,15 +24,17 @@ const HOVER_INTENT_MS = 140;
 
 type RevealDirection = "right-to-left" | "bottom-to-top" | "left-to-right";
 
+const REVEAL_TRANSITION = { duration: 0.5, ease };
+
 function getClipPath(direction: RevealDirection, showing: boolean): string {
-  if (showing) return "inset(0 0 0 0)";
+  if (showing) return "inset(0% 0% 0% 0%)";
   switch (direction) {
     case "right-to-left":
-      return "inset(0 0 0 100%)";
+      return "inset(0% 0% 0% 100%)";
     case "left-to-right":
-      return "inset(0 100% 0 0)";
+      return "inset(0% 100% 0% 0%)";
     case "bottom-to-top":
-      return "inset(100% 0 0 0)";
+      return "inset(100% 0% 0% 0%)";
   }
 }
 
@@ -77,6 +79,7 @@ function ComparisonCard({
   const [isHovered, setIsHovered] = useState(false);
   const [showBefore, setShowBefore] = useState(false);
   const hoverTimerRef = useRef<number | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   const showingBefore = isMobile ? showBefore : isHovered;
 
@@ -139,9 +142,11 @@ function ComparisonCard({
           />
         </div>
 
-        <div
-          className="absolute inset-0 transition-[clip-path] duration-500 ease-out motion-reduce:transition-none"
-          style={{ clipPath: getClipPath(direction, showingBefore) }}
+        <motion.div
+          className="absolute inset-0"
+          initial={false}
+          animate={{ clipPath: getClipPath(direction, showingBefore) }}
+          transition={prefersReducedMotion ? { duration: 0 } : REVEAL_TRANSITION}
         >
           <Image
             src={item.before}
@@ -150,7 +155,7 @@ function ComparisonCard({
             className="object-cover"
             sizes={CARD_IMAGE_SIZES}
           />
-        </div>
+        </motion.div>
 
         <div className="absolute bottom-0 left-0 right-0 flex justify-between p-3 bg-gradient-to-t from-black/80 to-transparent text-white/90">
           <span

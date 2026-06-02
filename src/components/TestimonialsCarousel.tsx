@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useCallback, useRef, useEffect } from 'react'
+import { useState, useCallback, useRef, useEffect, useLayoutEffect } from 'react'
 import { useLocale, useTranslations } from 'next-intl'
 import { motion } from 'framer-motion'
+import { ease } from '@/lib/motion'
 import {
   reviewQuote,
   reviewRelativeTime,
@@ -13,9 +14,9 @@ const SLIDES_DESKTOP = 3
 const SLIDES_MOBILE = 1
 const MOBILE_BREAKPOINT = 640
 const GAP_PX = 24
-const INITIAL_STEP_PX = 320
 const TRACK_BUFFER_PX = 4
 const MIN_CARD_WIDTH_PX = 200
+const CAROUSEL_TRANSITION = { duration: 0.55, ease }
 
 const CAROUSEL_BTN_CLASS =
   'absolute top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border-default bg-premium-charcoal text-text-primary hover:text-premium-accent hover:border-premium-accent transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-premium-accent focus:ring-offset-2 focus:ring-offset-premium-black'
@@ -127,12 +128,15 @@ export default function TestimonialsCarousel({
   const locale = useLocale()
   const count = reviews.length
   const [index, setIndex] = useState(0)
-  const [stepPx, setStepPx] = useState(INITIAL_STEP_PX)
+  const [stepPx, setStepPx] = useState(0)
+  const [layoutReady, setLayoutReady] = useState(false)
   const [slidesVisible, setSlidesVisible] = useState(SLIDES_DESKTOP)
   const trackRef = useRef<HTMLDivElement>(null)
+  const prevIndexRef = useRef(0)
+  const prevStepPxRef = useRef(0)
   const maxIndex = Math.max(0, count - slidesVisible)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const el = trackRef.current
     if (!el) return
     const mq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
@@ -145,6 +149,7 @@ export default function TestimonialsCarousel({
       const w = el.getBoundingClientRect().width
       const contentWidth = Math.max(MIN_CARD_WIDTH_PX, w - TRACK_BUFFER_PX)
       setStepPx((contentWidth + GAP_PX) / vis)
+      setLayoutReady(true)
     }
     update()
 
@@ -156,6 +161,18 @@ export default function TestimonialsCarousel({
       mq.removeEventListener('change', update)
     }
   }, [])
+
+  // Animate the slide only when the index actually changes - never on the
+  // first measurement or on resize (those should snap, not glide).
+  const indexChanged = layoutReady && prevIndexRef.current !== index
+  const stepChanged = layoutReady && prevStepPxRef.current !== stepPx
+  const slideTransition =
+    indexChanged && !stepChanged ? CAROUSEL_TRANSITION : { duration: 0 }
+
+  useLayoutEffect(() => {
+    prevIndexRef.current = index
+    prevStepPxRef.current = stepPx
+  }, [index, stepPx])
 
   useEffect(() => {
     if (index > maxIndex) setIndex(maxIndex)
@@ -253,14 +270,21 @@ export default function TestimonialsCarousel({
             <motion.div
               className="flex gap-6 min-h-[240px] sm:min-h-[220px]"
               style={{ width: 'max-content' }}
-              animate={{ x: -index * stepPx }}
-              transition={{ duration: 1, ease: [0.32, 0.72, 0, 1] }}
+              initial={false}
+              animate={{ x: layoutReady ? -index * stepPx : 0 }}
+              transition={slideTransition}
             >
               {reviews.map((review) => (
                 <div
                   key={review.id}
                   className="shrink-0"
-                  style={{ width: stepPx - GAP_PX, minWidth: stepPx - GAP_PX }}
+                  style={
+                    layoutReady
+                      ? { width: stepPx - GAP_PX, minWidth: stepPx - GAP_PX }
+                      : {
+                          flex: `0 0 calc((100% - ${(slidesVisible - 1) * GAP_PX}px) / ${slidesVisible})`,
+                        }
+                  }
                 >
                   <ReviewCard
                     review={review}
