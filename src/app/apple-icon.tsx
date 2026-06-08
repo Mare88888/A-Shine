@@ -11,10 +11,10 @@ const APPLE_ICON_STYLE = {
   alignItems: 'center',
   justifyContent: 'center',
   background: BRAND.bg,
-  borderRadius: 24,
-  fontSize: 88,
+  fontSize: 140,
   fontWeight: 700,
   color: BRAND.accent,
+  lineHeight: 1,
 }
 
 export default function AppleIcon() {
