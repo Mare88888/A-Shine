@@ -147,9 +147,14 @@ function ComparisonCard({
 
         <motion.div
           className="absolute inset-0"
-          initial={false}
+          initial={{ clipPath: getClipPath(direction, false) }}
           animate={{ clipPath: getClipPath(direction, showingBefore) }}
           transition={prefersReducedMotion ? { duration: 0 } : REVEAL_TRANSITION}
+          style={{
+            willChange: "clip-path",
+            transform: "translateZ(0)",
+            backfaceVisibility: "hidden",
+          }}
         >
           <Image
             src={item.before}
