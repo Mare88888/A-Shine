@@ -53,6 +53,9 @@ const defaultItems: GalleryItem[] = [
     after: "/after9.webp",
     afterObjectPosition: "bottom",
   },
+  { id: 10, before: "/before11.webp", after: "/after11.webp" },
+  { id: 11, before: "/before12.webp", after: "/after12.webp" },
+  { id: 12, before: "/before13.webp", after: "/after13.webp" },
 ];
 
 interface ComparisonCardProps {
