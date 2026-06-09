@@ -7,6 +7,7 @@ import { SectionEntrance } from "@/components/MotionSection";
 import { staggerContainer, staggerItem } from "@/lib/motion";
 
 const WHY_KEYS = ["why1", "why2", "why3", "why4", "why5"] as const;
+const COMMITMENT_KEYS = ["commitment1", "commitment2", "commitment3"] as const;
 
 export default function About() {
   const t = useTranslations("about");
@@ -109,22 +110,38 @@ export default function About() {
 
           <motion.section
             variants={staggerItem}
-            className="rounded-card border border-border-default bg-premium-slate/80 px-6 py-10 text-center sm:px-10 sm:py-12"
+            className="relative overflow-hidden rounded-card border border-border-default bg-premium-slate/80 px-6 py-6 sm:px-10 sm:py-7"
             aria-labelledby="about-commitment-heading"
           >
-            <div className="mx-auto max-w-2xl">
-              <h3
-                id="about-commitment-heading"
-                className="text-h3 text-text-primary mb-6"
-              >
-                {t("commitmentHeading")}
-              </h3>
-              <p className="text-body text-text-secondary leading-relaxed">
-                {t("commitment1")}
-              </p>
-              <p className="mt-4 text-body text-text-secondary leading-relaxed">
-                {t("commitment2")}
-              </p>
+            <span
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-premium-accent to-transparent"
+            />
+            <div>
+              <header className="text-center mb-5">
+                <h3
+                  id="about-commitment-heading"
+                  className="text-h3 text-text-primary"
+                >
+                  {t("commitmentHeading")}
+                </h3>
+              </header>
+              <ul className="space-y-3" role="list">
+                {COMMITMENT_KEYS.map((key) => (
+                  <li
+                    key={key}
+                    className="flex items-start gap-3.5 text-left"
+                  >
+                    <span
+                      className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-premium-accent"
+                      aria-hidden
+                    />
+                    <p className="text-body text-text-secondary leading-relaxed">
+                      {t(key)}
+                    </p>
+                  </li>
+                ))}
+              </ul>
             </div>
           </motion.section>
         </motion.div>
