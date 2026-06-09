@@ -11,6 +11,14 @@ import { CONTACT_EMAIL } from '@/config/site'
 
 const PACKAGE_CUSTOM_ID = 'custom'
 
+// Service categories that have no selectable packages - the package dropdown
+// is hidden for these and the service is recorded as the category itself.
+const CATEGORIES_WITHOUT_PACKAGES = new Set(['cleaning', 'custom'])
+
+function categoryHasPackages(serviceCategory: string): boolean {
+  return serviceCategory !== '' && !CATEGORIES_WITHOUT_PACKAGES.has(serviceCategory)
+}
+
 const INITIAL_FORM_VALUES: Record<string, string> = {
   name: '',
   email: '',
@@ -183,7 +191,7 @@ export default function Contact() {
     setValues((prev) => {
       const next = { ...prev, [name]: value }
       if (name === 'serviceCategory') {
-        next.service = value === 'custom' ? PACKAGE_CUSTOM_ID : ''
+        next.service = categoryHasPackages(value) ? '' : PACKAGE_CUSTOM_ID
       }
       if (name === 'locationType') {
         next.distance = value === 'mobile' ? prev.distance : ''
@@ -205,14 +213,14 @@ export default function Contact() {
   }
 
   function getServiceLabel(serviceCategory: string, packageId: string): string {
-    if (serviceCategory === 'custom' || packageId === PACKAGE_CUSTOM_ID) {
-      if (serviceCategory === 'custom') return t('serviceCustom')
-      const categoryLabel = serviceCategory === 'cleaning' ? t('serviceCleaning') : t('serviceDetailing')
+    if (serviceCategory === 'custom') return t('serviceCustom')
+    if (serviceCategory === 'cleaning') return t('serviceCleaning')
+    const categoryLabel = t('serviceDetailing')
+    if (packageId === PACKAGE_CUSTOM_ID) {
       return `${categoryLabel} - ${customPackageLabel}`
     }
     const packages = getPackagesForType(serviceCategory)
     const pkg = packages.find((p) => p.id === packageId)
-    const categoryLabel = serviceCategory === 'cleaning' ? t('serviceCleaning') : t('serviceDetailing')
     const pkgName = pkg ? tPricing(`packages.${pkg.id}.name`) : packageId
     return pkg ? `${categoryLabel} - ${pkgName}` : packageId
   }
@@ -380,7 +388,7 @@ export default function Contact() {
 
                 <GroupSeparator />
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <div className={values.serviceCategory === 'custom' ? 'sm:col-span-2' : undefined}>
+                  <div className={!categoryHasPackages(values.serviceCategory) && values.serviceCategory !== '' ? 'sm:col-span-2' : undefined}>
                     <FieldLabel htmlFor="contact-serviceCategory" required>{t('serviceType')}</FieldLabel>
                     <div className="relative">
                       <select
@@ -403,7 +411,7 @@ export default function Contact() {
                     <FieldError id="contact-serviceCategory-error" message={touched.serviceCategory ? errors.serviceCategory : undefined} />
                   </div>
 
-                  {values.serviceCategory !== 'custom' && (
+                  {(categoryHasPackages(values.serviceCategory) || values.serviceCategory === '') && (
                     <div>
                       <FieldLabel htmlFor="contact-service" required>{t('package')}</FieldLabel>
                       <div className="relative">

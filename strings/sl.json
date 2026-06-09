@@ -445,7 +445,7 @@
     "placeholderEmail": "janez.novak@gmail.com",
     "placeholderPhone": "npr. +386 70 123 456",
     "placeholderCar": "npr. BMW 3, Audi A4",
-    "placeholderMessage": "Dodatne informacije, lokacija ali vprašanja...",
+    "placeholderMessage": "Dodatne informacije, storitev, lokacija ali vprašanja...",
     "errors": {
       "name": "Vnesite ime",
       "email": "Vnesite e-pošto",
