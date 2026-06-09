@@ -20,8 +20,7 @@ const CAROUSEL_TRANSITION = { duration: 0.55, ease }
 
 const CAROUSEL_BTN_CLASS =
   'absolute top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-border-default bg-premium-charcoal text-text-primary hover:text-premium-accent hover:border-premium-accent transition-colors flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-premium-accent focus:ring-offset-2 focus:ring-offset-premium-black'
-const DOT_BASE_CLASS =
-  'w-2.5 h-2.5 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-premium-accent focus:ring-offset-2 focus:ring-offset-premium-black'
+const PROGRESS_THUMB_RATIO = 0.34
 
 type Props = {
   reviews: GoogleReview[]
@@ -188,7 +187,19 @@ export default function TestimonialsCarousel({
   const goPrev = useCallback(() => goTo(index - 1), [index, goTo])
   const goNext = useCallback(() => goTo(index + 1), [index, goTo])
 
+  const seekFromTrack = useCallback(
+    (clientX: number, track: HTMLDivElement) => {
+      const { left, width } = track.getBoundingClientRect()
+      const pct = Math.max(0, Math.min(1, (clientX - left) / width))
+      goTo(Math.round(pct * maxIndex))
+    },
+    [goTo, maxIndex],
+  )
+
   if (count === 0) return null
+
+  const progress = maxIndex > 0 ? index / maxIndex : 0
+  const thumbTravelPct = (1 - PROGRESS_THUMB_RATIO) * 100
 
   const ratingDisplay = Number.isInteger(rating) ? String(rating) : rating.toFixed(1)
 
@@ -298,22 +309,33 @@ export default function TestimonialsCarousel({
         </motion.div>
 
         {maxIndex > 0 && (
-          <div
-            className="flex justify-center gap-2 mt-6 flex-wrap"
-            role="tablist"
-            aria-label={t('carouselNav')}
-          >
-            {Array.from({ length: maxIndex + 1 }, (_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => goTo(i)}
-                role="tab"
-                aria-selected={i === index}
-                aria-label={t('goToSlide', { n: i + 1 })}
-                className={`${DOT_BASE_CLASS} ${i === index ? 'bg-premium-accent scale-110' : 'bg-premium-graphite hover:bg-premium-zinc'}`}
+          <div className="flex justify-center mt-6">
+            <div
+              className="relative h-1 w-28 sm:w-36 rounded-full bg-premium-graphite cursor-pointer"
+              role="slider"
+              aria-valuemin={0}
+              aria-valuemax={maxIndex}
+              aria-valuenow={index}
+              aria-label={t('carouselNav')}
+              tabIndex={0}
+              onClick={(e) => seekFromTrack(e.clientX, e.currentTarget)}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowLeft') {
+                  e.preventDefault()
+                  goPrev()
+                } else if (e.key === 'ArrowRight') {
+                  e.preventDefault()
+                  goNext()
+                }
+              }}
+            >
+              <motion.div
+                className="absolute inset-y-0 left-0 rounded-full bg-premium-accent pointer-events-none"
+                style={{ width: `${PROGRESS_THUMB_RATIO * 100}%` }}
+                animate={{ left: `${progress * thumbTravelPct}%` }}
+                transition={slideTransition}
               />
-            ))}
+            </div>
           </div>
         )}
       </div>
