@@ -226,6 +226,9 @@ export default function MapSection() {
                 </li>
               ))}
             </ul>
+            <p className="mt-4 text-body-sm text-text-muted max-w-2xl mx-auto leading-relaxed">
+              {t('travelDiscountNote')}
+            </p>
           </div>
         </div>
       </SectionEntrance>

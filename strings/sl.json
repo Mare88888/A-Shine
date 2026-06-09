@@ -258,8 +258,9 @@
   "map": {
     "overline": "Območje storitve",
     "heading": "Kje delamo",
-    "subheading": "Pridemo do vas. Naše območje je osredotočeno na Celestrina 19, Malečnik.",
+    "subheading": "Pridemo do vas ali pa vozilo pripeljete na našo lokacijo v Malečniku. Storitve izvajamo tam, kjer je to za vas najbolj priročno.",
     "legendTitle": "Območje storitve in stroški potovanja",
+    "travelDiscountNote": "Pri več vozilih ali večjem obsegu dela na isti lokaciji se lahko stroški prevoza zmanjšajo.",
     "free": "Brezplačno",
     "perKm": "{price}/km",
     "noKeyHeading": "Območje storitve",
@@ -272,7 +273,7 @@
   "testimonials": {
     "overline": "Google mnenja",
     "heading": "Kaj pravijo stranke",
-    "subheading": "Prava mnenja z Googla. Vsa mnenja si oglejte na našem Google Business profilu.",
+    "subheading": "Največ nam pomeni zadovoljstvo strank. Preberite njihove izkušnje z našimi storitvami.",
     "googleReview": "Google mnenje",
     "ratingSummary": "{count} Google mnenj",
     "seeAllReviews": "Vsa mnenja na Googlu",
@@ -411,7 +412,7 @@
   "contact": {
     "overline": "Kontakt",
     "heading": "Rezerviraj ali pošlji povpraševanje",
-    "subheading": "Povejte nam, kaj potrebujete in želeni datum. Odgovorili vam bomo s ponudbo.",
+    "subheading": "Pošljite povpraševanje ali rezervirajte termin. Z veseljem vam svetujemo in pripravimo ponudbo glede na potrebe vašega vozila",
     "thanksTitle": "Hvala za vaše sporočilo",
     "thanksBody": "Kmalu vas bomo kontaktirali za potrditev rezervacije.",
     "name": "Ime",
