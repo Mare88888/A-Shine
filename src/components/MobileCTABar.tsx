@@ -5,6 +5,9 @@ import { useTranslations } from 'next-intl'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const SCROLL_THRESHOLD = 300
+/** Approx. fixed bar height (gradient + padding + buttons) for early hide near footer */
+const CTA_BAR_HEIGHT_PX = 72
+const HIDE_NEAR_TARGETS = ['contact', 'footer-root'] as const
 
 function PhoneIcon() {
   return (
@@ -31,21 +34,26 @@ export default function MobileCTABar() {
   }, [])
 
   useEffect(() => {
-    const targets = ['contact', 'footer-root']
-      .map((id) => document.getElementById(id))
-      .filter(Boolean) as HTMLElement[]
+    const targets = HIDE_NEAR_TARGETS.map((id) => document.getElementById(id)).filter(
+      Boolean,
+    ) as HTMLElement[]
 
     if (targets.length === 0) return
 
+    const visibility = new Map<string, boolean>()
+    HIDE_NEAR_TARGETS.forEach((id) => visibility.set(id, false))
+
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          setContactVisible(true)
-        } else if (entries.every((e) => !e.isIntersecting)) {
-          setContactVisible(false)
-        }
+        entries.forEach((entry) => {
+          visibility.set(entry.target.id, entry.isIntersecting)
+        })
+        setContactVisible([...visibility.values()].some(Boolean))
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0,
+        rootMargin: `0px 0px ${CTA_BAR_HEIGHT_PX}px 0px`,
+      },
     )
     targets.forEach((el) => observer.observe(el))
     return () => observer.disconnect()

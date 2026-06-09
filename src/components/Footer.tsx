@@ -104,7 +104,7 @@ export default function Footer() {
   return (
     <footer id="footer-root" className="bg-premium-black relative">
       <div className="h-px w-full bg-gradient-to-r from-transparent via-premium-accent to-transparent" aria-hidden />
-      <div className="container-narrow section-padding">
+      <div className="container-narrow section-padding-x pt-16 pb-6 sm:pt-20 sm:pb-8 lg:pt-24 lg:pb-10">
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <Link
