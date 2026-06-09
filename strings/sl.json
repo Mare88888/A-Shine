@@ -203,8 +203,7 @@
     "rights": "Vse pravice pridržane.",
     "privacy": "Zasebnost",
     "terms": "Pogoji",
-    "cookies": "Piškotki",
-    "taglineShort": "Ohranjajte svoj avto v najboljši formi."
+    "cookies": "Piškotki"
   },
   "about": {
     "overline": "Zakaj A-Shine",
@@ -213,8 +212,6 @@
     "intro2": "Verjamemo, da urejeno vozilo ni pomembno le zaradi videza, temveč tudi zaradi občutka, ki ga daje lastniku vsak dan.",
     "belief": "Vsakemu vozilu namenimo čas, pozornost in skrb, kot bi šlo za naše lastno vozilo.",
     "offer": "Na vašo lokacijo pridemo popolnoma opremljeni ter poskrbimo za profesionalno čiščenje, poliranje in zaščito vozila, medtem ko vi svoj čas namenite pomembnejšim stvarem.",
-    "approach": "Vsaki storitvi pristopamo individualno, saj je vsako vozilo edinstveno.",
-    "goal": "Naš cilj ni le čiščenje, temveč vidna razlika.",
     "whyHeading": "Zakaj izbrati nas",
     "why1": "Prihranek časa z mobilno storitvijo na dogovorjeni lokaciji",
     "why2": "Osebni pristop do vsake stranke",
@@ -289,14 +286,8 @@
     "subheading": "Izberite storitev, ki najbolje ustreza stanju in potrebam vašega vozila. Od osnovnega vzdrževalnega čiščenja do celovite nege, poliranja in zaščite.",
     "detailingHeading": "PREMIUM PAKETI",
     "detailingIntro": "Končna cena je odvisna od velikosti, stanja in izbranih storitev. Pred začetkom dela vedno pripravimo jasno ponudbo.",
-    "detailingIntroFactor1": "Pri vozilih je odvisna od:",
-    "detailingIntroFactor2": "tipa in velikosti vozila",
-    "detailingIntroFactor3": "stopnje umazanosti",
-    "detailingIntroFactor4": "dodatnih zahtev",
-    "detailingIntroFactor5": "pogostosti in vrste storitve",
     "detailingExteriorHeading": "Zunanjost",
     "detailingInteriorHeading": "Notranjost",
-    "detailingPackagesHeading": "Paketi",
     "detailingExterior1": "Osnovno čiščenje zunanjosti (predpranje, ročno pranje, čiščenje platišč, sušenje) - od 30 €",
     "detailingExterior2": "Dekontaminacija laka - od 30 €",
     "detailingExterior3": "Osvežitveno strojno poliranje (povečanje sijaja) - od 150 €",
@@ -312,60 +303,10 @@
     "detailingInterior5": "Odstranjevanje dlak in peska - od 20 €",
     "detailingInterior6": "Parna dezinfekcija / dekontaminacija - od 20 €",
     "cleaningHeading": "POSAMEZNE STORITVE",
-    "cleaningIntroShort": "Ponujamo redno in globinsko čiščenje vozil.",
     "cleaningIntroLine2": "Končna cena je odvisna od velikosti in stanja vozila. Preden začnemo, boste vedno prejeli jasno ponudbo.",
-    "cleaningServicesHeading": "Ponujamo:",
-    "cleaningService1": "Zunanje pranje, platišča in pnevmatike",
-    "cleaningService2": "Notranje sesanje in brisanje površin",
-    "cleaningService3": "Globinsko čiščenje notranjosti in odstranjevanje madežev",
-    "cleaningPriceHeading": "Cene so odvisne od:",
-    "cleaningPriceFactor1": "velikosti in tipa vozila",
-    "cleaningPriceFactor2": "stopnje umazanosti",
-    "cleaningPriceFactor3": "dodatnih želja",
-    "cleaningPriceFactor4": "pogostosti čiščenja",
     "detailingCta": "Pošlji povpraševanje",
     "cleaningCta": "Pošlji povpraševanje",
-    "cleaningPriceOnRequest": "Po dogovoru",
-    "cleaningAdditionalHeading": "Dodatne storitve za vozila",
-    "cleaningAdditional1": "Odstranjevanje dlak in peska: 20 - 40 €",
-    "cleaningAdditional2": "Odstranjevanje vonjav in alergenov / parna dezinfekcija: po dogovoru",
-    "cleaningAdditional3": "Globinsko čiščenje motornega prostora ali blatnikov: po dogovoru",
-    "readMore": "Več",
-    "readLess": "Manj",
     "packages": {
-      "cleaning-basic": {
-        "name": "BASIC - Osvežitev zunaj in znotraj",
-        "price": "Po dogovoru",
-        "description": "Zunanje pranje, čiščenje platišč, notranje sesanje in brisanje površin.",
-        "features": [
-          "Predpranje in ročno pranje",
-          "Čiščenje platišč in pnevmatik",
-          "Notranje sesanje",
-          "Brisanje armaturne plošče in površin"
-        ]
-      },
-      "cleaning-full": {
-        "name": "FULL CLEAN - Globinsko čiščenje vozila",
-        "price": "Po dogovoru",
-        "description": "Vse iz Basic, dodatno globinsko čiščenje notranjosti in odstranjevanje madežev na ključnih površinah.",
-        "features": [
-          "Vse iz Basic",
-          "Globinsko čiščenje notranjih površin",
-          "Ciljno odstranjevanje madežev na tekstilu",
-          "Parno čiščenje izbranih površin"
-        ]
-      },
-      "cleaning-premium": {
-        "name": "PREMIUM DEEP CLEAN - Popolna osvežitev vozila",
-        "price": "Po dogovoru",
-        "description": "Vse iz Full Clean, odstranjevanje dlak, obdelava vonjav in alergenov ter zaključni detajli.",
-        "features": [
-          "Vse iz Full Clean",
-          "Odstranjevanje dlak in peska",
-          "Obdelava vonjav in alergenov",
-          "Zaključni detajli za občutek novega vozila"
-        ]
-      },
       "detail-standard": {
         "name": "Standard Detail - Quick detail",
         "price": "od 70 €",
@@ -418,7 +359,6 @@
     "name": "Ime",
     "email": "E-pošta",
     "phone": "Telefonska številka",
-    "carType": "Tip / model avta",
     "serviceType": "Vrsta storitve",
     "package": "Paket",
     "whereService": "Kje naj opravimo storitev?",
@@ -445,13 +385,11 @@
     "placeholderName": "Janez Novak",
     "placeholderEmail": "janez.novak@gmail.com",
     "placeholderPhone": "npr. +386 70 123 456",
-    "placeholderCar": "npr. BMW 3, Audi A4",
     "placeholderMessage": "Dodatne informacije, storitev, lokacija ali vprašanja...",
     "errors": {
       "name": "Vnesite ime",
       "email": "Vnesite e-pošto",
       "emailInvalid": "Vnesite veljaven e-poštni naslov",
-      "carType": "Vnesite tip ali model avta",
       "serviceCategory": "Izberite vrsto storitve",
       "service": "Izberite paket",
       "locationType": "Izberite, kje naj opravimo storitev",
@@ -459,10 +397,6 @@
       "date": "Izberite želeni datum",
       "datePast": "Želeni datum ne sme biti v preteklosti",
       "dateYearHigh": "Poskusite z manjšim datumom",
-      "dateFormat": "Uporabite DD/MM/LLLL (npr. 25/03/2025)",
-      "dateMonth": "Mesec mora biti 01-12",
-      "dateDay": "Dan mora biti 01-31",
-      "dateYear": "Vnesite veljavno leto",
       "message": "Dodajte še nekaj podrobnosti (min. 10 znakov)",
       "submitError": "Prišlo je do napake. Poskusite znova.",
       "networkError": "Pošiljanje ni uspelo. Preverite internetno povezavo in poskusite znova."

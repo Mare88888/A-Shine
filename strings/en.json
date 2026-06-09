@@ -203,8 +203,7 @@
     "rights": "All rights reserved.",
     "privacy": "Privacy",
     "terms": "Terms",
-    "cookies": "Cookies",
-    "taglineShort": "Keep your car looking its best."
+    "cookies": "Cookies"
   },
   "about": {
     "overline": "Why A-Shine",
@@ -213,8 +212,6 @@
     "intro2": "We combine precision, attention to detail and a passion for a well-kept vehicle.",
     "belief": "We believe a clean car isn’t just about looks - it’s about how it makes you feel.",
     "offer": "We come fully equipped to your location, saving you time while delivering professional-grade results.",
-    "approach": "We approach every job individually, because every vehicle is unique.",
-    "goal": "Our goal is not just cleaning, but a visible difference.",
     "whyHeading": "Why choose us",
     "why1": "Personal, tailored service",
     "why2": "Attention to every detail",
@@ -289,14 +286,8 @@
     "subheading": "Transparent packages. We tailor the offer to your vehicle and goals.",
     "detailingHeading": "Vehicle Detailing",
     "detailingIntro": "Final price depends on vehicle size and condition. You’ll always receive a clear quote before we start.",
-    "detailingIntroFactor1": "For vehicles, prices depend on:",
-    "detailingIntroFactor2": "type and size of the vehicle",
-    "detailingIntroFactor3": "level of dirt",
-    "detailingIntroFactor4": "extra requests",
-    "detailingIntroFactor5": "frequency and type of service",
     "detailingExteriorHeading": "Exterior",
     "detailingInteriorHeading": "Interior",
-    "detailingPackagesHeading": "Packages",
     "detailingExterior1": "Basic exterior clean (pre-wash, hand wash, wheel clean, dry) - from €30",
     "detailingExterior2": "Paint decontamination - from €30",
     "detailingExterior3": "Refresh machine polish (gloss enhancement) - from €150",
@@ -312,60 +303,10 @@
     "detailingInterior5": "Pet hair and sand removal - from €20",
     "detailingInterior6": "Steam disinfection / decontamination - from €20",
     "cleaningHeading": "Car cleaning",
-    "cleaningIntroShort": "We offer regular and deep car cleaning.",
     "cleaningIntroLine2": "Final price depends on vehicle size and condition. You’ll always receive a clear quote before we start.",
-    "cleaningServicesHeading": "We offer:",
-    "cleaningService1": "Exterior wash, wheels and tyres",
-    "cleaningService2": "Interior vacuum and wipe-down",
-    "cleaningService3": "Deep interior clean and stain removal",
-    "cleaningPriceHeading": "Prices depend on:",
-    "cleaningPriceFactor1": "vehicle size and type",
-    "cleaningPriceFactor2": "level of dirt",
-    "cleaningPriceFactor3": "extra requests",
-    "cleaningPriceFactor4": "frequency of cleaning",
     "detailingCta": "Send enquiry",
     "cleaningCta": "Send enquiry",
-    "cleaningPriceOnRequest": "On request",
-    "cleaningAdditionalHeading": "Additional car services",
-    "cleaningAdditional1": "Pet hair and sand removal: €20-40",
-    "cleaningAdditional2": "Odour and allergen treatment / steam disinfection: on request",
-    "cleaningAdditional3": "Engine bay or wheel arch deep clean: on request",
-    "readMore": "Read more",
-    "readLess": "Read less",
     "packages": {
-      "cleaning-basic": {
-        "name": "BASIC - Exterior & interior refresh",
-        "price": "On request",
-        "description": "Exterior wash, wheel clean, interior vacuum and wipe-down.",
-        "features": [
-          "Pre-wash and hand wash",
-          "Wheel and tyre cleaning",
-          "Interior vacuum",
-          "Dashboard and surfaces wipe-down"
-        ]
-      },
-      "cleaning-full": {
-        "name": "FULL CLEAN - Deep car clean",
-        "price": "On request",
-        "description": "Everything in Basic plus a deep interior clean and stain removal in key areas.",
-        "features": [
-          "Everything in Basic",
-          "Deep interior surface cleaning",
-          "Targeted stain removal on textiles",
-          "Steam cleaning of high-touch areas"
-        ]
-      },
-      "cleaning-premium": {
-        "name": "PREMIUM DEEP CLEAN - Full car reset",
-        "price": "On request",
-        "description": "Everything in Full Clean plus pet hair removal, odour treatment and detailed finishing touches.",
-        "features": [
-          "Everything in Full Clean",
-          "Pet hair and sand removal",
-          "Odour and allergen treatment",
-          "Finishing details for an as-new feel"
-        ]
-      },
       "detail-standard": {
         "name": "Standard Detail - Quick detail",
         "price": "from €70",
@@ -418,7 +359,6 @@
     "name": "Name",
     "email": "Email",
     "phone": "Phone number",
-    "carType": "Car type / model",
     "serviceType": "Service type",
     "package": "Package",
     "whereService": "Where should we do the service?",
@@ -445,13 +385,11 @@
     "placeholderName": "John Doe",
     "placeholderEmail": "john.doe@gmail.com",
     "placeholderPhone": "e.g. +386 70 123 456",
-    "placeholderCar": "e.g. BMW 3 Series, Audi A4",
     "placeholderMessage": "Any extra details, location, or questions...",
     "errors": {
       "name": "Please enter your name",
       "email": "Please enter your email",
       "emailInvalid": "Please enter a valid email address",
-      "carType": "Please enter your car type or model",
       "serviceCategory": "Please select a service type",
       "service": "Please select a package",
       "locationType": "Please choose where the service will be",
@@ -459,10 +397,6 @@
       "date": "Please choose a preferred date",
       "datePast": "Preferred date cannot be in the past",
       "dateYearHigh": "Try a sooner date",
-      "dateFormat": "Use DD/MM/YYYY (e.g. 25/03/2025)",
-      "dateMonth": "Month must be 01-12",
-      "dateDay": "Day must be 01-31",
-      "dateYear": "Enter a valid year",
       "message": "Please add a few more details (min 10 characters)",
       "submitError": "Something went wrong. Please try again.",
       "networkError": "Failed to send. Please check your connection and try again."

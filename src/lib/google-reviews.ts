@@ -174,6 +174,16 @@ function englishQuoteForAuthor(
   return "";
 }
 
+function reviewContentLength(review: GoogleReview): number {
+  return Math.max(review.quote.length, review.quoteEn.length);
+}
+
+function sortReviewsByContentLength(reviews: GoogleReview[]): GoogleReview[] {
+  return [...reviews].sort(
+    (a, b) => reviewContentLength(b) - reviewContentLength(a),
+  );
+}
+
 /** Build original (quote) + English (quoteEn) from parallel en/sl API responses. */
 function mergeBilingualPlacesReviews(
   enReviews: PlacesReview[],
@@ -238,7 +248,7 @@ function mergeBilingualPlacesReviews(
     });
   }
 
-  return merged;
+  return sortReviewsByContentLength(merged);
 }
 
 async function fetchPlaceReviews(
@@ -305,10 +315,12 @@ export async function getGoogleReviews(): Promise<GoogleReviewsResult> {
   }
 
   return {
-    reviews: GOOGLE_REVIEWS_FALLBACK.map((r) => ({
-      ...r,
-      quoteEn: r.quoteEn?.trim() || r.quote,
-    })),
+    reviews: sortReviewsByContentLength(
+      GOOGLE_REVIEWS_FALLBACK.map((r) => ({
+        ...r,
+        quoteEn: r.quoteEn?.trim() || r.quote,
+      })),
+    ),
     rating: GOOGLE_RATING_FALLBACK,
     total: GOOGLE_REVIEW_COUNT_FALLBACK,
     mapsUri: DEFAULT_MAPS_URI,
