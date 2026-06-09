@@ -380,7 +380,7 @@ export default function Contact() {
 
                 <GroupSeparator />
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
+                  <div className={values.serviceCategory === 'custom' ? 'sm:col-span-2' : undefined}>
                     <FieldLabel htmlFor="contact-serviceCategory" required>{t('serviceType')}</FieldLabel>
                     <div className="relative">
                       <select
@@ -403,40 +403,36 @@ export default function Contact() {
                     <FieldError id="contact-serviceCategory-error" message={touched.serviceCategory ? errors.serviceCategory : undefined} />
                   </div>
 
-                  <div>
-                    <FieldLabel htmlFor="contact-service" required>{t('package')}</FieldLabel>
-                    <div className="relative">
-                      <select
-                        id="contact-service"
-                        name="service"
-                        value={values.service}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        disabled={!values.serviceCategory}
-                        className={getSelectClass('service', 'disabled:opacity-50 disabled:cursor-not-allowed')}
-                        aria-invalid={!!errors.service}
-                        aria-describedby={errors.service ? 'contact-service-error' : undefined}
-                      >
-                        <option value="" disabled hidden>
-                          {values.serviceCategory ? t('selectPackage') : t('selectServiceFirst')}
-                        </option>
-                        {values.serviceCategory === 'custom' ? (
+                  {values.serviceCategory !== 'custom' && (
+                    <div>
+                      <FieldLabel htmlFor="contact-service" required>{t('package')}</FieldLabel>
+                      <div className="relative">
+                        <select
+                          id="contact-service"
+                          name="service"
+                          value={values.service}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          disabled={!values.serviceCategory}
+                          className={getSelectClass('service', 'disabled:opacity-50 disabled:cursor-not-allowed')}
+                          aria-invalid={!!errors.service}
+                          aria-describedby={errors.service ? 'contact-service-error' : undefined}
+                        >
+                          <option value="" disabled hidden>
+                            {values.serviceCategory ? t('selectPackage') : t('selectServiceFirst')}
+                          </option>
+                          {getPackagesForType(values.serviceCategory).map((pkg) => (
+                            <option key={pkg.id} value={pkg.id}>
+                              {tPricing(`packages.${pkg.id}.name`)} ({tPricing(`packages.${pkg.id}.price`)})
+                            </option>
+                          ))}
                           <option value={PACKAGE_CUSTOM_ID}>{customPackageLabel}</option>
-                        ) : (
-                          <>
-                            {getPackagesForType(values.serviceCategory).map((pkg) => (
-                              <option key={pkg.id} value={pkg.id}>
-                                {tPricing(`packages.${pkg.id}.name`)} ({tPricing(`packages.${pkg.id}.price`)})
-                              </option>
-                            ))}
-                            <option value={PACKAGE_CUSTOM_ID}>{customPackageLabel}</option>
-                          </>
-                        )}
-                      </select>
-                      <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted" />
+                        </select>
+                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted" />
+                      </div>
+                      <FieldError id="contact-service-error" message={touched.service ? errors.service : undefined} />
                     </div>
-                    <FieldError id="contact-service-error" message={touched.service ? errors.service : undefined} />
-                  </div>
+                  )}
                 </div>
 
                 <GroupSeparator />
