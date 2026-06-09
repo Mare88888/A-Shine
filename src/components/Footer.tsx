@@ -45,9 +45,9 @@ function TikTokIcon({ className }: { className?: string }) {
 
 const footerNavKeys = [
   { sectionId: 'about' as const, key: 'about' as const },
-  { sectionId: 'services' as const, key: 'services' as const },
   { sectionId: 'gallery' as const, key: 'gallery' as const },
   { sectionId: 'pricing' as const, key: 'pricing' as const },
+  { sectionId: 'map' as const, key: 'map' as const },
   { sectionId: 'testimonials' as const, key: 'testimonials' as const },
   { sectionId: 'contact' as const, key: 'bookNow' as const },
 ]
@@ -104,42 +104,42 @@ export default function Footer() {
   return (
     <footer id="footer-root" className="bg-premium-black relative">
       <div className="h-px w-full bg-gradient-to-r from-transparent via-premium-accent to-transparent" aria-hidden />
-      <div className="container-narrow section-padding-x pt-16 pb-6 sm:pt-20 sm:pb-8 lg:pt-24 lg:pb-10">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <Link
-              href="/"
-              onClick={scrollToTop}
-              className="text-h4 text-text-primary hover:text-premium-accent transition-colors"
-            >
-              {BRAND.name}
-            </Link>
-            <p className="mt-3 text-body-sm text-text-muted">
-              {t('tagline')}
-            </p>
-          </div>
-          <div>
-            <h4 className="text-body-sm font-semibold text-text-secondary uppercase tracking-wider mb-4">{t('quickLinks')}</h4>
-            <ul className="space-y-2">
+      <div className="container-narrow section-padding-x pt-8 pb-5 sm:pt-10 sm:pb-6 lg:pt-12 lg:pb-8">
+        <div className="text-center max-w-md mx-auto mb-6 lg:mb-8">
+          <Link
+            href="/"
+            onClick={scrollToTop}
+            className="text-h4 text-text-primary hover:text-premium-accent transition-colors leading-tight"
+          >
+            {BRAND.name}
+          </Link>
+          <p className="mt-2 text-body-sm text-text-muted leading-snug">
+            {t('tagline')}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
+          <div className="flex flex-col items-center text-center">
+            <h4 className="text-[0.6875rem] font-semibold text-text-secondary uppercase tracking-wider mb-3">{t('quickLinks')}</h4>
+            <div className="grid grid-flow-col grid-rows-3 gap-x-6 sm:gap-x-8 gap-y-1.5 text-left">
               {footerNavKeys.map((link) => (
-                <li key={link.sectionId}>
-                  <Link
-                    href="/"
-                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-                      e.preventDefault()
-                      document.getElementById(link.sectionId)?.scrollIntoView({ behavior: 'smooth' })
-                    }}
-                    className="text-text-muted hover:text-premium-accent transition-colors duration-ui text-body-sm"
-                  >
-                    {tNav(link.key)}
-                  </Link>
-                </li>
+                <Link
+                  key={link.sectionId}
+                  href="/"
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.preventDefault()
+                    document.getElementById(link.sectionId)?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                  className="text-text-muted hover:text-premium-accent transition-colors duration-ui text-body-sm"
+                >
+                  {tNav(link.key)}
+                </Link>
               ))}
-            </ul>
+            </div>
           </div>
-          <div>
-            <h4 className="text-body-sm font-semibold text-text-secondary uppercase tracking-wider mb-4">{t('contact')}</h4>
-            <ul className="space-y-2 text-body-sm text-text-muted">
+          <div className="flex flex-col items-center text-center">
+            <h4 className="text-[0.6875rem] font-semibold text-text-secondary uppercase tracking-wider mb-3">{t('contact')}</h4>
+            <ul className="space-y-1.5 text-body-sm text-text-muted">
               <li>
                 <a href="tel:+38670742363" className="inline-flex items-center gap-2 hover:text-premium-accent transition-colors">
                   <PhoneIcon className="shrink-0" />
@@ -154,9 +154,9 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div>
-            <h4 className="text-body-sm font-semibold text-text-secondary uppercase tracking-wider mb-4">{t('follow')}</h4>
-            <ul className="flex flex-col gap-2">
+          <div className="flex flex-col items-center text-center">
+            <h4 className="text-[0.6875rem] font-semibold text-text-secondary uppercase tracking-wider mb-3">{t('follow')}</h4>
+            <ul className="flex flex-col gap-1.5">
               {SOCIAL_LINKS.map(({ href, label, Icon }) => (
                 <li key={href}>
                   <a
@@ -173,42 +173,39 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-10 pt-6 border-t border-border-default flex flex-col gap-4">
-          <p className="hidden md:block text-center text-[0.6875rem] leading-relaxed text-text-muted/90 max-w-3xl mx-auto px-2">
+
+        <div className="mt-6 pt-4 border-t border-border-default flex flex-col items-center gap-2 text-center">
+          <p className="hidden md:block text-[0.625rem] leading-snug text-text-muted/90 max-w-3xl px-2">
             {t('legalNameFull')}
           </p>
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
-              <p className="text-text-muted text-body-sm text-center sm:text-left">
-                © {new Date().getFullYear()} {t('legalNameShort')} - {t('rights')}
-              </p>
-              <p className="text-text-muted text-[0.7rem] sm:text-body-sm">
-                Made by{' '}
-                <a
-                  href="https://my-portfolio-nine-neon-53.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-text-secondary hover:text-premium-accent transition-colors underline-offset-2 hover:underline"
-                >
-                  Marko Lempl
-                </a>
-              </p>
-              <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-body-sm">
-                <Link href="/privacy" className="text-text-muted hover:text-premium-accent transition-colors">
-                  {t('privacy')}
-                </Link>
-                <span className="text-text-disabled">·</span>
-                <Link href="/terms" className="text-text-muted hover:text-premium-accent transition-colors">
-                  {t('terms')}
-                </Link>
-                <span className="text-text-disabled">·</span>
-                <Link href="/cookies" className="text-text-muted hover:text-premium-accent transition-colors">
-                  {t('cookies')}
-                </Link>
-              </nav>
-            </div>
-            <BackToTop />
-          </div>
+          <p className="text-text-muted text-[0.8125rem]">
+            © {new Date().getFullYear()} {t('legalNameShort')} - {t('rights')}
+          </p>
+          <p className="text-text-muted text-[0.7rem]">
+            Made by{' '}
+            <a
+              href="https://my-portfolio-nine-neon-53.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-text-secondary hover:text-premium-accent transition-colors underline-offset-2 hover:underline"
+            >
+              Marko Lempl
+            </a>
+          </p>
+          <nav aria-label="Legal" className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.8125rem]">
+            <Link href="/privacy" className="text-text-muted hover:text-premium-accent transition-colors">
+              {t('privacy')}
+            </Link>
+            <span className="text-text-disabled">·</span>
+            <Link href="/terms" className="text-text-muted hover:text-premium-accent transition-colors">
+              {t('terms')}
+            </Link>
+            <span className="text-text-disabled">·</span>
+            <Link href="/cookies" className="text-text-muted hover:text-premium-accent transition-colors">
+              {t('cookies')}
+            </Link>
+          </nav>
+          <BackToTop />
         </div>
       </div>
     </footer>
