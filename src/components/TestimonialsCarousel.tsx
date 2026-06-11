@@ -204,30 +204,32 @@ export default function TestimonialsCarousel({
   const ratingDisplay = Number.isInteger(rating) ? String(rating) : rating.toFixed(1)
 
   return (
-  <>
+    <>
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 sm:mb-10"
         initial={{ opacity: 0, y: 8 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <motion.div
-          className="inline-flex items-center gap-3 rounded-card border border-border-default bg-premium-charcoal px-5 py-3"
-          aria-label={t('ratingSummary', { rating: ratingDisplay, count: total })}
-        >
-          <GoogleIcon className="h-6 w-6" />
-          <div className="text-left">
-            <p className="text-h3 text-text-primary leading-none">
-              {ratingDisplay}
-              <span className="text-premium-accent ml-1" aria-hidden>
-                ★
-              </span>
-            </p>
-            <p className="text-body-sm text-text-muted mt-0.5">
-              {t('ratingSummary', { rating: ratingDisplay, count: total })}
-            </p>
-          </div>
-        </motion.div>
+        <a href={mapsUri} target="_blank" rel="noopener noreferrer">
+          <motion.div
+            className="inline-flex items-center gap-3 rounded-card border border-border-default bg-premium-charcoal px-5 py-3"
+            aria-label={t('ratingSummary', { rating: ratingDisplay, count: total })}
+          >
+            <GoogleIcon className="h-6 w-6" />
+            <div className="text-left">
+              <p className="text-h3 text-text-primary leading-none">
+                {ratingDisplay}
+                <span className="text-premium-accent ml-1" aria-hidden>
+                  ★
+                </span>
+              </p>
+              <p className="text-body-sm text-text-muted mt-0.5">
+                {t('ratingSummary', { rating: ratingDisplay, count: total })}
+              </p>
+            </div>
+          </motion.div>
+        </a>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <a
             href={mapsUri}
@@ -293,8 +295,8 @@ export default function TestimonialsCarousel({
                     layoutReady
                       ? { width: stepPx - GAP_PX, minWidth: stepPx - GAP_PX }
                       : {
-                          flex: `0 0 calc((100% - ${(slidesVisible - 1) * GAP_PX}px) / ${slidesVisible})`,
-                        }
+                        flex: `0 0 calc((100% - ${(slidesVisible - 1) * GAP_PX}px) / ${slidesVisible})`,
+                      }
                   }
                 >
                   <ReviewCard
