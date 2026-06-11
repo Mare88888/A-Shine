@@ -66,21 +66,12 @@ export default function About() {
               aria-labelledby="about-why-heading"
             >
               <div className="order-last lg:order-first relative overflow-hidden flex items-center bg-premium-slate/80 border-t lg:border-t-0 border-border-default">
-                {/* Natural ratio when stacked; on lg+ the photo covers the full
-                    cell (its background around the tilted paper absorbs the crop) */}
                 <Image
                   src="/certificate2.webp"
                   alt="A-Shine certificate"
                   width={0}
                   height={0}
-                  className="relative w-full h-auto lg:hidden"
-                  sizes="100vw"
-                />
-                <Image
-                  src="/certificate2.webp"
-                  alt="A-Shine certificate"
-                  fill
-                  className="hidden lg:block object-cover"
+                  className="relative w-[calc(100%+2px)] max-w-none -mx-px h-auto"
                   sizes="(min-width: 1024px) 55vw, 100vw"
                 />
               </div>
