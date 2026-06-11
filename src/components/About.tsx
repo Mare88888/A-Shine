@@ -38,8 +38,8 @@ export default function About() {
             variants={staggerItem}
             className="overflow-hidden rounded-card border border-border-default"
           >
-            <section className="grid lg:grid-cols-2 items-stretch">
-              <div className="bg-premium-slate/80 px-6 py-10 text-center sm:px-10 sm:py-12 lg:px-12 text-body text-text-secondary flex flex-col justify-center">
+            <section className="grid lg:grid-cols-[5fr_6fr] items-stretch">
+              <div className="bg-premium-slate/80 px-6 py-10 text-center sm:px-10 sm:py-12 lg:px-8 lg:py-6 text-body text-text-secondary flex flex-col justify-center">
                 <div className="mx-auto max-w-2xl space-y-4">
                   <p>{t("intro1")}</p>
                   <p>{t("intro2")}</p>
@@ -47,14 +47,14 @@ export default function About() {
                   <p>{t("offer")}</p>
                 </div>
               </div>
-              <div className="border-t lg:border-t-0 lg:border-l border-border-default flex items-center justify-center">
+              <div className="relative overflow-hidden flex items-center bg-premium-slate/80 border-t lg:border-t-0 border-border-default">
                 <Image
                   src="/certificate.webp"
                   alt="A-Shine certificate"
                   width={0}
                   height={0}
-                  sizes="(min-width: 1024px) 320px, 60vw"
-                  className="w-full h-auto"
+                  className="relative w-[calc(100%+2px)] max-w-none -mx-px h-auto"
+                  sizes="(min-width: 1024px) 55vw, 100vw"
                 />
               </div>
             </section>
@@ -62,17 +62,18 @@ export default function About() {
             <div className="border-t border-border-default" />
 
             <section
-              className="grid lg:grid-cols-2 items-stretch"
+              className="grid lg:grid-cols-[6fr_5fr] items-stretch"
               aria-labelledby="about-why-heading"
             >
-              <div className="order-last lg:order-first relative lg:min-h-64 border-t lg:border-t-0 lg:border-r border-border-default">
-                {/* Natural ratio when stacked; full-bleed cover beside the text on lg+ */}
+              <div className="order-last lg:order-first relative overflow-hidden flex items-center bg-premium-slate/80 border-t lg:border-t-0 border-border-default">
+                {/* Natural ratio when stacked; on lg+ the photo covers the full
+                    cell (its background around the tilted paper absorbs the crop) */}
                 <Image
                   src="/certificate2.webp"
                   alt="A-Shine certificate"
                   width={0}
                   height={0}
-                  className="w-full h-auto lg:hidden"
+                  className="relative w-full h-auto lg:hidden"
                   sizes="100vw"
                 />
                 <Image
@@ -80,27 +81,27 @@ export default function About() {
                   alt="A-Shine certificate"
                   fill
                   className="hidden lg:block object-cover"
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  sizes="(min-width: 1024px) 55vw, 100vw"
                 />
               </div>
-              <div className="order-first lg:order-last bg-premium-slate/80 px-6 py-10 text-center sm:px-10 sm:py-12 lg:px-12">
+              <div className="order-first lg:order-last bg-premium-slate/80 px-6 py-10 text-center sm:px-10 sm:py-12 lg:px-8 lg:py-6 flex flex-col justify-center">
                 <h3
                   id="about-why-heading"
-                  className="text-h3 text-text-primary mb-6"
+                  className="text-h3 lg:text-h4 xl:text-h3 text-text-primary mb-6 lg:mb-3"
                 >
                   {t("whyHeading")}
                 </h3>
                 <ul
-                  className="mx-auto inline-block space-y-3 text-left"
+                  className="mx-auto inline-block space-y-3 lg:space-y-2 text-left"
                   role="list"
                 >
                   {WHY_KEYS.map((key) => (
                     <li
                       key={key}
-                      className="text-body text-text-secondary flex max-w-xl items-start gap-3"
+                      className="text-body lg:text-body-sm xl:text-body text-text-secondary flex max-w-xl items-start gap-3"
                     >
                       <span
-                        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-premium-accent/20 text-premium-accent text-body-sm font-semibold"
+                        className="flex h-6 w-6 lg:h-5 lg:w-5 xl:h-6 xl:w-6 shrink-0 items-center justify-center rounded-full bg-premium-accent/20 text-premium-accent text-body-sm font-semibold"
                         aria-hidden
                       >
                         ✓
@@ -109,7 +110,7 @@ export default function About() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-6 max-w-xl mx-auto text-body-sm text-premium-accent font-medium leading-relaxed">
+                <p className="mt-6 lg:mt-3 max-w-xl mx-auto text-body-sm text-premium-accent font-medium leading-relaxed">
                   {t("whyTagline")}
                 </p>
               </div>
