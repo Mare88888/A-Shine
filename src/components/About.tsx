@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { SectionEntrance } from "@/components/MotionSection";
 import { staggerContainer, staggerItem } from "@/lib/motion";
 
-const WHY_KEYS = ["why1", "why2", "why3", "why4", "why5"] as const;
+const WHY_KEYS = ["why1", "why2", "why3", "why4", "why5", "why6"] as const;
 const COMMITMENT_KEYS = ["commitment1", "commitment2", "commitment3"] as const;
 
 export default function About() {
@@ -65,14 +65,22 @@ export default function About() {
               className="grid lg:grid-cols-2 items-stretch"
               aria-labelledby="about-why-heading"
             >
-              <div className="order-last lg:order-first relative min-h-64 border-t lg:border-t-0 lg:border-r border-border-default">
+              <div className="order-last lg:order-first relative lg:min-h-64 border-t lg:border-t-0 lg:border-r border-border-default">
+                {/* Natural ratio when stacked; full-bleed cover beside the text on lg+ */}
                 <Image
                   src="/certificate2.webp"
                   alt="A-Shine certificate"
                   width={0}
                   height={0}
-                  className="w-full h-auto"
-                  sizes="(min-width: 1024px) 320px, 60vw"
+                  className="w-full h-auto lg:hidden"
+                  sizes="100vw"
+                />
+                <Image
+                  src="/certificate2.webp"
+                  alt="A-Shine certificate"
+                  fill
+                  className="hidden lg:block object-cover"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                 />
               </div>
               <div className="order-first lg:order-last bg-premium-slate/80 px-6 py-10 text-center sm:px-10 sm:py-12 lg:px-12">
