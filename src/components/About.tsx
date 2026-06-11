@@ -39,8 +39,8 @@ export default function About() {
             className="overflow-hidden rounded-card border border-border-default"
           >
             <section className="grid lg:grid-cols-[5fr_6fr] items-stretch">
-              <div className="bg-premium-slate/80 px-6 py-10 text-center sm:px-10 sm:py-12 lg:px-8 lg:py-6 text-body text-text-secondary flex flex-col justify-center">
-                <div className="mx-auto max-w-2xl space-y-4">
+              <div className="bg-premium-slate/80 px-6 py-10 text-center sm:px-10 sm:py-12 lg:px-8 lg:py-5 text-body lg:text-body-sm xl:text-body text-text-secondary flex flex-col justify-center">
+                <div className="mx-auto max-w-2xl space-y-4 lg:space-y-3 xl:space-y-4">
                   <p>{t("intro1")}</p>
                   <p>{t("intro2")}</p>
                   <p className="text-text-primary font-medium">{t("belief")}</p>
