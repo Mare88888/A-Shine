@@ -194,7 +194,7 @@
     "secondaryCta": "View packages"
   },
   "footer": {
-    "tagline": "Professional car detailing and mobile valeting. Showroom finish, ceramic coatings, paint correction.",
+    "tagline": "Professional vehicle care for a flawless appearance, long-lasting protection, and the pride that comes with driving a vehicle that looks its absolute best.",
     "legalNameFull": "A-Shine Mobile Detailing, nega vozila in drugih površin, ROBI STERMECKI s.p.",
     "legalNameShort": "A-Shine Mobile Detailing, ROBI STERMECKI s.p.",
     "quickLinks": "Quick links",
@@ -256,9 +256,9 @@
   "map": {
     "overline": "Service area",
     "heading": "Where we operate",
-    "subheading": "We come to you. Our service area is centered at Celestrina 19, Malečnik.",
+    "subheading": "We come to you, or you bring your vehicle to our location in Malečnik. Our services are performed wherever it is most convenient for you.",
     "legendTitle": "Service area & travel costs",
-    "travelDiscountNote": "For multiple vehicles or a larger job at the same location, travel costs may be reduced.",
+    "travelDiscountNote": "For multiple vehicles or larger projects completed at the same location, travel costs may be reduced.",
     "free": "Free",
     "perKm": "{price}/km",
     "noKeyHeading": "Service area",
@@ -271,7 +271,7 @@
   "testimonials": {
     "overline": "Google reviews",
     "heading": "What customers say",
-    "subheading": "Real reviews from Google. See all opinions on our Google Business profile.",
+    "subheading": "Customer satisfaction is our highest priority. See what our clients have to say about their experience with A-Shine Mobile Detailing.",
     "googleReview": "Google review",
     "ratingSummary": "{count} Google reviews",
     "seeAllReviews": "See all on Google",
@@ -354,7 +354,7 @@
   "contact": {
     "overline": "Get in touch",
     "heading": "Book or enquire",
-    "subheading": "Tell us what you need and your preferred date. We'll get back to you with a quote.",
+    "subheading": "Send us an inquiry or book your appointment today. We'll be happy to recommend the most suitable services and provide a tailored quote based on your vehicle's needs.",
     "thanksTitle": "Thanks for your message",
     "thanksBody": "We'll be in touch soon to confirm your booking.",
     "name": "Name",
