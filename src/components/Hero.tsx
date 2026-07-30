@@ -36,7 +36,7 @@ export interface HeroProps {
 
 export default function Hero({
   backgroundImage,
-  backgroundVideo = "/HeroVideo.webm",
+  backgroundVideo = "/HeroVideoNew.webm",
   overline,
   headline,
   subheadline,

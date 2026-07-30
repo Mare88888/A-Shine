@@ -49,7 +49,7 @@ export default async function Home({ params }: Props) {
   return (
     <>
       <JsonLd />
-      <Hero backgroundVideo="/HeroVideo.webm" />
+      <Hero backgroundVideo="/HeroVideoNew.webm" />
       <Stats />
       <About />
       <Gallery />
