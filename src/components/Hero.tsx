@@ -61,7 +61,7 @@ export default function Hero({
   }, [])
 
   const gradientClass = hasMedia
-    ? 'from-premium-charcoal/20 via-premium-black/30 to-premium-black/60'
+    ? 'from-premium-charcoal/35 via-premium-black/45 to-premium-black/70'
     : 'from-premium-charcoal via-premium-black to-premium-black'
 
   return (
@@ -74,7 +74,7 @@ export default function Hero({
       {backgroundVideo ? (
         <div className="absolute inset-0" aria-hidden>
           <video
-            className="h-full w-full object-cover brightness-[1.2] contrast-[1.03]"
+            className="h-full w-full object-cover brightness-[1.08] contrast-[1.03]"
             autoPlay
             muted
             loop
