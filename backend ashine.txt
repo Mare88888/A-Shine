@@ -1,0 +1,672 @@
+Spring Boot booking backend + Next admin
+
+Goal
+
+Replace email-only booking with a real calendar:
+
+
+
+
+
+Customer picks service, then start date/time
+
+
+
+System blocks a duration window based on that service (wash ~45-60 min, ceramic/premium ~3-4 h)
+
+
+
+Overlapping windows cannot be booked on the public site
+
+
+
+Same day can still have multiple appointments if they do not overlap
+
+
+
+Owner manages everything in a separate Next.js admin talking to the Spring API
+
+
+
+Keep existing form fields (name, email, phone, car, service category/package, location type, distance, message, locale)
+
+flowchart LR
+  subgraph publicSite [ashine.si Next.js]
+    ContactForm[Contact form]
+  end
+  subgraph adminSite [admin.ashine.si Next.js]
+    Dashboard[Calendar and appointments]
+  end
+  subgraph api [Spring Boot API]
+    Availability[Availability]
+    Bookings[Bookings]
+    Auth[Admin JWT auth]
+    Mail[Email]
+  end
+  subgraph db [PostgreSQL]
+    Tables[services appointments blocked_slots]
+  end
+  ContactForm -->|GET slots POST booking| Bookings
+  ContactForm --> Availability
+  Dashboard --> Auth
+  Dashboard --> Bookings
+  Bookings --> Tables
+  Availability --> Tables
+  Bookings --> Mail
+
+Locked decisions
+
+
+
+
+
+Slot model: service-driven duration; book a start time; reject overlaps
+
+
+
+Public site: stay on current Next.js app; call Spring API
+
+
+
+Admin: separate small Next.js app + Spring REST API
+
+
+
+Auth: admin JWT only; public booking open with rate limit
+
+
+
+DB: PostgreSQL
+
+
+
+Timezone: Europe/Ljubljana everywhere
+
+Overlap rule: new booking [start, start + duration) is allowed only if it does not intersect any PENDING/CONFIRMED appointment or admin-blocked range.
+
+Existing project context (ashine.si / Car Website)
+
+Context for another agent integrating with this marketing site. Full docs: DOCUMENTATION.md, DEPLOYMENT.md, .env.example.
+
+What it is
+
+Production bilingual (SL default / EN) marketing site for A-Shine Mobile Detailing. Live on Vercel (e.g. ashine.si). Dark premium UI, cyan accent #00b8db.
+
+Stack: Next.js 15 App Router · React 18 · TypeScript · Tailwind · next-intl · Framer Motion · Resend · Google Maps / Places
+
+Folder structure
+
+Car Website/
+├── src/
+│   ├── app/
+│   │   ├── [locale]/              # home, privacy, terms, cookies
+│   │   │   ├── page.tsx            # landing composition
+│   │   │   └── layout.tsx          # Nav, Footer, MobileCTABar, i18n provider
+│   │   ├── api/booking/route.ts    # CURRENT booking: validate + Resend emails only
+│   │   ├── layout.tsx              # root fonts/metadata
+│   │   ├── globals.css
+│   │   ├── sitemap.ts / robots.ts
+│   │   └── llms.txt/route.ts
+│   ├── components/
+│   │   ├── Contact.tsx             # booking form (client) - MAIN integration point
+│   │   ├── Pricing.tsx             # package IDs: cleaning-*, detail-*
+│   │   ├── Hero, About, Gallery, MapSection, Testimonials, Nav, Footer, ...
+│   │   └── TestimonialsCarousel.tsx
+│   ├── config/site.ts              # brand, SITE_URL, CONTACT_EMAIL, GEO
+│   ├── data/                       # Google reviews fallbacks
+│   ├── i18n/                       # routing, request, navigation (next-intl)
+│   └── lib/
+│       ├── booking-email.ts        # RESEND_* env helpers
+│       ├── rate-limit.ts           # in-memory IP limit for /api/booking
+│       ├── google-reviews.ts
+│       └── seo.ts / motion.ts
+├── strings/sl.json · en.json       # all UI copy including contact.* errors
+├── public/                         # images, hero video, favicon
+├── .env.example
+├── DEPLOYMENT.md
+└── DOCUMENTATION.md
+
+Routes today
+
+
+
+
+
+/ and /en - single-page home (anchors: #about #gallery #pricing #map #testimonials #contact)
+
+
+
+Legal: /privacy, /terms, /cookies (+ /en/...)
+
+
+
+POST /api/booking - email-only booking (to be replaced/proxied by Spring)
+
+Default locale sl, localePrefix: as-needed (no /sl in URL). Middleware skips api.
+
+Page composition
+
+Hero → Stats → About → Gallery → Pricing → Map → Testimonials → Contact → Footer
+
+Current booking form fields (Contact.tsx)
+
+Must be preserved when calling Spring:
+
+
+
+
+
+
+
+Field
+
+
+
+Notes
+
+
+
+
+
+name
+
+
+
+required
+
+
+
+
+
+email
+
+
+
+required
+
+
+
+
+
+phone
+
+
+
+optional
+
+
+
+
+
+serviceCategory
+
+
+
+cleaning | detailing | custom
+
+
+
+
+
+service
+
+
+
+package id/label; hidden for cleaning and custom (no packages) - category recorded as service
+
+
+
+
+
+locationType
+
+
+
+on-site vs mobile
+
+
+
+
+
+distance
+
+
+
+required if mobile (25 / 100 / 200)
+
+
+
+
+
+date
+
+
+
+today: date-only string; Spring: add startsAt (ISO datetime)
+
+
+
+
+
+message
+
+
+
+optional
+
+
+
+
+
+locale
+
+
+
+sl | en (sent with submit)
+
+
+
+
+
+carType
+
+
+
+may appear in API payload historically - keep if still collected
+
+Package IDs from Pricing.tsx:
+
+
+
+
+
+Cleaning: cleaning-basic, cleaning-full, cleaning-premium
+
+
+
+Detailing: detail-standard, detail-deepshine, detail-showroom
+
+Current booking backend behaviour
+
+src/app/api/booking/route.ts:
+
+
+
+
+
+Rate limit by IP (rate-limit.ts)
+
+
+
+Validate required fields + past date
+
+
+
+Send two Resend emails (owner inbox + customer confirmation, SL/EN)
+
+
+
+No calendar, no persistence of appointments
+
+Env used: RESEND_API_KEY, RESEND_FROM, BOOKING_TO_EMAIL, NEXT_PUBLIC_CONTACT_EMAIL
+
+Other integrations (unchanged by booking work)
+
+
+
+
+
+Google Maps map: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY, NEXT_PUBLIC_GOOGLE_MAPS_MAP_ID
+
+
+
+Google reviews (server): GOOGLE_PLACE_ID, GOOGLE_MAPS_API_KEY with static fallback in src/data/
+
+
+
+SEO: NEXT_PUBLIC_SITE_URL
+
+Design cues for admin UI (optional consistency)
+
+
+
+
+
+Backgrounds: #08080a / charcoal; accent cyan #00b8db
+
+
+
+Font: Inter via next/font
+
+
+
+Match bilingual owner-facing labels where useful (admin can start EN-only)
+
+Integration touchpoints for the other agent
+
+
+
+
+
+Change only Contact + env on this repo once API is ready
+
+
+
+Do not put Spring code inside this repo
+
+
+
+Mirror package/service codes exactly so duration lookup works
+
+
+
+Keep Resend email content tone similar when moving mail to Spring
+
+
+
+CORS must allow https://ashine.si, https://www.ashine.si, and localhost for next dev
+
+Repository strategy
+
+Do not merge the Spring Boot backend into this Next.js marketing repo. Different language, build, deploy, and lifecycle. Integrate over HTTP, not by git-merge.
+
+Recommended layout (3 repos):
+
+
+
+
+
+
+
+Repo
+
+
+
+Role
+
+
+
+Deploy
+
+
+
+
+
+Car Website (current)
+
+
+
+Public ashine.si
+
+
+
+Vercel
+
+
+
+
+
+ashine-booking-api (new)
+
+
+
+Spring Boot + Postgres
+
+
+
+Railway / VPS (api.ashine.si)
+
+
+
+
+
+ashine-admin (new)
+
+
+
+Small Next.js admin
+
+
+
+Vercel (admin.ashine.si)
+
+How they connect later (not a merge):
+
+
+
+
+
+Build and ship API alone until booking + availability work
+
+
+
+Point Contact form at NEXT_PUBLIC_BOOKING_API_URL
+
+
+
+Point admin at the same API
+
+
+
+Optionally remove or thin the old Next /api/booking route
+
+Alternative if you want fewer repos: one monorepo with /apps/web, /apps/admin, /apps/api — still separate apps, still no “merge Java into the marketing site as one app.” For a solo/friend project, 3 separate repos is simpler.
+
+Service durations (configurable in DB)
+
+Seed from package IDs in src/components/Pricing.tsx:
+
+
+
+
+
+cleaning-basic - 45 min
+
+
+
+cleaning-full - 90 min
+
+
+
+cleaning-premium - 120 min
+
+
+
+detail-standard - 180 min
+
+
+
+detail-deepshine - 240 min
+
+
+
+detail-showroom - 300 min
+
+
+
+category-only (cleaning / custom) - 120 min default
+
+Admin can edit durations later without redeploying the public site. Add a configurable buffer (e.g. 15-30 min) between jobs for travel/cleanup.
+
+Backend (Spring Boot)
+
+Stack: Java 21, Spring Boot 3.x, Web, Validation, Data JPA, Security, PostgreSQL, Flyway.
+
+Tables:
+
+
+
+
+
+services - code, names, duration_minutes, active
+
+
+
+appointments - current form fields + service_code, starts_at, ends_at, status (PENDING/CONFIRMED/CANCELLED/DONE), locale
+
+
+
+blocked_slots - admin vacation/travel blocks
+
+
+
+admin_users - email + password hash
+
+
+
+Postgres exclusion constraint on tstzrange(starts_at, ends_at) for non-cancelled rows so double-booking is impossible under concurrency
+
+Public API (no auth):
+
+
+
+
+
+GET /api/public/services
+
+
+
+GET /api/public/availability?date=YYYY-MM-DD&serviceCode=... - free start times only (no PII)
+
+
+
+POST /api/public/bookings - same payload as today + startsAt
+
+
+
+Errors: SLOT_TAKEN, VALIDATION, RATE_LIMITED
+
+Availability v1: business hours (e.g. Mon-Sat 08:00-18:00), candidate starts every 30 min, keep start if window fits hours and does not overlap appointments/blocks.
+
+Admin API (JWT): login; list/filter appointments; detail; status/reschedule; blocked slots; CRUD service durations.
+
+Email: move sending from src/app/api/booking/route.ts into Spring (Resend HTTP or JavaMail). Keep owner + customer emails. Contact form posts directly to Spring once CORS is set.
+
+Security: CORS for ashine.si / www / admin / localhost; rate-limit public booking; JWT for admin only.
+
+Public website changes (implementation later)
+
+In src/components/Contact.tsx:
+
+
+
+
+
+Keep current fields
+
+
+
+After service is chosen, fetch availability for selected date
+
+
+
+Add date + time slot picker (taken starts disabled)
+
+
+
+Submit ISO startsAt to Spring
+
+
+
+On SLOT_TAKEN, refresh slots and show message
+
+Env: NEXT_PUBLIC_BOOKING_API_URL=https://api.ashine.si
+
+Admin app (separate Next.js)
+
+v1 features: login; week/day calendar; appointment detail (when, where, service, customer, message); confirm/cancel/done; block time; edit durations.
+
+Host: admin.ashine.si on Vercel. Talks only to Spring.
+
+Hosting
+
+
+
+
+
+Public site: current Vercel
+
+
+
+Admin: new Vercel project
+
+
+
+Spring API: Railway / Render / Hetzner VPS at api.ashine.si
+
+
+
+Managed PostgreSQL on the same provider
+
+Phased rollout
+
+
+
+
+
+Spec - business hours, buffer, statuses, duration map
+
+
+
+Spring + DB - project, Flyway, seed, exclusion constraint
+
+
+
+Public API - availability + booking + emails + concurrency tests
+
+
+
+Wire Contact form - slot UI; deprecate or proxy old Next /api/booking
+
+
+
+Admin Next app - auth, calendar, actions, blocks, durations
+
+
+
+Harden - backups, monitoring, staging, CORS, runbook
+
+Out of scope for v1
+
+
+
+
+
+Customer accounts
+
+
+
+Payments
+
+
+
+Google Calendar sync
+
+
+
+Rewriting the marketing site into Java
+
+Success criteria
+
+
+
+
+
+Customer cannot pick an overlapping start for the chosen service
+
+
+
+Same day can show multiple non-overlapping bookings
+
+
+
+Owner sees when / where / what / who in admin
+
+
+
+Existing form fields still collected
+
+
+
+Double-booking impossible under concurrent submits
+
