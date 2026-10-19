@@ -8,6 +8,47 @@ export type PublicAvailability = {
   starts: string[];
 };
 
+export type CreateBookingPayload = {
+  name: string;
+  email: string;
+  phone?: string | null;
+  carType?: string | null;
+  serviceCategory: string;
+  serviceCode: string;
+  locationType: string;
+  distance?: string | null;
+  date: string;
+  startsAt: string;
+  message?: string | null;
+  locale: "sl" | "en";
+};
+
+export type CreateBookingResult = {
+  id: number;
+  status: string;
+  startsAt: string;
+  endsAt: string;
+  serviceCode: string;
+};
+
+export type BookingApiErrorCode =
+  | "SLOT_TAKEN"
+  | "VALIDATION"
+  | "RATE_LIMITED"
+  | "UNKNOWN";
+
+export class BookingApiError extends Error {
+  readonly code: BookingApiErrorCode;
+  readonly status: number;
+
+  constructor(code: BookingApiErrorCode, message: string, status: number) {
+    super(message);
+    this.name = "BookingApiError";
+    this.code = code;
+    this.status = status;
+  }
+}
+
 const KNOWN_SERVICE_CODES = new Set([
   "cleaning-basic",
   "cleaning-full",
@@ -59,6 +100,11 @@ export function formatSlotTime(iso: string, locale: string): string {
   }).format(new Date(iso));
 }
 
+function emptyToNull(value: string | undefined): string | null {
+  const trimmed = value?.trim() ?? "";
+  return trimmed ? trimmed : null;
+}
+
 export async function fetchAvailability(
   date: string,
   serviceCode: string,
@@ -73,4 +119,53 @@ export async function fetchAvailability(
     throw new Error(`Availability ${res.status}`);
   }
   return res.json() as Promise<PublicAvailability>;
+}
+
+export async function createBooking(
+  payload: CreateBookingPayload
+): Promise<CreateBookingResult> {
+  const body = {
+    name: payload.name.trim(),
+    email: payload.email.trim(),
+    phone: emptyToNull(payload.phone ?? undefined),
+    carType: emptyToNull(payload.carType ?? undefined),
+    serviceCategory: payload.serviceCategory,
+    serviceCode: payload.serviceCode,
+    locationType: payload.locationType,
+    distance:
+      payload.locationType === "mobile"
+        ? emptyToNull(payload.distance ?? undefined)
+        : null,
+    date: payload.date,
+    startsAt: payload.startsAt,
+    message: emptyToNull(payload.message ?? undefined),
+    locale: payload.locale,
+  };
+
+  const res = await fetch(`${getBookingApiUrl()}/api/public/bookings`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (res.ok) {
+    return res.json() as Promise<CreateBookingResult>;
+  }
+
+  const data = (await res.json().catch(() => ({}))) as {
+    code?: string;
+    message?: string;
+  };
+  const code =
+    data.code === "SLOT_TAKEN" ||
+    data.code === "VALIDATION" ||
+    data.code === "RATE_LIMITED"
+      ? data.code
+      : "UNKNOWN";
+
+  throw new BookingApiError(
+    code,
+    data.message ?? `Booking failed (${res.status})`,
+    res.status
+  );
 }

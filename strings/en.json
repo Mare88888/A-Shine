@@ -403,6 +403,8 @@
       "date": "Please choose a preferred date",
       "startsAt": "Please choose a time",
       "slotsLoad": "Could not load available times. Try again or pick another date.",
+      "slotTaken": "That time was just taken. Please choose another slot.",
+      "rateLimited": "Too many requests. Please try again in a few minutes.",
       "datePast": "Preferred date cannot be in the past",
       "dateYearHigh": "Try a sooner date",
       "message": "Please add a few more details (min 10 characters)",

@@ -403,6 +403,8 @@
       "date": "Izberite želeni datum",
       "startsAt": "Izberite uro",
       "slotsLoad": "Prostih terminov ni bilo mogoče naložiti. Poskusite znova ali izberite drug datum.",
+      "slotTaken": "Ta termin je bil ravnokar zaseden. Izberite drugega.",
+      "rateLimited": "Preveč zahtevkov. Poskusite znova čez nekaj minut.",
       "datePast": "Želeni datum ne sme biti v preteklosti",
       "dateYearHigh": "Poskusite z manjšim datumom",
       "message": "Dodajte še nekaj podrobnosti (min. 10 znakov)",

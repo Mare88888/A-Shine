@@ -9,6 +9,8 @@ import { EmailIcon, PhoneIcon } from './Footer'
 import { carCleaningPackages, carDetailingPackages } from './Pricing'
 import { CONTACT_EMAIL } from '@/config/site'
 import {
+  BookingApiError,
+  createBooking,
   fetchAvailability,
   formatSlotTime,
   todayInLjubljana,
@@ -269,17 +271,23 @@ export default function Contact() {
     setErrors((prev) => ({ ...prev, [name]: validateField(name as keyof FormErrors, value) }))
   }
 
-  function getServiceLabel(serviceCategory: string, packageId: string): string {
-    if (serviceCategory === 'custom') return t('serviceCustom')
-    if (serviceCategory === 'cleaning') return t('serviceCleaning')
-    const categoryLabel = t('serviceDetailing')
-    if (packageId === PACKAGE_CUSTOM_ID) {
-      return `${categoryLabel} - ${customPackageLabel}`
+  async function refreshSlots(date: string, code: string) {
+    setSlotsLoading(true)
+    setSlotsFailed(false)
+    try {
+      const data = await fetchAvailability(date, code)
+      setSlots(data.starts)
+      setValues((prev) =>
+        prev.startsAt && !data.starts.includes(prev.startsAt)
+          ? { ...prev, startsAt: '' }
+          : prev
+      )
+    } catch {
+      setSlots([])
+      setSlotsFailed(true)
+    } finally {
+      setSlotsLoading(false)
     }
-    const packages = getPackagesForType(serviceCategory)
-    const pkg = packages.find((p) => p.id === packageId)
-    const pkgName = pkg ? tPricing(`packages.${pkg.id}.name`) : packageId
-    return pkg ? `${categoryLabel} - ${pkgName}` : packageId
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -288,25 +296,41 @@ export default function Contact() {
     setTouched({ name: true, email: true, phone: true, serviceCategory: true, service: true, locationType: true, distance: true, date: true, startsAt: true, message: true })
     const nextErrors = validateAll()
     if (Object.keys(nextErrors).length > 0) return
+    if (!serviceCode) {
+      setSubmitError(t('errors.submitError'))
+      return
+    }
     setSending(true)
     try {
-      const payload = {
-        ...values,
-        service: getServiceLabel(values.serviceCategory, values.service),
-        locale,
-      }
-      const res = await fetch('/api/booking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+      await createBooking({
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        serviceCategory: values.serviceCategory,
+        serviceCode,
+        locationType: values.locationType,
+        distance: values.distance,
+        date: values.date,
+        startsAt: values.startsAt,
+        message: values.message,
+        locale: locale === 'en' ? 'en' : 'sl',
       })
-      const data = await res.json().catch(() => ({}))
-      if (!res.ok) {
-        setSubmitError(data.error ?? t('errors.submitError'))
+      setSubmitted(true)
+    } catch (err) {
+      if (err instanceof BookingApiError) {
+        if (err.code === 'SLOT_TAKEN') {
+          setSubmitError(t('errors.slotTaken'))
+          setValues((prev) => ({ ...prev, startsAt: '' }))
+          await refreshSlots(values.date, serviceCode)
+          return
+        }
+        if (err.code === 'RATE_LIMITED') {
+          setSubmitError(t('errors.rateLimited'))
+          return
+        }
+        setSubmitError(err.message || t('errors.submitError'))
         return
       }
-      setSubmitted(true)
-    } catch {
       setSubmitError(t('errors.networkError'))
     } finally {
       setSending(false)
