@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
 import { motion } from 'framer-motion'
 import { SectionEntrance } from '@/components/MotionSection'
@@ -8,6 +8,12 @@ import { buttonTap } from '@/lib/motion'
 import { EmailIcon, PhoneIcon } from './Footer'
 import { carCleaningPackages, carDetailingPackages } from './Pricing'
 import { CONTACT_EMAIL } from '@/config/site'
+import {
+  fetchAvailability,
+  formatSlotTime,
+  todayInLjubljana,
+  toServiceCode,
+} from '@/lib/booking-api'
 
 const PACKAGE_CUSTOM_ID = 'custom'
 
@@ -28,6 +34,7 @@ const INITIAL_FORM_VALUES: Record<string, string> = {
   locationType: '',
   distance: '',
   date: '',
+  startsAt: '',
   message: '',
 }
 
@@ -48,6 +55,7 @@ interface FormErrors {
   locationType?: string
   distance?: string
   date?: string
+  startsAt?: string
   message?: string
 }
 
@@ -109,6 +117,9 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({})
   const [touched, setTouched] = useState<Record<string, boolean>>({})
   const [values, setValues] = useState<Record<string, string>>({ ...INITIAL_FORM_VALUES })
+  const [slots, setSlots] = useState<string[]>([])
+  const [slotsLoading, setSlotsLoading] = useState(false)
+  const [slotsFailed, setSlotsFailed] = useState(false)
 
   const serviceTypes = useMemo(
     () => [
@@ -134,6 +145,47 @@ export default function Contact() {
     [t]
   )
   const customPackageLabel = t('customPackage')
+  const today = todayInLjubljana()
+
+  const serviceCode = useMemo(() => {
+    if (!values.serviceCategory) return null
+    if (categoryHasPackages(values.serviceCategory) && !values.service) return null
+    try {
+      return toServiceCode(values.serviceCategory, values.service)
+    } catch {
+      return null
+    }
+  }, [values.serviceCategory, values.service])
+
+  useEffect(() => {
+    if (!values.date || !serviceCode) {
+      setSlots([])
+      setSlotsLoading(false)
+      setSlotsFailed(false)
+      return
+    }
+    const ac = new AbortController()
+    setSlotsLoading(true)
+    setSlotsFailed(false)
+    fetchAvailability(values.date, serviceCode, ac.signal)
+      .then((data) => {
+        setSlots(data.starts)
+        setValues((prev) =>
+          prev.startsAt && !data.starts.includes(prev.startsAt)
+            ? { ...prev, startsAt: '' }
+            : prev
+        )
+      })
+      .catch((err: unknown) => {
+        if (err instanceof DOMException && err.name === 'AbortError') return
+        setSlots([])
+        setSlotsFailed(true)
+      })
+      .finally(() => {
+        if (!ac.signal.aborted) setSlotsLoading(false)
+      })
+    return () => ac.abort()
+  }, [values.date, serviceCode])
 
   function validateField(name: keyof FormErrors, value: string): string | undefined {
     const trimmed = value.trim()
@@ -169,6 +221,8 @@ export default function Contact() {
         if (year > 2050) return t('errors.dateYearHigh')
         return undefined
       }
+      case 'startsAt':
+        return !trimmed ? t('errors.startsAt') : undefined
       case 'message':
         return trimmed && trimmed.length < 10 ? t('errors.message') : undefined
       default:
@@ -195,6 +249,9 @@ export default function Contact() {
       }
       if (name === 'locationType') {
         next.distance = value === 'mobile' ? prev.distance : ''
+      }
+      if (name === 'date' || name === 'serviceCategory' || name === 'service') {
+        next.startsAt = ''
       }
       return next
     })
@@ -228,7 +285,7 @@ export default function Contact() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setSubmitError(null)
-    setTouched({ name: true, email: true, phone: true, serviceCategory: true, service: true, locationType: true, distance: true, date: true, message: true })
+    setTouched({ name: true, email: true, phone: true, serviceCategory: true, service: true, locationType: true, distance: true, date: true, startsAt: true, message: true })
     const nextErrors = validateAll()
     if (Object.keys(nextErrors).length > 0) return
     setSending(true)
@@ -504,7 +561,7 @@ export default function Contact() {
                     name="date"
                     type="date"
                     value={values.date}
-                    min={new Date().toISOString().slice(0, 10)}
+                    min={today}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     required
@@ -513,6 +570,45 @@ export default function Contact() {
                     aria-describedby={errors.date ? 'contact-date-error' : undefined}
                   />
                   <FieldError id="contact-date-error" message={touched.date ? errors.date : undefined} />
+                </div>
+
+                <div className="mt-4">
+                  <FieldLabel htmlFor="contact-startsAt" required>{t('preferredTime')}</FieldLabel>
+                  <div className="relative">
+                    <select
+                      id="contact-startsAt"
+                      name="startsAt"
+                      value={values.startsAt}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      disabled={slotsLoading || slotsFailed || !serviceCode || !values.date || slots.length === 0}
+                      className={getSelectClass('startsAt', 'disabled:opacity-50 disabled:cursor-not-allowed')}
+                      aria-invalid={!!errors.startsAt || slotsFailed}
+                      aria-describedby={errors.startsAt || slotsFailed ? 'contact-startsAt-error' : undefined}
+                    >
+                      <option value="" disabled hidden>
+                        {slotsLoading
+                          ? t('loadingSlots')
+                          : slotsFailed
+                            ? t('errors.slotsLoad')
+                            : !serviceCode || !values.date
+                              ? t('selectDateFirst')
+                              : slots.length === 0
+                                ? t('noSlots')
+                                : t('selectTime')}
+                      </option>
+                      {slots.map((iso) => (
+                        <option key={iso} value={iso}>
+                          {formatSlotTime(iso, locale)}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted" />
+                  </div>
+                  <FieldError
+                    id="contact-startsAt-error"
+                    message={slotsFailed ? t('errors.slotsLoad') : (touched.startsAt ? errors.startsAt : undefined)}
+                  />
                 </div>
 
                 <GroupSeparator />
