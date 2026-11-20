@@ -9,9 +9,12 @@ export type PublicAvailability = {
   starts: string[];
 };
 
+export type DayClosureReason = "closed" | "blocked" | "full" | "passed";
+
 export type PublicAvailabilityDay = {
   date: string;
   available: boolean;
+  reason?: DayClosureReason | null;
 };
 
 export type PublicAvailabilityDays = {
@@ -134,7 +137,7 @@ export async function fetchAvailability(
   return res.json() as Promise<PublicAvailability>;
 }
 
-/** Inclusive day grid for the public date picker (unavailable = blocked/full/Sunday). */
+/** Inclusive day grid. Unavailable days include reason: closed, blocked, full, or passed. */
 export async function fetchAvailabilityDays(
   from: string,
   to: string,

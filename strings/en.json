@@ -372,7 +372,7 @@
     "loadingDays": "Updating available days…",
     "noSlots": "No free times on this date. Try another day.",
     "dateAvailable": "Available",
-    "dateUnavailable": "Unavailable (full or blocked)",
+    "dateUnavailable": "Not available",
     "prevMonth": "Previous month",
     "nextMonth": "Next month",
     "message": "Message",
