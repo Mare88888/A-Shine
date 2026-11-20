@@ -80,7 +80,7 @@ DB: PostgreSQL
 
 
 
-Timezone: Europe/Ljubljana everywhere
+Timezone: Maribor local time. Slovenia's zone id is Europe/Ljubljana.
 
 Overlap rule: new booking [start, start + duration) is allowed only if it does not intersect any PENDING/CONFIRMED appointment or admin-blocked range.
 

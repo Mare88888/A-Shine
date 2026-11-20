@@ -7,7 +7,7 @@ import {
   endOfMonthIso,
   fetchAvailabilityDays,
   startOfMonthIso,
-  todayInLjubljana,
+  todayInMaribor,
 } from '@/lib/booking-api'
 
 type Props = {
@@ -70,7 +70,7 @@ export default function BookingDatePicker({
 }: Props) {
   const t = useTranslations('contact')
   const locale = useLocale()
-  const today = todayInLjubljana()
+  const today = todayInMaribor()
   const effectiveMin = minDate > today ? minDate : today
 
   const initialMonth = startOfMonthIso(value || effectiveMin)

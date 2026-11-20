@@ -13,7 +13,7 @@ import {
   createBooking,
   fetchAvailability,
   formatSlotTime,
-  todayInLjubljana,
+  todayInMaribor,
   toServiceCode,
 } from '@/lib/booking-api'
 import BookingDatePicker from '@/components/BookingDatePicker'
@@ -148,7 +148,7 @@ export default function Contact() {
     [t]
   )
   const customPackageLabel = t('customPackage')
-  const today = todayInLjubljana()
+  const today = todayInMaribor()
 
   const serviceCode = useMemo(() => {
     if (!values.serviceCategory) return null
@@ -215,7 +215,7 @@ export default function Contact() {
         const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed)
         if (!match) return t('errors.date')
         const year = Number(match[1])
-        if (trimmed < todayInLjubljana()) return t('errors.datePast')
+        if (trimmed < todayInMaribor()) return t('errors.datePast')
         if (year > 2050) return t('errors.dateYearHigh')
         return undefined
       }

@@ -1,5 +1,6 @@
 /** Public booking calendar API (AShineBookingAPI). Browser-safe. */
 
+/** Maribor local time. Slovenia's zone id is Europe/Ljubljana. */
 export const BOOKING_ZONE = "Europe/Ljubljana";
 
 export type PublicAvailability = {
@@ -94,7 +95,7 @@ export function toServiceCode(serviceCategory: string, packageId: string): strin
   throw new Error(`Unknown service mapping: ${serviceCategory}/${packageId}`);
 }
 
-export function todayInLjubljana(): string {
+export function todayInMaribor(): string {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: BOOKING_ZONE,
     year: "numeric",
