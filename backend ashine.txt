@@ -450,7 +450,7 @@ Point admin at the same API
 
 Optionally remove or thin the old Next /api/booking route
 
-Alternative if you want fewer repos: one monorepo with /apps/web, /apps/admin, /apps/api — still separate apps, still no “merge Java into the marketing site as one app.” For a solo/friend project, 3 separate repos is simpler.
+Alternative if you want fewer repos: one monorepo with /apps/web, /apps/admin, /apps/api - still separate apps, still no “merge Java into the marketing site as one app.” For a solo/friend project, 3 separate repos is simpler.
 
 Service durations (configurable in DB)
 
