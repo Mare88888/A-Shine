@@ -16,6 +16,7 @@ import {
   todayInLjubljana,
   toServiceCode,
 } from '@/lib/booking-api'
+import BookingDatePicker from '@/components/BookingDatePicker'
 
 const PACKAGE_CUSTOM_ID = 'custom'
 
@@ -214,12 +215,7 @@ export default function Contact() {
         const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed)
         if (!match) return t('errors.date')
         const year = Number(match[1])
-        const month = Number(match[2])
-        const day = Number(match[3])
-        const selected = new Date(year, month - 1, day, 0, 0, 0, 0)
-        const today = new Date()
-        today.setHours(0, 0, 0, 0)
-        if (selected < today) return t('errors.datePast')
+        if (trimmed < todayInLjubljana()) return t('errors.datePast')
         if (year > 2050) return t('errors.dateYearHigh')
         return undefined
       }
@@ -580,18 +576,25 @@ export default function Contact() {
 
                 <div className="mt-4">
                   <FieldLabel htmlFor="contact-date" required>{t('preferredDate')}</FieldLabel>
-                  <input
+                  <BookingDatePicker
                     id="contact-date"
                     name="date"
-                    type="date"
                     value={values.date}
-                    min={today}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
+                    serviceCode={serviceCode}
+                    minDate={today}
                     required
-                    className={`${getInputClass('date')} date-picker-white-icon`}
-                    aria-invalid={!!errors.date}
-                    aria-describedby={errors.date ? 'contact-date-error' : undefined}
+                    invalid={!!errors.date}
+                    describedBy={errors.date ? 'contact-date-error' : undefined}
+                    onChange={(date) => {
+                      setValues((prev) => ({ ...prev, date, startsAt: '' }))
+                      setTouched((prev) => ({ ...prev, date: true }))
+                      setErrors((prev) => ({
+                        ...prev,
+                        date: validateField('date', date),
+                        startsAt: undefined,
+                      }))
+                    }}
+                    onBlur={() => setTouched((prev) => ({ ...prev, date: true }))}
                   />
                   <FieldError id="contact-date-error" message={touched.date ? errors.date : undefined} />
                 </div>

@@ -244,10 +244,7 @@ export async function POST(request: Request) {
       console.error(
         "RESEND_API_KEY is not set (add it in Vercel → Settings → Environment Variables → Production, then redeploy).",
       );
-      return NextResponse.json(
-        { error: TEXT.errors.generic },
-        { status: 500 },
-      );
+      return NextResponse.json({ error: TEXT.errors.generic }, { status: 500 });
     }
 
     const resend = new Resend(resendApiKey);

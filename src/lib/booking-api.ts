@@ -8,6 +8,18 @@ export type PublicAvailability = {
   starts: string[];
 };
 
+export type PublicAvailabilityDay = {
+  date: string;
+  available: boolean;
+};
+
+export type PublicAvailabilityDays = {
+  serviceCode: string;
+  from: string;
+  to: string;
+  days: PublicAvailabilityDay[];
+};
+
 export type CreateBookingPayload = {
   name: string;
   email: string;
@@ -119,6 +131,41 @@ export async function fetchAvailability(
     throw new Error(`Availability ${res.status}`);
   }
   return res.json() as Promise<PublicAvailability>;
+}
+
+/** Inclusive day grid for the public date picker (unavailable = blocked/full/Sunday). */
+export async function fetchAvailabilityDays(
+  from: string,
+  to: string,
+  serviceCode: string,
+  signal?: AbortSignal
+): Promise<PublicAvailabilityDays> {
+  const params = new URLSearchParams({ from, to, serviceCode });
+  const res = await fetch(
+    `${getBookingApiUrl()}/api/public/availability/days?${params}`,
+    { signal }
+  );
+  if (!res.ok) {
+    throw new Error(`Availability days ${res.status}`);
+  }
+  return res.json() as Promise<PublicAvailabilityDays>;
+}
+
+export function addDaysIso(isoDate: string, days: number): string {
+  const [y, m, d] = isoDate.split("-").map(Number);
+  const date = new Date(Date.UTC(y, m - 1, d));
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+export function startOfMonthIso(isoDate: string): string {
+  return `${isoDate.slice(0, 7)}-01`;
+}
+
+export function endOfMonthIso(isoDate: string): string {
+  const [y, m] = isoDate.split("-").map(Number);
+  const last = new Date(Date.UTC(y, m, 0)).getUTCDate();
+  return `${String(y).padStart(4, "0")}-${String(m).padStart(2, "0")}-${String(last).padStart(2, "0")}`;
 }
 
 export async function createBooking(
