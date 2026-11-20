@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 const RATE_LIMIT_KEY_PREFIX = "booking:";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-// Server-side required fields. Distance required when locationType is mobile.
+// Server-side required fields.
 const REQUIRED_FIELDS = [
   "name",
   "email",
@@ -211,12 +211,6 @@ export async function POST(request: Request) {
       }
       return NextResponse.json(
         { error: `Missing required fields: ${missing.join(", ")}` },
-        { status: 400 },
-      );
-    }
-    if (locationType === "mobile" && !distance?.trim()) {
-      return NextResponse.json(
-        { error: TEXT.errors.missingDistance },
         { status: 400 },
       );
     }

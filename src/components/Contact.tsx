@@ -36,7 +36,7 @@ const INITIAL_FORM_VALUES: Record<string, string> = {
   serviceCategory: '',
   service: '',
   locationType: '',
-  distance: '',
+  streetAddress: '',
   date: '',
   startsAt: '',
   message: '',
@@ -57,7 +57,7 @@ interface FormErrors {
   serviceCategory?: string
   service?: string
   locationType?: string
-  distance?: string
+  streetAddress?: string
   date?: string
   startsAt?: string
   message?: string
@@ -140,14 +140,6 @@ export default function Contact() {
     ] as const,
     [t]
   )
-  const distanceOptions = useMemo(
-    () => [
-      { value: '25', label: t('distance25') },
-      { value: '100', label: t('distance100') },
-      { value: '200', label: t('distance200') },
-    ] as const,
-    [t]
-  )
   const customPackageLabel = t('customPackage')
   const today = todayInMaribor()
 
@@ -209,8 +201,8 @@ export default function Contact() {
         return !trimmed ? t('errors.service') : undefined
       case 'locationType':
         return !trimmed ? t('errors.locationType') : undefined
-      case 'distance':
-        return values.locationType === 'mobile' && !trimmed ? t('errors.distance') : undefined
+      case 'streetAddress':
+        return values.locationType === 'mobile' && !trimmed ? t('errors.streetAddress') : undefined
       case 'date': {
         if (!trimmed) return t('errors.date')
         const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(trimmed)
@@ -247,7 +239,7 @@ export default function Contact() {
         next.service = categoryHasPackages(value) ? '' : PACKAGE_CUSTOM_ID
       }
       if (name === 'locationType') {
-        next.distance = value === 'mobile' ? prev.distance : ''
+        next.streetAddress = value === 'mobile' ? prev.streetAddress : ''
       }
       if (name === 'date' || name === 'serviceCategory' || name === 'service') {
         next.startsAt = ''
@@ -290,7 +282,7 @@ export default function Contact() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setSubmitError(null)
-    setTouched({ name: true, email: true, phone: true, serviceCategory: true, service: true, locationType: true, distance: true, date: true, startsAt: true, message: true })
+    setTouched({ name: true, email: true, phone: true, serviceCategory: true, service: true, locationType: true, streetAddress: true, date: true, startsAt: true, message: true })
     const nextErrors = validateAll()
     if (Object.keys(nextErrors).length > 0) return
     if (!serviceCode) {
@@ -306,7 +298,7 @@ export default function Contact() {
         serviceCategory: values.serviceCategory,
         serviceCode,
         locationType: values.locationType,
-        distance: values.distance,
+        streetAddress: values.streetAddress,
         date: values.date,
         startsAt: values.startsAt,
         message: values.message,
@@ -547,32 +539,28 @@ export default function Contact() {
                       </div>
                       <FieldError id="contact-locationType-error" message={touched.locationType ? errors.locationType : undefined} />
                     </div>
-                    {values.locationType === 'mobile' && (
-                      <div className="flex-1 min-w-[130px]">
-                        <label htmlFor="contact-distance" className="sr-only">{t('distance')}</label>
-                        <div className="relative">
-                          <select
-                            id="contact-distance"
-                            name="distance"
-                            value={values.distance}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            required
-                            className={getSelectClass('distance')}
-                            aria-invalid={!!errors.distance}
-                            aria-describedby={errors.distance ? 'contact-distance-error' : undefined}
-                          >
-                            <option value="" disabled hidden>{t('distance')}</option>
-                            {distanceOptions.map(({ value, label }) => (
-                              <option key={value} value={value}>{label}</option>
-                            ))}
-                          </select>
-                          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-text-muted" />
-                        </div>
-                        <FieldError id="contact-distance-error" message={touched.distance ? errors.distance : undefined} />
-                      </div>
-                    )}
                   </div>
+                  {values.locationType === 'mobile' && (
+                    <div className="mt-4">
+                      <FieldLabel htmlFor="contact-streetAddress" required>{t('streetAddress')}</FieldLabel>
+                      <input
+                        type="text"
+                        id="contact-streetAddress"
+                        name="streetAddress"
+                        value={values.streetAddress}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        required
+                        maxLength={500}
+                        autoComplete="street-address"
+                        placeholder={t('placeholderStreetAddress')}
+                        className={getInputClass('streetAddress')}
+                        aria-invalid={!!errors.streetAddress}
+                        aria-describedby={errors.streetAddress ? 'contact-streetAddress-error' : undefined}
+                      />
+                      <FieldError id="contact-streetAddress-error" message={touched.streetAddress ? errors.streetAddress : undefined} />
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-4">

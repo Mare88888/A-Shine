@@ -33,6 +33,7 @@ export type CreateBookingPayload = {
   serviceCode: string;
   locationType: string;
   distance?: string | null;
+  streetAddress?: string | null;
   date: string;
   startsAt: string;
   message?: string | null;
@@ -186,6 +187,10 @@ export async function createBooking(
     distance:
       payload.locationType === "mobile"
         ? emptyToNull(payload.distance ?? undefined)
+        : null,
+    streetAddress:
+      payload.locationType === "mobile"
+        ? emptyToNull(payload.streetAddress ?? undefined)
         : null,
     date: payload.date,
     startsAt: payload.startsAt,
