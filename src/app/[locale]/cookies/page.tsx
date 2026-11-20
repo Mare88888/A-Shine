@@ -65,7 +65,12 @@ export default async function CookiesPage({ params }: Props) {
 
           <section>
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('thirdPartyTitle')}</h2>
-            <p>{t('thirdPartyBody')}</p>
+            <p>
+              {t('thirdPartyBody')} {t('thirdPartyPolicyBefore')}{' '}
+              <a href="https://policies.google.com/privacy" className="text-premium-accent hover:underline" target="_blank" rel="noopener noreferrer">
+                {t('thirdPartyPolicyLink')}
+              </a>.
+            </p>
           </section>
 
           <section>

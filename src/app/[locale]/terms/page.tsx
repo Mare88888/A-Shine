@@ -64,6 +64,12 @@ export default async function TermsPage({ params }: Props) {
           <section>
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('useOfWebsiteTitle')}</h2>
             <p>{t('useOfWebsiteBody')}</p>
+            <p className="mt-3">
+              {t('mapsTermsBefore')}{' '}
+              <a href="https://cloud.google.com/maps-platform/terms" className="text-premium-accent hover:underline" target="_blank" rel="noopener noreferrer">
+                {t('mapsTermsLink')}
+              </a>.
+            </p>
           </section>
 
           <section>

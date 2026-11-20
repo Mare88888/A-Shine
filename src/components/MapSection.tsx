@@ -50,6 +50,7 @@ export default function MapSection() {
   const mapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(GEOCODE_ADDRESS)}`
 
   useEffect(() => {
+    window.localStorage.removeItem('ashine.mapConsent')
     if (typeof google !== 'undefined' && google.maps) {
       setScriptLoaded(true)
     }

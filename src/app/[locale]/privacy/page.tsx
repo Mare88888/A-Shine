@@ -58,7 +58,6 @@ export default async function PrivacyPage({ params }: Props) {
             <ul className="list-disc pl-6 space-y-1 mt-2">
               <li>{t('dataWeCollect1')}</li>
               <li>{t('dataWeCollect2')}</li>
-              <li>{t('dataWeCollect3')}</li>
               <li>{t('dataWeCollect4')}</li>
               <li>{t('dataWeCollect5')}</li>
             </ul>
@@ -71,7 +70,6 @@ export default async function PrivacyPage({ params }: Props) {
               <li>{t('howWeUse1')}</li>
               <li>{t('howWeUse2')}</li>
               <li>{t('howWeUse3')}</li>
-              <li>{t('howWeUse4')}</li>
             </ul>
           </section>
 
@@ -95,6 +93,21 @@ export default async function PrivacyPage({ params }: Props) {
           <section>
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('additionalTitle')}</h2>
             <p>{t('additionalProcessors')}</p>
+            <p className="mt-3">
+              {t('processorTermsBefore')}{' '}
+              <a href="https://resend.com/legal/dpa" className="text-premium-accent hover:underline" target="_blank" rel="noopener noreferrer">
+                Resend
+              </a>,{' '}
+              <a href="https://vercel.com/legal/dpa" className="text-premium-accent hover:underline" target="_blank" rel="noopener noreferrer">
+                Vercel
+              </a>{t('processorTermsAnd')}{' '}
+              <a href="https://cloud.google.com/terms/data-processing-addendum" className="text-premium-accent hover:underline" target="_blank" rel="noopener noreferrer">
+                Google Cloud
+              </a>. {t('googlePrivacyBefore')}{' '}
+              <a href="https://policies.google.com/privacy" className="text-premium-accent hover:underline" target="_blank" rel="noopener noreferrer">
+                {t('googlePrivacyLink')}
+              </a>.
+            </p>
             <p className="mt-3">{t('additionalSecurity')}</p>
             <p className="mt-3">{t('additionalDevice')}</p>
           </section>
