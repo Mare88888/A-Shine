@@ -70,6 +70,13 @@ export default async function PrivacyPage({ params }: Props) {
           </section>
 
           <section>
+            <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('appointmentsTitle')}</h2>
+            <p>{t('appointmentsStored')}</p>
+            <p className="mt-3">{t('appointmentsAccess')}</p>
+            <p className="mt-3">{t('appointmentsRetention')}</p>
+          </section>
+
+          <section>
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('legalBasisTitle')}</h2>
             <p>{t('legalBasisBody')}</p>
           </section>
