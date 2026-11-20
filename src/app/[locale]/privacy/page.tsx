@@ -43,7 +43,13 @@ export default async function PrivacyPage({ params }: Props) {
         <div className="prose prose-invert max-w-none space-y-6 text-body text-text-secondary">
           <section>
             <h2 className="text-h4 text-text-primary mt-8 mb-3">{t('whoWeAreTitle')}</h2>
-            <p>{t('whoWeAreBody')}</p>
+            <p>
+              {t('whoWeAreBody')}{' '}
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-premium-accent hover:underline">
+                {CONTACT_EMAIL}
+              </a>
+              .
+            </p>
           </section>
 
           <section>

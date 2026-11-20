@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import { useTranslations, useLocale } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 import { motion } from 'framer-motion'
 import { SectionEntrance } from '@/components/MotionSection'
 import { buttonTap } from '@/lib/motion'
@@ -656,7 +657,13 @@ export default function Contact() {
                   <FieldError id="contact-message-error" message={touched.message ? errors.message : undefined} />
                 </div>
 
-                <div className="mt-6">
+                <p className="mt-6 text-center text-body-sm text-text-muted">
+                  {t('privacyNotice')}{' '}
+                  <Link href="/privacy" className="text-premium-accent hover:underline">
+                    {t('privacyLink')}
+                  </Link>.
+                </p>
+                <div className="mt-4">
                   <motion.button
                     type="submit"
                     disabled={sending}
