@@ -13,7 +13,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-Copy `.env.example` to `.env.local` and fill in the values you need. The form talks to the booking API at `NEXT_PUBLIC_BOOKING_API_URL` (local default `http://localhost:8080`).
+The form talks to the booking API at `NEXT_PUBLIC_BOOKING_API_URL` (local default `http://localhost:8080`).
 
 ```bash
 npm run build
@@ -32,6 +32,5 @@ npm start
 ## Docs
 
 - [Project documentation](./DOCUMENTATION.md) — structure, routes, booking
-- [Deployment](./DEPLOYMENT.md) — Vercel and environment variables
 - [Design system](./DESIGN-SYSTEM.md) — colours and type
 - [Animations](./ANIMATIONS.md) — motion used on the page

@@ -19,7 +19,6 @@ src/
 ├── i18n/                  # Slovenian default, English under /en
 └── lib/                   # booking client, reviews, SEO
 strings/                   # sl.json and en.json
-public/                    # images, hero video, favicon
 ```
 
 ## Routes
@@ -59,4 +58,4 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). Production deploy and environment variables are in [DEPLOYMENT.md](./DEPLOYMENT.md).
+Open [http://localhost:3000](http://localhost:3000).
