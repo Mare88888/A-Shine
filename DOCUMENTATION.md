@@ -24,9 +24,6 @@ Car Website/
 │   ├── i18n/                  # next-intl routing & loaders
 │   └── lib/                   # Booking, reviews, SEO, rate-limit, motion
 ├── strings/                   # sl.json · en.json
-├── public/                    # Images, video, favicon
-├── .env.example
-├── DEPLOYMENT.md
 └── DOCUMENTATION.md
 ```
 
@@ -76,8 +73,7 @@ Hero → Stats → About → Gallery → Pricing → Map → Testimonials → Co
    - notification to the business inbox
    - confirmation to the customer (SL / EN)
 
-Env (server-only): `RESEND_API_KEY` · `RESEND_FROM` · `BOOKING_TO_EMAIL`  
-See `.env.example` for the full list (Maps, Places, site URL).
+Env (server-only): `RESEND_API_KEY` · `RESEND_FROM` · `BOOKING_TO_EMAIL`
 
 ---
 
@@ -102,5 +98,3 @@ Open [http://localhost:3000](http://localhost:3000).
 ```bash
 npm run build && npm start   # production build
 ```
-
-For Vercel deploy, env vars, and domain setup → [`DEPLOYMENT.md`](./DEPLOYMENT.md)

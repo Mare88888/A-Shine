@@ -16,10 +16,12 @@ yarn-error.log*
 
 # Env
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+.env.example
+
+# Local only (not published)
+DEPLOYMENT.md
+public/
 
 # IDE
 .idea
