@@ -10,7 +10,7 @@ const CONTENT = `# A-Shine
 
 > Mobile car detailing and valeting in Slovenia. Ceramic coating, paint correction, and full detailing packages. Based in Malečnik (near Maribor) with a 25-200 km mobile service area.
 
-A-Shine is a mobile car detailing business operating across Slovenia from Celestrina 19, Malečnik. The website is bilingual: Slovenian (default at /) and English (under /en). Customers book by submitting the contact form, which sends an email to the business. The home page includes an interactive map that shows the service area as three concentric travel zones around the base.
+A-Shine is a mobile car detailing business operating across Slovenia from Celestrina 19, Malečnik. The website is bilingual: Slovenian (default at /) and English (under /en). Customers request an appointment on the contact form. The time is held in the booking calendar, and a confirmation email is sent. The home page includes an interactive map that shows the service area as three concentric travel zones around the base.
 
 ## Services
 

@@ -1,8 +1,10 @@
-# Car Detailing Website
+# A-Shine
 
-A modern, dark-themed car detailing site built with **Next.js (App Router)**, **React**, and **Tailwind CSS**. Single-page layout with hero, services (Cleaning & Detailing), before/after gallery, pricing, testimonials, and booking/contact.
+Public website for [A-Shine Mobile Detailing](https://ashine.si). Slovenian is the default language. English is at `/en`.
 
-## Quick start
+The home page covers the service, gallery, prices, service-area map, Google reviews, and a booking form. Appointments are stored by a separate booking API. This repository is the marketing site only.
+
+## Run locally
 
 ```bash
 npm install
@@ -11,25 +13,25 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Build
+Copy `.env.example` to `.env.local` and fill in the values you need. The form talks to the booking API at `NEXT_PUBLIC_BOOKING_API_URL` (local default `http://localhost:8080`).
 
 ```bash
 npm run build
 npm start
 ```
 
-## Docs
-
-See **[DOCUMENTATION.md](./DOCUMENTATION.md)** for:
-
-- Folder structure
-- Page routes
-- Component breakdown
-- Design principles
-
 ## Stack
 
-- Next.js 14 (App Router)
+- Next.js 15 (App Router)
 - React 18
-- Tailwind CSS
 - TypeScript
+- Tailwind CSS
+- next-intl
+- Framer Motion
+
+## Docs
+
+- [Project documentation](./DOCUMENTATION.md) — structure, routes, booking
+- [Deployment](./DEPLOYMENT.md) — Vercel and environment variables
+- [Design system](./DESIGN-SYSTEM.md) — colours and type
+- [Animations](./ANIMATIONS.md) — motion used on the page

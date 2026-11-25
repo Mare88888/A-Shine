@@ -1,106 +1,62 @@
-# A-Shine - Project Documentation
+# A-Shine website
 
-Production website for **A-Shine Mobile Detailing**: bilingual marketing site with booking, Google reviews, and a service-area map.
+Bilingual marketing site for A-Shine Mobile Detailing. Slovenian is the default (`/`). English uses the `/en` prefix. Legal pages, the map, reviews, and the booking form live here. The calendar itself is a separate API.
 
-**Stack:** Next.js 15 · React 18 · TypeScript · Tailwind · next-intl · Framer Motion · Resend · Google Maps / Places
+**Stack:** Next.js 15 · React 18 · TypeScript · Tailwind · next-intl · Framer Motion
 
----
-
-## Folder structure
+## Layout
 
 ```
-Car Website/
-├── src/
-│   ├── app/
-│   │   ├── [locale]/          # Localised pages (home, privacy, terms, cookies)
-│   │   ├── api/booking/       # Booking API (Resend)
-│   │   ├── layout.tsx         # Root layout, fonts, metadata
-│   │   ├── globals.css
-│   │   ├── sitemap.ts
-│   │   └── robots.ts
-│   ├── components/            # UI sections (Hero, About, Gallery, …)
-│   ├── config/site.ts         # Brand, URL, contact, geo
-│   ├── data/                  # Google reviews fallbacks
-│   ├── i18n/                  # next-intl routing & loaders
-│   └── lib/                   # Booking, reviews, SEO, rate-limit, motion
-├── strings/                   # sl.json · en.json
-├── public/                    # Images, video, favicon
-├── .env.example
-├── DEPLOYMENT.md
-└── DOCUMENTATION.md
+src/
+├── app/
+│   ├── [locale]/          # home, privacy, terms, cookies
+│   ├── api/booking/       # older email route; the form does not use it
+│   ├── sitemap.ts
+│   ├── robots.ts
+│   └── llms.txt/route.ts
+├── components/            # page sections
+├── config/site.ts         # name, URL, contact, map centre
+├── i18n/                  # Slovenian default, English under /en
+└── lib/                   # booking client, reviews, SEO
+strings/                   # sl.json and en.json
+public/                    # images, hero video, favicon
 ```
-
----
 
 ## Routes
 
-| Route | Description |
-| ----- | ----------- |
-| `/` · `/en` | Home (single-page sections) |
-| `/privacy` · `/en/privacy` | Privacy policy |
-| `/terms` · `/en/terms` | Terms of use |
-| `/cookies` · `/en/cookies` | Cookie policy |
-| `POST /api/booking` | Booking form handler |
+| Route | Page |
+| ----- | ---- |
+| `/` | Home, Slovenian |
+| `/en` | Home, English |
+| `/privacy`, `/terms`, `/cookies` | Legal pages, plus `/en/...` |
+| `/sitemap.xml`, `/robots.txt` | SEO |
 
-Home sections (anchors): `#about` · `#gallery` · `#pricing` · `#map` · `#testimonials` · `#contact`
+Home anchors: `#about` · `#gallery` · `#pricing` · `#map` · `#testimonials` · `#contact`
 
-Default locale is **Slovenian** (`as-needed` prefix - no `/sl` in the URL).
+Order on the page: Hero, stats, about, gallery, pricing, map, reviews, booking form, footer. A call and book bar stays fixed on small screens.
 
----
+## Booking
 
-## Page flow
+The form in `Contact.tsx` calls the booking API:
 
-```
-Hero → Stats → About → Gallery → Pricing → Map → Testimonials → Contact → Footer
-```
+1. After a service is chosen, it loads which days can be booked.
+2. After a day is chosen, it loads free start times.
+3. **We come to you** asks for a street address. A visit at the studio does not.
+4. Submit sends the request to `POST /api/public/bookings`.
 
-| Section | Role |
-| ------- | ---- |
-| **Nav** | Sticky header, language switcher, mobile menu |
-| **Hero** | Full-bleed video, headline, primary CTA |
-| **About** | Story, certificates, why-us, commitment |
-| **Gallery** | Before/after comparisons + lightbox |
-| **Pricing** | Packages and à-la-carte services |
-| **Map** | Service area (Google Maps) |
-| **Testimonials** | Live Google reviews carousel |
-| **Contact** | Booking form → `/api/booking` |
-| **MobileCTABar** | Sticky call / book bar on small screens |
+The API holds the time, stores the appointment, and sends the owner and customer emails. This site does not write appointments to its own database.
 
----
+Set `NEXT_PUBLIC_BOOKING_API_URL` to the API origin, with no trailing slash.
 
-## Booking flow
+## Map and reviews
 
-1. User submits the form in `Contact.tsx`
-2. `POST /api/booking` validates input and applies IP rate limiting
-3. **Resend** sends:
-   - notification to the business inbox
-   - confirmation to the customer (SL / EN)
+The service-area map loads with the page through the Maps JavaScript API. Reviews are fetched on the server from Google Places, with a static fallback if that request fails.
 
-Env (server-only): `RESEND_API_KEY` · `RESEND_FROM` · `BOOKING_TO_EMAIL`  
-See `.env.example` for the full list (Maps, Places, site URL).
-
----
-
-## Design
-
-- Dark premium palette (near-black / charcoal) with cyan accent (`#00b8db`)
-- Mobile-first layout, sticky nav, smooth anchor scrolling
-- Motion via Framer Motion (section entrances, carousel, gallery)
-- Semantic HTML, focus states, bilingual copy throughout
-
----
-
-## Run locally
+## Run
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-```bash
-npm run build && npm start   # production build
-```
-
-For Vercel deploy, env vars, and domain setup → [`DEPLOYMENT.md`](./DEPLOYMENT.md)
+Open [http://localhost:3000](http://localhost:3000). Production deploy and environment variables are in [DEPLOYMENT.md](./DEPLOYMENT.md).
